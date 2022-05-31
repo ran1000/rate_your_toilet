@@ -1,0 +1,7 @@
+<h1>Toilets - SHOWPAGE</h1>
+
+<p> <%= @toilet.name %>  </p>
+
+<em><%= render "/reviews/index", reviews: @toilet.reviews %></em>
+
+<%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>

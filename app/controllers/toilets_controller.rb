@@ -1,6 +1,6 @@
 class ToiletsController < ApplicationController
 #
-  before_action :select_toilet, only: %i[show edit update destroy]
+  before_action :select_toilet, only: %i[show edit update destroy favorite]
 
   def show
   end
@@ -34,6 +34,16 @@ class ToiletsController < ApplicationController
   def destroy
     @toilet.destroy
     redirect_to root_path, status: :see_other
+  end
+
+  def favorite
+    Favorite.create(user_id: current_user.id, toilet_id: @toilet.id)
+    redirect_to toilet_path(@toilet)
+  end
+
+  def favorite_destroy
+    Favorite.destroy(user_id: current_user.id, toilet_id: @toilet.id)
+    redirect_to toilet_path(@toilet), status: :see_other
   end
 
   private

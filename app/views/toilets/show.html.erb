@@ -1,9 +1,9 @@
-<h1>Toilets - SHOWPAGE</h1>
+<h1>🚽 <%= @toilet.name %></h1>
 
 
-<div class="row">
-<p style="bold">
-  <%= @toilet.name %>
+<p style="font-weight: bold">
+
+  <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
   <% favorite = current_user.favorites.find_by(toilet: @toilet) %>
   <% if favorite.nil? %>
     <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post %>
@@ -11,9 +11,7 @@
     <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure to unfollow #{@toilet.name}?" } %>
   <% end %>
 </p>
-</div>
 
-<div class="row">
+<h2>Reviews:</h2>
 <em><%= render "/reviews/index", reviews: @toilet.reviews %></em>
 <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
-</div>

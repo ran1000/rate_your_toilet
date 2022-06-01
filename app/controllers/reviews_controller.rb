@@ -17,9 +17,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # def show
-  # end
-
   def index
     @reviews = Review.all
   end

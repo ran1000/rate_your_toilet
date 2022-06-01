@@ -1,5 +1,8 @@
 <h1>🚽 <%= @toilet.name %></h1>
 
+
+
+
 <p style="font-weight: bold">
   <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
   <% favorite = current_user.favorites.find_by(toilet: @toilet) %>

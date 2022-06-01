@@ -1,5 +1,4 @@
 <h1>INDEX TOILETS</h1>
 <% @toilets.each do |toilet| %>
-  <li> <%= toilet.name %> </li>
-  <li> <%  %>  </li>
+  <li> <%= link_to toilet.name, toilet_path(toilet) %> </li>
 <% end %>

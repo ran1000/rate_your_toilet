@@ -27,8 +27,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @toilet = Toilet.find(@review[:toilet_id])
-    raise
-    
+
     @review.destroy
     redirect_to toilet_path(@toilet), status: :see_other
   end

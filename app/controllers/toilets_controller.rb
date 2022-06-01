@@ -36,15 +36,15 @@ class ToiletsController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  def favorite
-    Favorite.create(user_id: current_user.id, toilet_id: @toilet.id)
-    redirect_to toilet_path(@toilet)
-  end
+  # def favorite
+  #   Favorite.create(user_id: current_user.id, toilet_id: @toilet.id)
+  #   redirect_to toilet_path(@toilet)
+  # end
 
-  def favorite_destroy
-    Favorite.destroy(user_id: current_user.id, toilet_id: @toilet.id)
-    redirect_to toilet_path(@toilet), status: :see_other
-  end
+  # def favorite_destroy
+  #   Favorite.destroy(user_id: current_user.id, toilet_id: @toilet.id)
+  #   redirect_to toilet_path(@toilet), status: :see_other
+  # end
 
   private
 

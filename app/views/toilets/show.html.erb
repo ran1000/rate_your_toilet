@@ -1,13 +1,19 @@
 <h1>Toilets - SHOWPAGE</h1>
 
-<p> <%= @toilet.name %>  </p>
 
-<% if @toilet.favorite?(current_user) %>
-  <%= button_to "Favorite", favorite_path(@toilet), method: "put", disabled: true %>
-<% else %>
-  <%= button_to "Favorite", favorite_path(@toilet), method: "put" %>
-<% end %>
+<div class="row">
+<p style="bold">
+  <%= @toilet.name %>
+  <% favorite = current_user.favorites.find_by(toilet: @toilet) %>
+  <% if favorite.nil? %>
+    <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post %>
+  <% else %>
+    <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure to unfollow #{@toilet.name}?" } %>
+  <% end %>
+</p>
+</div>
 
+<div class="row">
 <em><%= render "/reviews/index", reviews: @toilet.reviews %></em>
-
 <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
+</div>

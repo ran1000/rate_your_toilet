@@ -15,3 +15,4 @@
 <h2>Reviews:</h2>
 <em><%= render "/reviews/index", reviews: @toilet.reviews %></em>
 <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
+<%= link_to "Update Toilet", edit_toilet_path(@toilet), data: { turbo_method: :get }, class: "btn btn-danger m-3" %>

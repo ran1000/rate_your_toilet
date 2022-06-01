@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
     @favorite = current_user.favorites.new(favorite_params)
     @favorite.user = current_user
     @toilet = @favorite.toilet
-
+    authorize @favorite
     if @favorite.save
       redirect_to toilet_path(@toilet)
     else
@@ -15,13 +15,18 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @favorites = current_user.favorites.all
+    if current_user
+      @favorites = policy_scope(current_user.favorites.all)
+    else
+      @favorites = []
+    end
+    authorize @favorites
   end
 
   def destroy
     @favorite = current_user.favorites.find(params[:id])
-
     toilet = @favorite.toilet
+    authorize @favorite
     @favorite.destroy
     redirect_to toilet_path(toilet), status: :see_other
   end

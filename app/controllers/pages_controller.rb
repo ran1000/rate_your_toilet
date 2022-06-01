@@ -3,4 +3,9 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @toilets = current_user.toilets
+    @favorites = current_user.favorites
+  end
 end

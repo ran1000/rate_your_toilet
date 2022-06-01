@@ -1,18 +1,17 @@
 <h1>🚽 <%= @toilet.name %></h1>
 
-
 <p style="font-weight: bold">
-
   <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
-  <% favorite = current_user.favorites.find_by(toilet: @toilet) %>
-  <% if favorite.nil? %>
-    <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post %>
-  <% else %>
-    <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure to unfollow #{@toilet.name}?" } %>
+  <% if current_user %>
+    <% favorite = current_user.favorites.find_by(toilet: @toilet) %>
+    <% if favorite.nil? %>
+      <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post %>
+    <% else %>
+      <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure to unfollow #{@toilet.name}?" } %>
+    <% end %>
   <% end %>
 </p>
-
 <h2>Reviews:</h2>
 <em><%= render "/reviews/index", reviews: @toilet.reviews %></em>
 <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
-<%= link_to "Update Toilet", edit_toilet_path(@toilet), data: { turbo_method: :get }, class: "btn btn-danger m-3" %>
+<%= link_to "Update Toilet", edit_toilet_path(@toilet), class: "btn btn-danger m-3" %>

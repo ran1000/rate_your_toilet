@@ -4,11 +4,12 @@ class ToiletsController < ApplicationController
 
   def index
     @toilets = policy_scope(Toilet.all)
-    # authorize @toilets
   end
 
   def show
+    @review = Review.new
     authorize @toilet
+    authorize @review
   end
 
   def new

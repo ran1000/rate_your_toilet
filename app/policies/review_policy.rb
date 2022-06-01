@@ -1,4 +1,4 @@
-class ToiletPolicy < ApplicationPolicy
+class ReviewPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -14,16 +14,12 @@ class ToiletPolicy < ApplicationPolicy
     true
   end
 
+  def new?
+    true
+  end
+
   def create?
-    user
-  end
-
-  def edit?
-    record.user == user
-  end
-
-  def update?
-    edit?
+    true
   end
 
   def destroy?

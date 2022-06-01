@@ -1,0 +1,11 @@
+<h3>Carousel</h3>
+<% pictures = [] %>
+<% @toilet.reviews.each do |review| %>
+  <% review.photos.each do |photo| %>
+    <% pictures.push(photo) %>
+  <% end %>
+<% end %>
+
+<% pictures.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+ <% end %>

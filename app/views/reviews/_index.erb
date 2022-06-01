@@ -1,7 +1,13 @@
 <% reviews.each do |review| %>
   <p>"<em><%=review.comment %></em>"</p>
-  <p><%=review.user.username %> </p>
 
+
+  <% @user = User.find(review[:user_id]) %>
+  <%# somehow username ends up being null, maybe sth up with the set up? %>
+  <p> <%= @user[:username] == nil ? @user[:email] : @user[:username] %> </p>
+
+  <p><%=review.user_id %> </p>
+  <%# <% raise  %>
   <% review.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>

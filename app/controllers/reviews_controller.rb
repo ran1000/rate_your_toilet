@@ -58,7 +58,8 @@ class ReviewsController < ApplicationController
       :urinal,
       :towel,
       :gratis,
-      :current_user
+      :current_user,
+      photos: []
     )
   end
 end

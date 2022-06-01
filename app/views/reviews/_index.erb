@@ -1,5 +1,10 @@
 <% reviews.each do |review| %>
   <p>"<em><%=review.comment %></em>"</p>
   <p><%=review.user.username %> </p>
+
+  <% review.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+
   <%= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
 <% end %>

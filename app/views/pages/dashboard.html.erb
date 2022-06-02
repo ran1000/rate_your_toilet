@@ -1,15 +1,37 @@
-<h1>Dashboard</h1>
+<br>
+<h5 class="text-center">Dashboard</h5>
+<hr>
+<div class="d-flex justify-content-around">
+  <a href="#favorites" class="btn-black">Favorites</a>
+  <a href="#toilets" class="btn-black">Toilets</a>
+  <a href="#reviews" class="btn-black">Reviews</a>
+</div>
+<hr>
 
-<% @favorites.each do |favorite| %>
- <p> <%= link_to favorite.toilet.name, toilet_path(favorite.toilet)%> </p>
-<% end %>
-
-<% @toilets.each do |toilet| %>
- <p> <%= toilet.name %> </p>
-<% end %>
-
-<% @reviews.each do |review| %>
- <p> <%= review.comment %> </p>
-<% end %>
-
-<%# <p><%= render "/reviews/index", reviews: @toilet.reviews %>
+<div id="favorites">
+  <h6 class="text-left p-3">Favorites :</h6>
+  <div class="toilet-grid">
+    <% current_user.favorites.each do |favorite| %>
+      <%= render "toilets/toiletcard", toilet: favorite.toilet %>
+    <% end %>
+  </div>
+</div>
+<hr>
+<div id="toilets">
+  <h6 class="text-left p-3">Your Uploads :</h6>
+  <div class="toilet-grid">
+    <% @toilets.each do |toilet| %>
+      <%= render "toilets/toiletcard", toilet: toilet %>
+    <% end %>
+  </div>
+</div>
+<hr>
+<div id="reviews">
+  <h6 class="text-left p-3">Your Reviews :</h6>
+  <% @reviews.each do |review| %>
+    <div class="bg-secondary rounded p-2 m-3 text-light">
+      <em><%= review.comment %></em>
+      <p><%= review.user.username %></p>
+    </div>
+  <% end %>
+</div>

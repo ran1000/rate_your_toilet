@@ -10,6 +10,13 @@ class ToiletsController < ApplicationController
     @review = Review.new
     authorize @toilet
     authorize @review
+
+    @pictures = []
+    @toilet.reviews.each do |review|
+      review.photos.each do |photo|
+        @pictures.push(photo)
+      end
+    end
   end
 
   def new

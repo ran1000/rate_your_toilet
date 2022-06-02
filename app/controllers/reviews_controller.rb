@@ -32,7 +32,6 @@ class ReviewsController < ApplicationController
 
   def edit
     authorize @review
-    authorize @toilet
   end
 
   def update
@@ -79,7 +78,8 @@ class ReviewsController < ApplicationController
       :urinal,
       :towel,
       :gratis,
-      :current_user
+      :current_user,
+      photos: []
     )
   end
 end

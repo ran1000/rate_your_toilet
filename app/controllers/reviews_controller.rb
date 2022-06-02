@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :select_toilet, only: %i[new create index]
+  before_action :set_toilet, only: %i[new edit update create index]
+  before_action :set_review, only: %i[show edit update]
+
   skip_before_action :authenticate_user!, only: %i[new show index]
 
   def index
@@ -28,6 +30,17 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    authorize @review
+    authorize @toilet
+  end
+
+  def update
+    authorize @review
+    @review.update(review_params)
+    redirect_to toilet_path(@toilet)
+  end
+
   def destroy
     @review = Review.find(params[:id])
     @toilet = Toilet.find(@review[:toilet_id])
@@ -38,8 +51,12 @@ class ReviewsController < ApplicationController
 
   private
 
-  def select_toilet
+  def set_toilet
     @toilet = Toilet.find(params[:toilet_id])
+  end
+
+  def set_review
+    @review = Review.find(params[:id])
   end
 
   def review_params

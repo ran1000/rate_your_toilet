@@ -1,5 +1,5 @@
 class ToiletsController < ApplicationController
-  before_action :select_toilet, only: %i[show edit update destroy favorite]
+  before_action :set_toilet, only: %i[show edit update destroy favorite]
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
@@ -56,7 +56,7 @@ class ToiletsController < ApplicationController
 
   private
 
-  def select_toilet
+  def set_toilet
     @toilet = Toilet.find(params[:id])
   end
 

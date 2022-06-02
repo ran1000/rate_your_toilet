@@ -1,9 +1,36 @@
 // Specific CSS for your home-page
 
-.cls-1 {
-  fill: white
-}
+// .cls-1 {
+//   fill: white
+// }
 
 body {
   background-color: rgba($ice, 0.75);
+}
+
+svg path {
+  stroke-dashoffset: 410;
+  stroke-dasharray: 410;
+  // stroke-width: 10;
+  // stroke: #000000;
+  // fill:  transparent;
+  animation: draw 5s forwards;
+  // animation-fill-mode: forwards;
+}
+
+svg g {
+  fill-opacity: 0;
+  animation: fill-in 2s 2s forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill-in {
+  to {
+    fill-opacity: 1;
+  }
 }

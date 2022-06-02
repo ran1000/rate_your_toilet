@@ -7,7 +7,6 @@ class Toilet < ApplicationRecord
   validates :name, presence: true
   validates :address, presence: true
 
-
   def favorite?(user)
     favorites.find { |favorite| favorite.user_id == user.id }
   end

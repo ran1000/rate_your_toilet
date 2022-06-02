@@ -23,6 +23,7 @@ export default class extends Controller {
 
   #addMarkersToMap(){
     this.markersValue.forEach((marker) => {
+      console.log(marker)
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
@@ -45,6 +46,7 @@ export default class extends Controller {
       trackUserLocation: true,
       // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true
+
     }))
   }
 }

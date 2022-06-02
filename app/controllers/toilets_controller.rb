@@ -7,7 +7,7 @@ class ToiletsController < ApplicationController
     @markers = @toilets.geocoded.map do |toilet|
       {
         lat: toilet.latitude,
-        lon: toilet.longitude
+        lng: toilet.longitude
       }
     end
   end
@@ -16,11 +16,10 @@ class ToiletsController < ApplicationController
     @review = Review.new
     authorize @toilet
     authorize @review
-    arrtoilet = [@toilet]
-    @markers = arrtoilet.geocoded.map do |toilet|
+    @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
       {
         lat: toilet.latitude,
-        lon: toilet.longitude
+        lng: toilet.longitude
       }
     end
   end

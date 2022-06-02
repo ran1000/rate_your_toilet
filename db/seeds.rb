@@ -7,7 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 toiletphotos = ["Basic Toilet", "Comfy Toilet", "Regular Toilet"]
-
+Toilet.destroy_all
+Review.destroy_all
 
 2.times do
   @user = User.new(

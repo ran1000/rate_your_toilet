@@ -26,8 +26,8 @@
 <em><%= render "/reviews/form", toilet: @toilet, review: @review %></em>
 
 <% if policy(@toilet).destroy? %>
-  <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
+  <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black" %>
 <% end %>
 <% if policy(@toilet).update? %>
-  <%= link_to "Update Toilet", edit_toilet_path(@toilet), class: "btn btn-danger m-3" %>
+  <%= link_to "Update Toilet", edit_toilet_path(@toilet), class: "btn-gray" %>
 <% end %>

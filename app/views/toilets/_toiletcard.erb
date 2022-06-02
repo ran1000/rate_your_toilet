@@ -1,0 +1,19 @@
+<%= link_to toilet_path(toilet), class: "card-link" do %>
+<div class="tcard">
+  <div class="tcard-image">
+    <%= cl_image_tag toilet.reviews.last.photos.first.key %>
+  </div>
+  <div class="tcard-info">
+    <div class="tcard-text">
+      <h4><%= toilet.name %></h4>
+      <p><%= toilet.address %></p>
+    </div>
+    <div class="tcard-rating">
+      <p><%= toilet.reviews.last.rating %> <i class="fa-solid fa-star"></i></p>
+    </div>
+    <div class="tcard-favorite">
+      <p><%= toilet.favorites.count %> <i class="fa-solid fa-heart"></i></p>
+    </div>
+  </div>
+</div>
+<% end %>

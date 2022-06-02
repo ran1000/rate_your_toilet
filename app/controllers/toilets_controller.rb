@@ -3,10 +3,23 @@ class ToiletsController < ApplicationController
   before_action :select_toilet, only: %i[show edit update destroy favorite]
 
   def show
+    @toilet = Toilet.find(params[:id])
+    @markers = @toilet.geocoded.map do |toilet|
+      {
+        lat: toilet.latitude,
+        lon: toilet.longitude
+      }
+    end
   end
 
   def index
     @toilets = Toilet.all
+    @markers = @toilets.geocoded.map do |toilet|
+      {
+        lat: toilet.latitude,
+        lon: toilet.longitude
+      }
+    end
   end
 
   def new

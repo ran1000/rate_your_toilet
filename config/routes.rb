@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'favorites/index'
   devise_for :users
   root "pages#home"
+  #get "toilet/:toilet_id/path", to "toilet#show"
   resources :toilets, only: %i[new create edit update show index] do
     collection do
       get :golden

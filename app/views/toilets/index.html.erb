@@ -1,4 +1,7 @@
-<h1>INDEX TOILETS</h1>
-<% @toilets.each do |toilet| %>
-  <li> <%= link_to toilet.name, toilet_path(toilet) %> </li>
-<% end %>
+<h1>Spotaloo Toilets</h1>
+<h1>map_here</h1>
+<div class="toilet-grid">
+  <% @toilets.each do |toilet| %>
+    <%= render "toiletcard", toilet: toilet %>
+  <% end %>
+</div>

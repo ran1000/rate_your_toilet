@@ -1,0 +1,111 @@
+.toilet-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .toilet-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .toilet-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .toilet-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .toilet-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .toilet-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.card-link {
+  text-decoration: none;
+  color: black;
+  margin: 0px;
+}
+
+.tcard {
+  height: 350px;
+  width: 350px;
+  margin: 0px;
+  background-color: whitesmoke;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+
+.tcard {
+  opacity: 1;
+}
+
+.tcard-image>img {
+  background-color: grey;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.tcard-image>img:hover {
+  opacity: 1;
+}
+
+.tcard-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.tcard-text {
+  max-width: 80%;
+}
+
+.tcard-text>h4 {
+  font-size: 0.95em;
+}
+
+.tcard-text>p {
+  font-size: 0.85em;
+  opacity: 0.6;
+}
+
+.tcard-rating {
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+}
+
+.tcard-favorite {
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

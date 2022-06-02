@@ -1,8 +1,10 @@
-<%= simple_form_for([toilet, review]) do |f| %>
-  <%= f.input :rating %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.input :comment %>
-  <%= f.input :baby %>
-  <%= f.input :accessible %>
-  <%= f.submit %>
-<% end %>
+<div data-turbo="false">
+  <%= simple_form_for([toilet, review]) do |f| %>
+    <%= f.input :rating %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :comment %>
+    <%= f.input :baby %>
+    <%= f.input :accessible %>
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<h1>Dashboard</h1>
+
+<% @favorites.each do |favorite| %>
+ <p> <%= link_to favorite.toilet.name, toilet_path(favorite.toilet)%> </p>
+<% end %>
+
+<% @toilets.each do |toilet| %>
+ <p> <%= toilet.name %> </p>
+<% end %>
+
+<% @reviews.each do |review| %>
+ <p> <%= review.comment %> </p>
+<% end %>
+
+<%# <p><%= render "/reviews/index", reviews: @toilet.reviews %>

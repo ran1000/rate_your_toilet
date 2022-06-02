@@ -1,5 +1,5 @@
 class ToiletsController < ApplicationController
-  before_action :set_toilet, only: %i[show edit update destroy favorite]
+  before_action :set_toilet, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
@@ -43,16 +43,6 @@ class ToiletsController < ApplicationController
     @toilet.destroy
     redirect_to root_path, status: :see_other
   end
-
-  # def favorite
-  #   Favorite.create(user_id: current_user.id, toilet_id: @toilet.id)
-  #   redirect_to toilet_path(@toilet)
-  # end
-
-  # def favorite_destroy
-  #   Favorite.destroy(user_id: current_user.id, toilet_id: @toilet.id)
-  #   redirect_to toilet_path(@toilet), status: :see_other
-  # end
 
   private
 

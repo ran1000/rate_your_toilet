@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root "pages#home"
+  get "dashboard", to: "pages#dashboard"
+  get "categories", to: "pages#categories"
+
   devise_for :users
   resources :favorites, only: %i[index]
 
@@ -11,8 +14,6 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[create]
   end
   resources :reviews, only: %i[destroy]
-
-  get "dashboard", to: "pages#dashboard"
 
   delete "toilets/:id", to: "favorites#destroy", as: :delete_favorite
   delete "toilets/:id", to: "toilets#destroy", as: :delete_toilet

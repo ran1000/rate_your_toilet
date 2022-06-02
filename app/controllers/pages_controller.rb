@@ -12,4 +12,8 @@ class PagesController < ApplicationController
     # @toilets = current_user.toilets
     # @favorites = current_user.favorites
   end
+
+  def categories
+   
+  end
 end

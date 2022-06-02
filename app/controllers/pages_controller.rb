@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :routeto]
 
   def home
   end
@@ -11,5 +11,9 @@ class PagesController < ApplicationController
 
     # @toilets = current_user.toilets
     # @favorites = current_user.favorites
+  end
+
+  def routeto
+
   end
 end

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[create]
   end
   get "dashboard", to: "pages#dashboard"
+  get "routeto", to: "pages#routeto"
   resources :reviews, only: %i[destroy]
 
   delete "toilets/:id", to: "favorites#destroy", as: :delete_favorite

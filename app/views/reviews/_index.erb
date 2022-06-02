@@ -6,7 +6,7 @@
   <%# somehow username ends up being null, maybe sth up with the set up? %>
   <p> <%= @user[:username] == nil ? @user[:email] : @user[:username] %> </p>
 
-  <p><%=review.user_id %> </p>
+  <p>User Id<%=review.user_id %> </p>
   <%# <% raise  %>
   <% review.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>

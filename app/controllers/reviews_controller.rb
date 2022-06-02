@@ -32,7 +32,6 @@ class ReviewsController < ApplicationController
 
   def edit
     authorize @review
-    authorize @toilet
   end
 
   def update

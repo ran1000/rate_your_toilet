@@ -6,10 +6,6 @@ class FavoritePolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    true
-  end
-
   def create?
     user
   end

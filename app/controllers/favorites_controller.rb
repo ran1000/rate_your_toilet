@@ -1,6 +1,14 @@
 class FavoritesController < ApplicationController
   before_action :select_toilet, only: %i[create]
 
+  def index
+    if current_user
+      @favorites = policy_scope(current_user.favorites.all)
+    else
+      @favorites = []
+    end
+  end
+
   def create
     @favorite = current_user.favorites.new(favorite_params)
     @favorite.user = current_user
@@ -12,15 +20,6 @@ class FavoritesController < ApplicationController
       flash[:notice] = @favorite.errors.full_messages.to_sentence
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def index
-    if current_user
-      @favorites = policy_scope(current_user.favorites.all)
-    else
-      @favorites = []
-    end
-    authorize @favorites
   end
 
   def destroy

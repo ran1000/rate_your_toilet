@@ -6,20 +6,16 @@ class ReviewPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    true
-  end
-
   def show?
     true
   end
 
   def new?
-    true
+    create?
   end
 
   def create?
-    true
+    user
   end
 
   def edit?

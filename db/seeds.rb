@@ -7,7 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 toiletphotos = ["Basic Toilet", "Comfy Toilet", "Regular Toilet"]
-
+Toilet.destroy_all
+Review.destroy_all
 
 2.times do
   @user = User.new(
@@ -20,9 +21,13 @@ toiletphotos = ["Basic Toilet", "Comfy Toilet", "Regular Toilet"]
     @toilet = Toilet.new(
       name: Faker::Restaurant.name,
       address: Faker::Address.full_address,
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude,
       user_id: @user[:id]
     )
     @toilet.save!
+
+
 
     @review = Review.new(
       comment: Faker::Quotes::Shakespeare.as_you_like_it_quote,

@@ -4,12 +4,24 @@ class ToiletsController < ApplicationController
 
   def index
     @toilets = policy_scope(Toilet.all)
+    @markers = @toilets.geocoded.map do |toilet|
+      {
+        lat: toilet.latitude,
+        lng: toilet.longitude
+      }
+    end
   end
 
   def show
     @review = Review.new
     authorize @toilet
     authorize @review
+    @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
+      {
+        lat: toilet.latitude,
+        lng: toilet.longitude
+      }
+    end
   end
 
   def new
@@ -53,4 +65,5 @@ class ToiletsController < ApplicationController
   def toilet_params
     params.require(:toilet).permit(:name, :address)
   end
+
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :favorites, only: %i[index]
-  #get "toilet/:toilet_id/path", to "toilet#show"
+
   resources :toilets, only: %i[new create edit update show index] do
     collection do
       get :golden
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[create]
   end
   get "dashboard", to: "pages#dashboard"
+  get "categories", to: "pages#categories"
   get "routeto", to: "pages#routeto"
   resources :reviews, only: %i[destroy]
 

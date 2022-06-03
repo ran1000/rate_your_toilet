@@ -1,0 +1,21 @@
+.categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.category-icon {
+  background-color: white;
+  width: 140px;
+  height: 140px;
+  margin: 8px auto;
+  border-radius: 3px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 2px white;
+  background-color: $light-gray;
+  // background-color: #C51380
+
+}

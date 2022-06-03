@@ -8,30 +8,36 @@
 </div>
 <hr>
 
-<div id="favorites">
-  <h6 class="text-left p-3">Favorites :</h6>
-  <div class="toilet-grid">
-    <% current_user.favorites.each do |favorite| %>
-      <%= render "toilets/toiletcard", toilet: favorite.toilet %>
-    <% end %>
-  </div>
-</div>
-<hr>
-<div id="toilets">
-  <h6 class="text-left p-3">Your Uploads :</h6>
-  <div class="toilet-grid">
-    <% @toilets.each do |toilet| %>
-      <%= render "toilets/toiletcard", toilet: toilet %>
-    <% end %>
-  </div>
-</div>
-<hr>
-<div id="reviews">
-  <h6 class="text-left p-3">Your Reviews :</h6>
-  <% @reviews.each do |review| %>
-    <div class="bg-secondary rounded p-2 m-3 text-light">
-      <em><%= review.comment %></em>
-      <p><%= review.user.username %></p>
+<div class="container">
+  <div id="favorites">
+    <h6 class="text-left p-3">Favorites :</h6>
+    <div class="toilet-grid">
+      <% current_user.favorites.each do |favorite| %>
+        <%= render "toilets/toiletcard", toilet: favorite.toilet %>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+</div>
+<hr>
+<div class="container">
+  <div id="toilets">
+    <h6 class="text-left p-3">Your Uploads :</h6>
+    <div class="toilet-grid">
+      <% @toilets.each do |toilet| %>
+        <%= render "toilets/toiletcard", toilet: toilet %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container">
+  <div id="reviews">
+    <h6 class="text-left p-3">Your Reviews :</h6>
+    <% @reviews.each do |review| %>
+      <div class="bg-secondary rounded p-2 m-3 text-light">
+        <em><%= review.comment %></em>
+        <p><%= review.user.username %></p>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,60 @@
+.start-btn {
+  a {
+    text-decoration: none;
+    justify-items: center;
+    display: grid;
+    // padding: 24px;
+    font-size: 32px;
+    font-family: "Thiket regular";
+    margin-top: 50px;
+    color: $purple;
+    text-shadow: 1px 1px 2px white;
+  }
+}
+
+.btn-black {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: solid 2px black;
+  background: black;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+}
+
+.btn-black:hover {
+  background: black;
+  color: white;
+  opacity: 1;
+}
+
+.btn-gray {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: solid 2px #8b8b8b;
+  background: #8b8b8b;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+}
+
+.btn-gray:hover {
+  color: white;
+  opacity: 1;
+}
+
+.btn-white {
+  color: rgb(0, 0, 0);
+  padding: 8px 24px;
+  border: solid 2px black;
+  border-radius: 20px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.btn-white:hover {
+  background: #ffffff;
+  color: rgb(38, 38, 38);
+  opacity: 1;
+}

@@ -51,16 +51,21 @@ export default class extends Controller {
       showUserHeading: false,
     })
     this.map.addControl(geolocate)
-  }
-  // jumpToUser() {
-  //   navigator.geolocation.getCurrentPosition((position) => {
-  //     console.log(position.longitude, position.latitude)
-  //     this.map.jumpTo({
-  //       center: [position.coords.longitude, position.coords.latitude],
-  //       zoom: 12,
-  //       pitch: 45,
+    this.map.on('load', function() {
+      geolocate.trigger();
+    });
 
-  //     })
-  //   })
-  // }
+  }
+  jumpToUser() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position.longitude, position.latitude)
+      this.map.jumpTo({
+        center: [position.coords.longitude, position.coords.latitude],
+        zoom: 12,
+        pitch: 45,
+
+
+      })
+    })
+  }
 }

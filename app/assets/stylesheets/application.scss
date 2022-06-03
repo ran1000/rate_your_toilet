@@ -2,6 +2,7 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "config/headers";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
@@ -9,6 +10,8 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/card";
+@import "components/button";
 @import "pages/index";
 
 

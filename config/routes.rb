@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  # get 'favorites/new' --> can be deleted? floreba
-  # get 'favorites/create' --> can be deleted? floreba
-  # get 'favorites/destroy' --> can be deleted? floreba
-  # get 'favorites/index'
-  devise_for :users
   root "pages#home"
+  get "dashboard", to: "pages#dashboard"
+  get "categories", to: "pages#categories"
+
+  devise_for :users
   resources :favorites, only: %i[index]
   #get "toilet/:toilet_id/path", to "toilet#show"
   resources :toilets, only: %i[new create edit update show index] do
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[create]
   end
   get "dashboard", to: "pages#dashboard"
+  get "routeto", to: "pages#routeto"
   resources :reviews, only: %i[destroy]
 
   delete "toilets/:id", to: "favorites#destroy", as: :delete_favorite

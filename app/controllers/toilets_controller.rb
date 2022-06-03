@@ -6,13 +6,35 @@ class ToiletsController < ApplicationController
     # @reviews = Review.where(urinal: true)
     # @toilets = Toilet.where(id: toilet_id)
     @toilets = policy_scope(Toilet.all)
+<<<<<<< HEAD
     # @toilets = policy_scope(Toilet.reviews.where(urinal: true))
+=======
+    @markers = @toilets.geocoded.map do |toilet|
+      {
+        lat: toilet.latitude,
+        lng: toilet.longitude
+      }
+    end
+>>>>>>> master
   end
 
   def show
     @review = Review.new
     authorize @toilet
     authorize @review
+
+    @pictures = []
+    @toilet.reviews.each do |review|
+      review.photos.each do |photo|
+        @pictures.push(photo)
+      end
+    end
+    @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
+      {
+        lat: toilet.latitude,
+        lng: toilet.longitude
+      }
+    end
   end
 
   def new
@@ -56,4 +78,5 @@ class ToiletsController < ApplicationController
   def toilet_params
     params.require(:toilet).permit(:name, :address)
   end
+
 end

@@ -1,4 +1,13 @@
-<h1>INDEX TOILETS</h1>
-<% @toilets.each do |toilet| %>
-  <li> <%= link_to toilet.name, toilet_path(toilet) %> </li>
-<% end %>
+<div style="width: 100vw; height: 60vh;"
+  data-controller="map"
+  data-map-markers-value="<%=@markers.to_json%>"
+  data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>"></div>
+<br>
+<h1>Spotaloo Toilets</h1>
+<div class="container">
+  <div class="toilet-grid">
+    <% @toilets.each do |toilet| %>
+      <%= render "toiletcard", toilet: toilet %>
+    <% end %>
+  </div>
+</div>

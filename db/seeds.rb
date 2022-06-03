@@ -6,7 +6,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-toiletphotos = ["Basic Toilet", "Comfy Toilet", "Regular Toilet"]
+puts 'Sweeping seeds'
+
+Toilet.destroy_all
+User.destroy_all
+Review.destroy_all
+Favorite.destroy_all
+
+puts 'DB emptied'
+
+puts 'Creating users...'
 
 2.times do
   @user = User.new(
@@ -15,13 +24,18 @@ toiletphotos = ["Basic Toilet", "Comfy Toilet", "Regular Toilet"]
     password: "123456"
   )
   @user.save!
+
+  puts "Created user #{User.last.id}"
+
   3.times do
     @toilet = Toilet.new(
       name: Faker::Restaurant.name,
-      address: "Rudi-Dutschke-Strasse 26, 10969 Berlin",
+      address: Toilet::RESTAURANTS_ADDRESSES.sample,
       user_id: @user[:id]
     )
     @toilet.save!
+
+    puts "Created toilet #{Toilet.last.id}"
 
     @review = Review.new(
       comment: Faker::Quotes::Shakespeare.as_you_like_it_quote,
@@ -44,12 +58,13 @@ toiletphotos = ["Basic Toilet", "Comfy Toilet", "Regular Toilet"]
       user_id: @user[:id],
       toilet_id: @toilet[:id]
     )
-    @review.photos.attach(
-      io: File.open(Rails.root.join("app/assets/images/toilets/#{toiletphotos.sample}.jpeg")),
-      filename: 'toilet.jpeg'
-    )
-
+    @review.photos.attach(io: File.open(Rails.root.join("app/assets/images/toilets/#{Toilet::TOILETPHOTOS.sample}.jpeg")),
+    filename: 'toilet.jpeg')
     @review.save!
+
+    puts "Created review #{Review.last.id}"
+
+    puts 'Creating favorites...'
 
     @favorite = Favorite.new(
       user_id: @user[:id],
@@ -58,3 +73,8 @@ toiletphotos = ["Basic Toilet", "Comfy Toilet", "Regular Toilet"]
     @favorite.save!
   end
 end
+
+puts "created #{Toilet.count} toilets"
+puts "created #{Review.count} reviews"
+puts "created #{User.count} users"
+puts "favorites generated"

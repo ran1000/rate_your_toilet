@@ -6,6 +6,12 @@
 
 <h1>🚽 <%= @toilet.name %></h1>
 <h2>🏡 <%= @toilet.address %></h1>
+<div class="map-container" style="width: 100 vw; height: 25vh;"
+  data-controller="map"
+  data-map-markers-value="<%=@markers.to_json%>"
+  data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+</div>
+
 
 <%= render "allphotos", locals: { pictures: @pictures } %>
 
@@ -27,11 +33,6 @@
   <% end %>
 </div>
 <!-- This is the index map v -->
-
-<div style="width: 100 vw; height: 60vh;"
-  data-controller="map"
-  data-map-markers-value="<%=@markers.to_json%>"
-  data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>"></div>
 <h3>Reviews:</h3>
 <%= render "/reviews/index", reviews: @toilet.reviews %>
 

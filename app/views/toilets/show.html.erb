@@ -1,28 +1,19 @@
 <% favorite = current_user.favorites.find_by(toilet: @toilet) %>
 <h1>🚽 <%= @toilet.name %></h1>
 <h2>🏡 <%= @toilet.address %></h1>
-<div class ="d-inline-block">
+<div class ="testc d-inline-block">
   <% if favorite.nil? %>
-    <p>
+
+      <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn btn-primary btn-sm" %>
       <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
-      
-      <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn btn-primary m-3" %>
-    </p>
+
   <% else %>
-    <p>
+
+      <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete }, class: "btn btn-primary btn-sm"  %>
       You and <%= pluralize(@toilet.favorites.count - 1, 'person') %> saved this toilet
-      <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete }, class: "btn btn-primary m-3"  %>
-    </p>
+
   <% end %>
 </div>
-
-
-
-<% if favorite.nil? %>
-  <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn btn-primary m-3" %>
-<% else %>
-  <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete }, class: "btn btn-primary m-3"  %>
-<% end %>
 
 <%= render "allphotos", locals: { pictures: @pictures } %>
 

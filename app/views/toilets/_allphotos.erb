@@ -3,11 +3,11 @@
   <% locals[:pictures].each_with_index do |picture, index| %>
     <% if index == 0 %>
         <div class="carousel-item active">
-          <%= cl_image_tag picture.key, class: "d-block w-100", crop: :fill, height: 300 %>
+          <%= cl_image_tag picture.key, class: "d-block w-100", height: 300 %>
         </div>
     <% else %>
         <div class="carousel-item">
-          <%= cl_image_tag picture.key, class: "d-block w-100", crop: :fill, height: 300 %>
+          <%= cl_image_tag picture.key, class: "d-block w-100", height: 300 %>
         </div>
     <% end %>
   <% end %>

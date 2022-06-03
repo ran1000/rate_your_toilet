@@ -1,4 +1,8 @@
-<% favorite = current_user.favorites.find_by(toilet: @toilet) %>
+<% if current_user != nil %>
+  <%  favorite = current_user.favorites.find_by(toilet: @toilet) %>
+<% else %>
+  <% favorite = nil %>
+<% end %>
 
 <h2>🏡 <%= @toilet.address %></h1>
 <h1>🚽 <%= @toilet.name %></h1>

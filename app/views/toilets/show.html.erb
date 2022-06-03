@@ -1,7 +1,7 @@
 <% favorite = current_user.favorites.find_by(toilet: @toilet) %>
 
-<h1>🚽 <%= @toilet.name %></h1>
 <h2>🏡 <%= @toilet.address %></h1>
+<h1>🚽 <%= @toilet.name %></h1>
 
 <%= render "allphotos", locals: { pictures: @pictures } %>
 
@@ -13,7 +13,6 @@
   <div>
       <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn btn-primary btn-sm" %>
   </div>
-
   <% else %>
   <div>
       You and <%= pluralize(@toilet.favorites.count - 1, 'person') %> saved this toilet
@@ -23,7 +22,12 @@
   </div>
   <% end %>
 </div>
+<!-- This is the index map v -->
 
+<div style="width: 100 vw; height: 60vh;"
+  data-controller="map"
+  data-map-markers-value="<%=@markers.to_json%>"
+  data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>"></div>
 <h3>Reviews:</h3>
 <%= render "/reviews/index", reviews: @toilet.reviews %>
 
@@ -31,8 +35,8 @@
 <em><%= render "/reviews/form", toilet: @toilet, review: @review %></em>
 
 <% if policy(@toilet).destroy? %>
-  <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
+  <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black" %>
 <% end %>
 <% if policy(@toilet).update? %>
-  <%= link_to "Update Toilet", edit_toilet_path(@toilet), class: "btn btn-primary m-3" %>
+  <%= link_to "Update Toilet", edit_toilet_path(@toilet), class: "btn-gray" %>
 <% end %>

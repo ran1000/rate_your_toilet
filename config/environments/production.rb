@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "https://rateyourtoilet.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "http://www.spotaloo.lol" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

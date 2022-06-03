@@ -16,12 +16,12 @@ class ToiletsController < ApplicationController
     @review = Review.new
     authorize @toilet
     authorize @review
-    @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
-      {
-        lat: toilet.latitude,
-        lng: toilet.longitude
-      }
-    end
+    @markers =
+      [{
+        lat: @toilet.latitude,
+        lng: @toilet.longitude
+      }]
+
   end
 
   def new

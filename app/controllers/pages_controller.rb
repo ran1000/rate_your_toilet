@@ -14,10 +14,8 @@ class PagesController < ApplicationController
   end
 
   def categories
-
   end
 
   def routeto
-
   end
 end

@@ -14,7 +14,6 @@ class Toilet < ApplicationRecord
   def favorite?(user)
     favorites.find { |favorite| favorite.user_id == user.id }
   end
-
   RESTAURANTS_ADDRESSES = [
     "Rudi-Dutschke-Straße 17, 10969 Berlin",
     "Rudi-Dutschke-Strasse 26, 10969 Berlin",

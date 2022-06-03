@@ -8,9 +8,20 @@ body {
   background-color: rgba($ice, 0.75);
 }
 
+.cls-2 {
+  // fill: $light-gray;
+  fill-opacity: 0;
+  animation: fill-in 5s 1s forwards;
+}
+// .cls-1 {
+//   fill: $light-gray;
+//   fill-opacity: 0;
+//   animation: fill-in 1s 1s forwards;
+// }
+
 svg path {
-  stroke-dashoffset: 410;
-  stroke-dasharray: 410;
+  stroke-dashoffset: 710;
+  stroke-dasharray: 710;
   // stroke-width: 10;
   // stroke: #000000;
   // fill:  transparent;

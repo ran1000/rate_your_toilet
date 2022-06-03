@@ -18,5 +18,4 @@ class PagesController < ApplicationController
 
   def routeto
   end
-
 end

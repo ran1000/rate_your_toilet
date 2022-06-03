@@ -13,7 +13,10 @@ class PagesController < ApplicationController
     # @favorites = current_user.favorites
   end
 
-  def routeto
-
+  def categories
   end
+
+  def routeto
+  end
+
 end

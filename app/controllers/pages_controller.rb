@@ -35,15 +35,4 @@ class PagesController < ApplicationController
     #   }
     # end
   end
-
-  # private
-
-  # def set_toilet
-  #   @toilet = Toilet.find(params[:id])
-  # end
-
-  # def toilet_params
-  #   params.require(:toilet).permit(:name, :address)
-  # end
-
 end

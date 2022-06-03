@@ -6,16 +6,13 @@ class ToiletsController < ApplicationController
     # @reviews = Review.where(urinal: true)
     # @toilets = Toilet.where(id: toilet_id)
     @toilets = policy_scope(Toilet.all)
-<<<<<<< HEAD
     # @toilets = policy_scope(Toilet.reviews.where(urinal: true))
-=======
     @markers = @toilets.geocoded.map do |toilet|
       {
         lat: toilet.latitude,
         lng: toilet.longitude
       }
     end
->>>>>>> master
   end
 
   def show

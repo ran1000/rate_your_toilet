@@ -8,7 +8,6 @@
 
 toiletphotos = ["Basic Toilet", "Comfy Toilet", "Regular Toilet"]
 
-
 2.times do
   @user = User.new(
     username: Faker::Name.first_name,
@@ -19,7 +18,7 @@ toiletphotos = ["Basic Toilet", "Comfy Toilet", "Regular Toilet"]
   3.times do
     @toilet = Toilet.new(
       name: Faker::Restaurant.name,
-      address: Faker::Address.full_address,
+      address: "Rudi-Dutschke-Strasse 26, 10969 Berlin",
       user_id: @user[:id]
     )
     @toilet.save!
@@ -45,8 +44,11 @@ toiletphotos = ["Basic Toilet", "Comfy Toilet", "Regular Toilet"]
       user_id: @user[:id],
       toilet_id: @toilet[:id]
     )
-    @review.photos.attach(io: File.open(Rails.root.join("app/assets/images/toilets/#{toiletphotos.sample}.jpeg")),
-                  filename: 'toilet.jpeg')
+    @review.photos.attach(
+      io: File.open(Rails.root.join("app/assets/images/toilets/#{toiletphotos.sample}.jpeg")),
+      filename: 'toilet.jpeg'
+    )
+
     @review.save!
 
     @favorite = Favorite.new(

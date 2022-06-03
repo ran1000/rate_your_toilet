@@ -16,6 +16,13 @@ class ToiletsController < ApplicationController
     @review = Review.new
     authorize @toilet
     authorize @review
+
+    @pictures = []
+    @toilet.reviews.each do |review|
+      review.photos.each do |photo|
+        @pictures.push(photo)
+      end
+    end
     @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
       {
         lat: toilet.latitude,

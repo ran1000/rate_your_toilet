@@ -15,7 +15,7 @@ class Toilet < ApplicationRecord
   end
   RESTAURANTS_ADDRESSES = [
     "Lindenstraße 9-14, 10969 Berlin",
-    "Leipziger Pl. 12, 10117 Berlin",
+    "Pariser Platz, 10117 Berlin",
     "Askanischer Pl. 2, 10963 Berlin",
     "Charlottenstraße 16, 10117 Berlin",
     "Axel-Springer-Straße 65, 10969 Berlin",

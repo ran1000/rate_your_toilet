@@ -1,22 +1,17 @@
-<% if current_user != nil %>
-  <%  favorite = current_user.favorites.find_by(toilet: @toilet) %>
-<% else %>
-  <% favorite = nil %>
-<% end %>
-
 <h1>🚽 <%= @toilet.name %></h1>
 <h2 class="medium">🏡 <%= @toilet.address %></h1>
-<div class="map-container" style="width: 100 vw; height: 25vh;"
+
+
+
+<!-- This is the index map v -->
+<div style="width: 100vw; height: 60vh;"
   data-controller="map"
   data-map-markers-value="<%=@markers.to_json%>"
-  data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
-</div>
-
-
+  data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>"></div>
 <%= render "allphotos", locals: { pictures: @pictures } %>
 
 <div class ="favoritebar">
-  <% if favorite.nil? %>
+  <% if @favorite.nil? %>
   <div class="small">
       <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
   </div>
@@ -36,12 +31,27 @@
 <h3>Reviews:</h3>
 <%= render "/reviews/index", reviews: @toilet.reviews %>
 
-<h3>Review this toilet!</h3>
+<p style="font-weight: bold">
+  <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
+  <% if current_user %>
+    <% favorite = current_user.favorites.find_by(toilet: @toilet) %>
+    <% if favorite.nil? %>
+      <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post %>
+    <% else %>
+      <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete } %>
+    <% end %>
+  <% end %>
+</p>
+<!-- render allphotos commented out as long carousel is not up & running-->
+
+<%# <%= render "allphotos"%>
+<h2>Reviews:</h2>
+<em><%= render "/reviews/index", reviews: @toilet.reviews %></em>
 <em><%= render "/reviews/form", toilet: @toilet, review: @review %></em>
 
 <% if policy(@toilet).destroy? %>
-  <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black" %>
+  <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
 <% end %>
 <% if policy(@toilet).update? %>
-  <%= link_to "Update Toilet", edit_toilet_path(@toilet), class: "btn-gray" %>
+  <%= link_to "Update Toilet", edit_toilet_path(@toilet), class: "btn btn-danger m-3" %>
 <% end %>

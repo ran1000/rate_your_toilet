@@ -12,9 +12,11 @@
   <%# <% end %>
 
   <% if policy(review).destroy? %>
-    <%= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
+    <%= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black small" %>
   <% end %>
   <% if policy(review).edit? %>
-    <%= link_to "Edit Review", edit_toilet_review_path(review.toilet, review), class: "btn btn-danger m-3" %>
+    <%= link_to "Edit Review", edit_toilet_review_path(review.toilet, review), class: "btn-black small" %>
   <% end %>
 <% end %>
+<br>
+<br>

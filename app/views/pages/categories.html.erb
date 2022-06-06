@@ -1,1 +1,28 @@
- <%= puts "hello" %>
+<p class="categories-header">WHAT DO YOU NEED?</p>
+<div class="container categories">
+  <div class="category-icon">
+    <%= link_to toilets_path do %>
+      <%= image_tag ("noun-urinal.png"), height: 100, crop: :fill %>
+    <% end %>
+  </div>
+  <div class="category-icon">
+    <%= link_to toilets_path do %>
+      <%= image_tag ("noun-toilet.png"), height: 100, crop: :fill %>        <% end %>
+  </div>
+  <div class="category-icon">
+    <%= link_to toilets_path do %>
+      <%= image_tag ("noun-baby.png"), height: 100, crop: :fill %>        <% end %>
+  </div>
+  <div class="category-icon">
+    <%= link_to toilets_path do %>
+      <%= image_tag ("noun-period-circle.png"), height: 100, crop: :fill %>        <% end %>
+  </div>
+  <div class="category-icon">
+    <%= link_to toilets_path do %>
+      <%= image_tag ("noun-bathroom.png"), height: 100, crop: :fill %>        <% end %>
+  </div>
+  <div class="category-icon">
+    <%= link_to toilets_path do %>
+      <%= image_tag ("accessible-icon.png"), height: 100, crop: :fill %>        <% end %>
+  </div>
+</div>

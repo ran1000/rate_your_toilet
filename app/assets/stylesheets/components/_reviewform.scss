@@ -1,0 +1,200 @@
+// a:link,
+// a:visited,
+// a:hover,
+// a:active {
+//   color: rgb(0, 0, 16);
+//   text-decoration: none;
+// }
+
+// a:hover,
+// a:active {
+//   border-bottom: 0.1em solid rgba(0, 0, 16, 0.8);
+//   color: rgba(0, 0, 16, 0.8);
+//   text-decoration: none;
+// }
+
+.boolean-container {
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.rating-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px 5px;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+  background-color: rgb(255, 255, 255);
+  padding: 0.5rem;
+  width: 21rem;
+}
+
+.rating-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  width: 100%;
+}
+
+.rating-text p {
+  color: rgba(0, 0, 16, 0.8);
+  font-size: 0.9rem;
+  padding: 0.10rem;
+  flex-wrap: wrap;
+}
+
+.rating {
+  background-color: rgba(0, 0, 16, 0.8);
+  padding: 0.4rem 0.4rem 0.1rem 0.4rem;
+  border-radius: 2.2rem;
+}
+
+svg {
+  fill: rgb(242, 242, 242);
+  height: 3.6rem;
+  width: 3.6rem;
+  margin: 0.2rem;
+}
+
+.rating-form-2 svg {
+  height: 3rem;
+  width: 3rem;
+  margin: 0.5rem;
+}
+
+#radios label {
+  position: relative;
+}
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+input[type="radio"] + svg {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+input + svg {
+  cursor: pointer;
+}
+
+input[class="super-happy"]:hover + svg,
+input[class="super-happy"]:checked + svg,
+input[class="super-happy"]:focus + svg {
+  fill: green;
+}
+
+
+input[class="super-sad"]:hover + svg,
+input[class="super-sad"]:checked + svg,
+input[class="super-sad"]:focus + svg {
+  fill: orange;
+}
+
+
+// @media screen and (max-width: 650px) and (max-height: 700px) {
+//   body,
+//   html {
+//     font-size: 0.7rem;
+//   }
+//   header h1 {
+//     font-size: 4em;
+//   }
+//   footer p {
+//     font-size: 2em;
+//   }
+// }
+
+// @media screen and (max-height: 700px) {
+//   body,
+//   html {
+//     font-size: 0.7rem;
+//   }
+//   header h1 {
+//     font-size: 4em;
+//   }
+//   footer p {
+//     font-size: 2em;
+//   }
+// }
+
+// @media screen and (max-width: 650px) {
+//   body,
+//   html {
+//     font-size: 0.7rem;
+//   }
+//   header h1 {
+//     font-size: 4em;
+//   }
+//   footer p {
+//     font-size: 2em;
+//   }
+// }
+
+// @media screen and (max-width: 450px) and (max-height: 550px) {
+//   body,
+//   html {
+//     font-size: 0.6rem;
+//   }
+//   header h1 {
+//     font-size: 4.6em;
+//   }
+//   footer p {
+//     font-size: 3em;
+//   }
+// }
+
+// @media screen and (max-height: 550px) {
+//   body,
+//   html {
+//     font-size: 0.6rem;
+//   }
+//   header h1 {
+//     font-size: 4.6em;
+//   }
+//   footer p {
+//     font-size: 3em;
+//   }
+// }
+
+// @media screen and (max-width: 450px) {
+//   body,
+//   html {
+//     font-size: 0.6rem;
+//   }
+//   header h1 {
+//     font-size: 4.6em;
+//   }
+//   footer p {
+//     font-size: 3em;
+//   }
+// }
+
+// @media screen and (max-width: 400px) and (max-height: 500px) {
+//   body,
+//   html {
+//     height: 500px;
+//     width: 400px;
+//   }
+// }
+
+// @media screen and (max-height: 500px) {
+//   body,
+//   html {
+//     height: 500px;
+//   }
+// }
+
+// @media screen and (max-width: 400px) {
+//   body,
+//   html {
+//     width: 400px;
+//   }
+// }

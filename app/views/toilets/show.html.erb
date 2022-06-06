@@ -37,7 +37,10 @@
 <%= render "/reviews/index", reviews: @toilet.reviews %>
 
 <h3>Review this toilet!</h3>
-<em><%= render "/reviews/form", toilet: @toilet, review: @review %></em>
+<%= render "/reviews/styledform" %>
+
+
+<%= render "/reviews/form", toilet: @toilet, review: @review %>
 
 <% if policy(@toilet).destroy? %>
   <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black" %>

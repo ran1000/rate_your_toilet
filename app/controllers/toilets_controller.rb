@@ -6,7 +6,7 @@ class ToiletsController < ApplicationController
 
     # @reviews = Review.where(urinal: true)
     # @toilets = Toilet.where(id: toilet_id)
-    @toilets = policy_scope(Toilet.all.near([params[:lat], params[:lng]], 1, units: :km))
+    @toilets = policy_scope(Toilet.all.near([params[:lat], params[:lng]], 5, units: :km))
 
     # @toilets = policy_scope(Toilet.reviews.where(urinal: true))
     @markers = @toilets.geocoded.map do |toilet|

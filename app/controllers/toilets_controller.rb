@@ -1,5 +1,5 @@
 class ToiletsController < ApplicationController
-  before_action :set_toilet, only: %i[show edit update destroy]
+  before_action :set_toilet, only: %i[show edit update destroy directions]
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
@@ -66,6 +66,16 @@ class ToiletsController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def directions
+    authorize @toilet
+    @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
+      {
+        lat: toilet.latitude,
+        lng: toilet.longitude
+      }
+    end
+  end
+
   private
 
   def set_toilet
@@ -75,5 +85,4 @@ class ToiletsController < ApplicationController
   def toilet_params
     params.require(:toilet).permit(:name, :address)
   end
-
 end

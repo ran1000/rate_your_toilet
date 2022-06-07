@@ -8,6 +8,7 @@
   data-controller="map"
   data-map-markers-value="<%=@markers.to_json%>"
   data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>"></div>
+
 <%= render "allphotos", locals: { pictures: @pictures } %>
 
 <div class ="favoritebar">
@@ -43,3 +44,5 @@
 <% if policy(@toilet).update? %>
   <%= link_to "Update Toilet", edit_toilet_path(@toilet), class: "btn btn-danger m-3" %>
 <% end %>
+
+<%= link_to "Take me there", directions_path(id: @toilet), class: "btn btn-danger m-3" %>

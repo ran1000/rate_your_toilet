@@ -85,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_07_125306) do
     t.datetime "updated_at", null: false
     t.float "longitude"
     t.float "latitude"
-    t.integer "toilet_distance"
+    t.float "toilet_distance"
     t.index ["user_id"], name: "index_toilets_on_user_id"
   end
 

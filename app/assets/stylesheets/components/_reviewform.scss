@@ -12,6 +12,20 @@
 //   color: rgba(0, 0, 16, 0.8);
 //   text-decoration: none;
 // }
+.comment-container{
+  margin-left: 10px;
+  border-left: 1px dotted black;
+}
+
+
+.button-container{
+  justify-content: end;
+  text-align: end;
+}
+
+.container-rating{
+  padding-left: 10px;
+}
 
 .boolean-container {
   flex-wrap: wrap;

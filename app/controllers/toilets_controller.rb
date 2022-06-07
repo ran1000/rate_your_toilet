@@ -3,15 +3,33 @@ class ToiletsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-    # @reviews = Review.where(urinal: true)
-    # @toilets = Toilet.where(id: toilet_id)
     @toilets = policy_scope(Toilet.all)
-    # @toilets = policy_scope(Toilet.reviews.where(urinal: true))
-    @markers = @toilets.geocoded.map do |toilet|
-      {
-        lat: toilet.latitude,
-        lng: toilet.longitude
-      }
+
+    if params[:toilet_params] == "baby"
+      @toilets = @toilets.select { |t| t.baby_friendly? }
+    elsif params[:toilet_params] == "period"
+      @toilets = @toilets.select { |t| t.period_friendly? }
+    elsif params[:toilet_params] == "accessible"
+      @toilets = @toilets.select { |t| t.accessible? }
+    elsif params[:toilet_params] == "urinal"
+      @toilets = @toilets.select { |t| t.urinal? }
+    elsif params[:toilet_params] == "stall"
+      @toilets = @toilets.select { |t| t.stall? }
+    end
+
+    if @toilets.length > 1
+      @markers = @toilets.geocoded.map do |toilet|
+        {
+          lat: toilet.latitude,
+          lng: toilet.longitude
+        }
+      end
+    else
+      @markers =
+        [{
+          lat: @toilets[0].latitude,
+          lng: @toilets[0].longitude
+        }]
     end
   end
 
@@ -65,6 +83,10 @@ class ToiletsController < ApplicationController
     @toilet.destroy
     redirect_to root_path, status: :see_other
   end
+
+  # def baby_friendly
+  #   toilet.reviews.where(reviews(reviews: {baby: true}).count)
+  # end
 
   private
 

@@ -1,8 +1,12 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :routeto]
 
-  def home
+  def splash
   end
+
+  # def home
+
+  # end
 
   def dashboard
     @toilets = policy_scope(current_user.toilets)

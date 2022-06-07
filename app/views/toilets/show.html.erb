@@ -12,20 +12,20 @@
 
 <div class ="favoritebar">
   <% if @favorite.nil? %>
-  <div class="small">
+    <div class="small">
       <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
-  </div>
-  <div >
-      <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
-  </div>
-  <% else %>
-  <div class="small">
-      You and <%= pluralize(@toilet.favorites.count - 1, 'person') %> saved this toilet
-  </div>
-  <div>
-      <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete }, class: "btn-black small"  %>
-  </div>
-  <% end %>
+      </div>
+      <div >
+          <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
+      </div>
+    <% else %>
+      <div class="small">
+          You and <%= pluralize(@toilet.favorites.count - 1, 'person') %> saved this toilet
+      </div>
+      <div>
+          <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete }, class: "btn-black small"  %>
+      </div>
+    <% end %>
 </div>
 <!-- This is the index map v -->
 <h3>Reviews:</h3>

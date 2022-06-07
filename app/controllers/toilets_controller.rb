@@ -7,29 +7,26 @@ class ToiletsController < ApplicationController
 
     if params[:toilet_params] == "baby"
       @toilets = @toilets.select { |t| t.baby_friendly? }
+
     elsif params[:toilet_params] == "period"
       @toilets = @toilets.select { |t| t.period_friendly? }
+
     elsif params[:toilet_params] == "accessible"
       @toilets = @toilets.select { |t| t.accessible? }
+
     elsif params[:toilet_params] == "urinal"
       @toilets = @toilets.select { |t| t.urinal? }
+
     elsif params[:toilet_params] == "stall"
       @toilets = @toilets.select { |t| t.stall? }
     end
 
-    if @toilets.length > 1
-      @markers = @toilets.geocoded.map do |toilet|
-        {
-          lat: toilet.latitude,
-          lng: toilet.longitude
-        }
-      end
-    else
-      @markers =
-        [{
-          lat: @toilets[0].latitude,
-          lng: @toilets[0].longitude
-        }]
+    @toilets = @toilets.select { |t| t.geocoded? }
+    @markers = @toilets.map do |toilet|
+      {
+        lat: toilet.latitude,
+        lng: toilet.longitude
+      }
     end
   end
 

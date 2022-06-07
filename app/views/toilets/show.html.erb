@@ -1,6 +1,15 @@
 <h1>🚽 <%= @toilet.name %></h1>
-<h2 class="medium">🏡 <%= @toilet.address %></h1>
-
+<p>🏡 <%= @toilet.address %>
+<div style=
+    "justify-content: flex-end;
+    display: flex;
+    align-items: end;
+    align-content: end;
+    flex-basis: content;">
+  <p style="display: contents;">
+    <%= "★" * @toilet.reviews.average(:rating).to_i + "☆" * ((@toilet.reviews.average(:rating).to_i - 5).abs) %> ø </p>
+  <p class="small" style="display: contents;"> voted by <%= pluralize(@toilet.reviews.count, 'person') %> </p>
+</div>
 
 
 <!-- This is the index map v -->
@@ -13,19 +22,19 @@
 
 <div class ="favoritebar">
   <% if @favorite.nil? %>
-  <div class="small">
-      <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
-  </div>
-  <div >
-      <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
-  </div>
+    <div class="small">
+        <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
+    </div>
+    <div>
+        <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
+    </div>
   <% else %>
-  <div class="small">
-      You and <%= pluralize(@toilet.favorites.count - 1, 'person') %> saved this toilet
-  </div>
-  <div>
-      <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete }, class: "btn-black small"  %>
-  </div>
+    <div class="small">
+        You and <%= pluralize(@toilet.favorites.count - 1, 'person') %> saved this toilet
+    </div>
+    <div>
+        <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete }, class: "btn-black small"  %>
+    </div>
   <% end %>
 </div>
 <!-- This is the index map v -->

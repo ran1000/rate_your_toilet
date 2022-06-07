@@ -17,11 +17,6 @@ export default class extends Controller {
       pitch: 45
     });
 
-    // console.log(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}`)
-    // fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}&steps=true`)
-    //     .then(response => response.json())
-    //     .then((data) => {this.#addRoute(data.routes[0].legs[0].steps)})
-
     this.#locateUser()
     this.#addMarkersToMap()
     this.#fitMapToMarkers()

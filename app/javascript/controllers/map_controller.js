@@ -5,7 +5,7 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array
-  };
+  }
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
@@ -17,11 +17,14 @@ export default class extends Controller {
       pitch: 45
     });
 
+    // console.log(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}`)
+    // fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}&steps=true`)
+    //     .then(response => response.json())
+    //     .then((data) => {this.#addRoute(data.routes[0].legs[0].steps)})
 
     this.#locateUser()
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-
 
   }
 
@@ -65,29 +68,25 @@ export default class extends Controller {
       new mapboxgl.Marker()
         .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
-        // this.map.on('click', 'layername', function(e) { //<<this method is for adding click listeners to the markers
-        //   console.log(e)// Here you can access e.features[0] which is the feature cliked                 🍌🍌🍌
-        //   // With that you can do whatever you want with your feature
-      });
       this.markerlng = marker.lng
       this.markerlat = marker.lat
 
 
+    })
   }
-
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
     // this.markersValue.forEach(marker => bounds.extend([ this.userlng,this.userlat ]))
 
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 150 });
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 150 })
   }
 
+  // vvvv CHAOS STARTS HERE !vvvv
 
 
   // User Location By IP adress v -S
-
   #locateUser() {
 
     const geolocate = new mapboxgl.GeolocateControl({
@@ -98,7 +97,10 @@ export default class extends Controller {
       trackUserLocation: true,
       // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: false,
-      options: {}
+      options: {
+
+      }
+
     })
     this.map.addControl(geolocate)
     this.map.on('load', () => {
@@ -116,6 +118,11 @@ export default class extends Controller {
             .then((data) => { this.#addRoute(data.routes[0].legs[0].steps) })
         }
       });
+
     });
+
   }
+
+
 }
+

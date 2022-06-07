@@ -8,18 +8,17 @@ class Toilet < ApplicationRecord
   validates :address, presence: true
 
   geocoded_by :address
-  after_validation :geocode, if:
-  :will_save_change_to_address?
+  after_validation :geocode, if: :will_save_change_to_address?
 
   def favorite?(user)
     favorites.find { |favorite| favorite.user_id == user.id }
   end
   RESTAURANTS_ADDRESSES = [
-    "Rudi-Dutschke-Straße 17, 10969 Berlin",
-    "Rudi-Dutschke-Strasse 26, 10969 Berlin",
-    "Friedrichstraße 207 208, 10969 Berlin",
+    "Lindenstraße 9-14, 10969 Berlin",
+    "Pariser Platz, 10117 Berlin",
+    "Askanischer Pl. 2, 10963 Berlin",
     "Charlottenstraße 16, 10117 Berlin",
-    "Rudi-Dutschke-Straße 25, 10969 Berlin",
+    "Axel-Springer-Straße 65, 10969 Berlin",
     "Kochstraße 16, 10969 Berlin", "Markgrafenstraße 56, 10117 Berlin"
   ].freeze
 

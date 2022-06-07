@@ -10,7 +10,10 @@ class ToiletsController < ApplicationController
     @markers = @toilets.geocoded.map do |toilet|
       {
         lat: toilet.latitude,
-        lng: toilet.longitude
+        lng: toilet.longitude,
+        toilet_id: toilet.id,
+        # info_window: render_to_string(partial: "info_window", locals: {toilet: toilet}),
+        image_url: helpers.asset_url("logo.png")
       }
     end
   end

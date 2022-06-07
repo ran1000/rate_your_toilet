@@ -1,6 +1,5 @@
-<%= link_to toilet_path(toilet), class: "tcard-link" do %>
-<div class="tcard">
-  <div class="tcard-image">
+<div id="<%= toilet.id %>" class="card-product hide-card">
+  <div class="card-product">
     <% if toilet.reviews.last == nil %>
       <p>no image</p>
     <% elsif toilet.reviews.last.photos.first == nil %>
@@ -9,21 +8,20 @@
       <%= cl_image_tag toilet.reviews.last.photos.first.key %>
     <% end %>
   </div>
-  <div class="tcard-info">
-    <div class="tcard-text">
+  <div class="card-product-infos">
+    <div class="card-product-text">
       <h4><%= toilet.name %></h4>
       <p><%= toilet.address %></p>
     </div>
     <% if toilet.reviews.last != nil %>
-      <div class="tcard-rating">
+      <div class="card-product-rating">
         <p><small>Rating: </small>
         <%= toilet.reviews.last.rating %>
         <i class="fa-solid fa-star"></i></p>
       </div>
     <% end %>
-    <div class="tcard-favorite">
+    <div class="card-product-favorite">
       <p><%= toilet.favorites.count %> <i class="fa-solid fa-heart"></i></p>
     </div>
   </div>
 </div>
-<% end %>

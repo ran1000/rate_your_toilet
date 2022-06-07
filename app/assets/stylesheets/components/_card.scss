@@ -1,7 +1,11 @@
 .toilet-grid {
+  // position: absolute !important;
+  // top: 10%;
+  transform: translate(100% 0);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  margin: auto;
 }
 
 // Smallest device
@@ -39,20 +43,16 @@
   }
 }
 
-.card-link {
+.tcard-link {
   text-decoration: none;
   color: black;
   margin: 0px;
 }
 
-.toilet-grid>.card-link:first-child>.tcard {
-  left: 16px;
-}
-
 .tcard {
   height: 350px;
   width: 350px;
-  margin: 0px;
+  margin: auto;
   background-color: whitesmoke;
   display: flex;
   border-radius: 10px;
@@ -112,4 +112,64 @@
   position: absolute;
   right: 10px;
   top: 10px;
+}
+
+
+// slim card index with map
+
+.card-product {
+  position: fixed;
+  left: 2.5%;
+  bottom: 15%;
+  width: 95vw;
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.card-product-infos {
+  position: absolute;
+  left: 120px;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product-text {
+  font-family: $headers-font;
+}
+
+.card-product h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 10px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+.hide-card {
+  opacity: 0;
+}
+
+.show-card {
+  opacity: 1;
 }

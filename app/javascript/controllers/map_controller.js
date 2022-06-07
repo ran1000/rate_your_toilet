@@ -62,16 +62,29 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
-
     this.markersValue.forEach((marker) => {
+      // const popup = new mapboxgl.Popup().setHTML(marker.info_window)
 
-      new mapboxgl.Marker()
+      const customMarker = document.createElement("div")
+      customMarker.className = "marker"
+      customMarker.style.backgroundImage = `url('${marker.image_url}')`
+      customMarker.style.backgroundSize = "contain"
+      customMarker.style.width = "25px"
+      customMarker.style.height = "25px"
+      customMarker.dataset.toilet_id = marker.toilet_id
+      customMarker.addEventListener("click", (event) => {
+        // console.log(event.target.dataset)
+        const toilet_card = document.getElementById(event.target.dataset.toilet_id)
+        toilet_card.classList.add("show-card");
+        toilet_card.classList.remove("hide-card");
+      })
+
+      new mapboxgl.Marker(customMarker)
         .setLngLat([marker.lng, marker.lat])
-        .addTo(this.map)
+        // .setPopup(popup)
+        .addTo(this.map);
       this.markerlng = marker.lng
       this.markerlat = marker.lat
-
-
     })
   }
 

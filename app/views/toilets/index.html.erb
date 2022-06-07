@@ -1,9 +1,11 @@
-<div style="width: 100vw; height: 60vh;"
-  data-controller="map"
+<div class="index-section">
+  <div class="map-container" data-controller="map"
   data-map-markers-value="<%=@markers.to_json%>"
-  data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>"></div>
-<br>
-<div class="container">
+  data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+  </div>
+    <% @toilets.each do |toilet| %>
+      <%= render "toiletcardslim", toilet: toilet %>
+    <% end %>
   <div class="toilet-grid">
     <% @toilets.each do |toilet| %>
       <%= render "toiletcard", toilet: toilet %>

@@ -30,40 +30,40 @@ export default class extends Controller {
     if (waypoints !== undefined) {
 
       // this.map.on('load', () => {
-        this.map.addSource('path', {
-          'type': 'geojson',
-          'data': {
-            'type': 'Feature',
-            'properties': {},
-            'geometry': {
-              'type': 'LineString',
-              "coordinates": waypoints.map(waypoint => waypoint.intersections[0].location),
-            }
+      this.map.addSource('path', {
+        'type': 'geojson',
+        'data': {
+          'type': 'Feature',
+          'properties': {},
+          'geometry': {
+            'type': 'LineString',
+            "coordinates": waypoints.map(waypoint => waypoint.intersections[0].location),
           }
-        });
-        this.map.addLayer({
-          'id': 'path',
-          'type': 'line',
-          'source': 'path',
-          'layout': {
-            'line-join': 'round',
-            'line-cap': 'round'
-          },
-          'paint': {
-            'line-color': '#3ba5e3',
-            'line-width': 8
-          }
-        });
+        }
+      });
+      this.map.addLayer({
+        'id': 'path',
+        'type': 'line',
+        'source': 'path',
+        'layout': {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        'paint': {
+          'line-color': '#3ba5e3',
+          'line-width': 8
+        }
+      });
       // })
     }
   }
 
-  #addMarkersToMap(){
+  #addMarkersToMap() {
 
     this.markersValue.forEach((marker) => {
 
       new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
+        .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
         // this.map.on('click', 'layername', function(e) { //<<this method is for adding click listeners to the markers
         //   console.log(e)// Here you can access e.features[0] which is the feature cliked                 🍌🍌🍌
@@ -78,7 +78,7 @@ export default class extends Controller {
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
     // this.markersValue.forEach(marker => bounds.extend([ this.userlng,this.userlat ]))
 
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 150 });
@@ -108,10 +108,13 @@ export default class extends Controller {
         this.userlat = e.coords.latitude;
         this.map.setZoom(14);
         this.map.easeTo(true);
-        this.#fitMapToMarkers()
-       if (!isNaN(parseInt(this.element.baseURI.split("/")[this.element.baseURI.split("/").length -1]))){ fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}&steps=true`)
+        this.#fitMapToMarkers();
+
+        if (!isNaN(parseInt(this.element.baseURI.split("/")[this.element.baseURI.split("/").length - 1])) || (this.element.baseURI.includes("directions"))) {
+          fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}&steps=true`)
             .then(response => response.json())
-            .then((data) => {this.#addRoute(data.routes[0].legs[0].steps)})}
+            .then((data) => { this.#addRoute(data.routes[0].legs[0].steps) })
+        }
       });
     });
   }

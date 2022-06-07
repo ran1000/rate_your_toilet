@@ -3,21 +3,21 @@
     <%= f.input :rating %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.input :comment %>
-    <%= f.input :baby %>
-    <%= f.input :accessible %>
-    <%= f.input :sink %>
-    <%= f.input :soap %>
-    <%= f.input :paper %>
-    <%= f.input :tampon %>
-    <%= f.input :bin %>
-    <%= f.input :hanger %>
-    <%= f.input :spacious %>
-    <%= f.input :clean %>
-    <%= f.input :gendered %>
-    <%= f.input :privacy %>
-    <%= f.input :urinal %>
-    <%= f.input :towel %>
-    <%= f.input :gratis %>
+    <%= f.input :baby, as: :radio_buttons %>
+    <%= f.input :accessible, as: :radio_buttons %>
+    <%= f.input :sink, as: :radio_buttons %>
+    <%= f.input :soap, as: :radio_buttons %>
+    <%= f.input :paper, as: :radio_buttons %>
+    <%= f.input :tampon, as: :radio_buttons %>
+    <%= f.input :bin, as: :radio_buttons %>
+    <%= f.input :hanger, as: :radio_buttons %>
+    <%= f.input :spacious, as: :radio_buttons %>
+    <%= f.input :clean, as: :radio_buttons %>
+    <%= f.input :gendered, as: :radio_buttons %>
+    <%= f.input :privacy, as: :radio_buttons %>
+    <%= f.input :urinal, as: :radio_buttons %>
+    <%= f.input :towel, as: :radio_buttons %>
+    <%= f.input :gratis, as: :radio_buttons %>
     <%= f.submit class: "btn-black" %>
   <% end %>
 </div>

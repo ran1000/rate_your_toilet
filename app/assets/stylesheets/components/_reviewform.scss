@@ -1,0 +1,234 @@
+// a:link,
+// a:visited,
+// a:hover,
+// a:active {
+//   color: rgb(0, 0, 16);
+//   text-decoration: none;
+// }
+
+// a:hover,
+// a:active {
+//   border-bottom: 0.1em solid rgba(0, 0, 16, 0.8);
+//   color: rgba(0, 0, 16, 0.8);
+//   text-decoration: none;
+// }
+.comment-container{
+  margin-left: 10px;
+  border-left: 1px dotted black;
+}
+
+
+.button-container{
+  justify-content: end;
+  text-align: end;
+}
+
+.container-rating{
+  padding-left: 10px;
+}
+
+.boolean-container {
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
+  display: flex;
+  gap: 10px;
+  gap: 10px 20px; /* row-gap column gap */
+  row-gap: 10px;
+  column-gap: 20px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.rating-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1px 1px;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+  background-color: rgb(255, 255, 255);
+  padding: 2px;
+  width: 25rem;
+  height: 60px;
+}
+
+.rating-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 5px;
+  width: 100%;
+}
+
+.rating-text p {
+  font-size: 0.9rem;
+  padding: 0.1rem;
+  flex-wrap: wrap;
+  width: 250px;
+  align-self: flex-start;
+  margin-bottom: 0px;
+}
+
+.rating {
+  background-color: black;
+  padding: 2px;
+  border-radius: 10px;
+  width: 30%;
+  flex-wrap: nowrap;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+svg {
+  fill: rgb(242, 242, 242);
+  height: 25px;
+  width: 45px;
+  margin: 1px;
+  align-items: flex-end;
+}
+
+.rating-form-2 svg {
+  height: 25px;
+  width: 45px;
+  margin: 1px;
+  align-items: flex-end;
+}
+
+#radios label {
+  position: relative;
+}
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+input[type="radio"] + svg {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+input + svg {
+  cursor: pointer;
+}
+
+input[class="super-happy"]:hover + svg,
+input[class="super-happy"]:checked + svg,
+input[class="super-happy"]:focus + svg {
+  fill: green;
+}
+
+
+input[class="super-sad"]:hover + svg,
+input[class="super-sad"]:checked + svg,
+input[class="super-sad"]:focus + svg {
+  fill: orange;
+}
+
+
+// @media screen and (max-width: 650px) and (max-height: 700px) {
+//   body,
+//   html {
+//     font-size: 0.7rem;
+//   }
+//   header h1 {
+//     font-size: 4em;
+//   }
+//   footer p {
+//     font-size: 2em;
+//   }
+// }
+
+// @media screen and (max-height: 700px) {
+//   body,
+//   html {
+//     font-size: 0.7rem;
+//   }
+//   header h1 {
+//     font-size: 4em;
+//   }
+//   footer p {
+//     font-size: 2em;
+//   }
+// }
+
+// @media screen and (max-width: 650px) {
+//   body,
+//   html {
+//     font-size: 0.7rem;
+//   }
+//   header h1 {
+//     font-size: 4em;
+//   }
+//   footer p {
+//     font-size: 2em;
+//   }
+// }
+
+// @media screen and (max-width: 450px) and (max-height: 550px) {
+//   body,
+//   html {
+//     font-size: 0.6rem;
+//   }
+//   header h1 {
+//     font-size: 4.6em;
+//   }
+//   footer p {
+//     font-size: 3em;
+//   }
+// }
+
+// @media screen and (max-height: 550px) {
+//   body,
+//   html {
+//     font-size: 0.6rem;
+//   }
+//   header h1 {
+//     font-size: 4.6em;
+//   }
+//   footer p {
+//     font-size: 3em;
+//   }
+// }
+
+// @media screen and (max-width: 450px) {
+//   body,
+//   html {
+//     font-size: 0.6rem;
+//   }
+//   header h1 {
+//     font-size: 4.6em;
+//   }
+//   footer p {
+//     font-size: 3em;
+//   }
+// }
+
+// @media screen and (max-width: 400px) and (max-height: 500px) {
+//   body,
+//   html {
+//     height: 500px;
+//     width: 400px;
+//   }
+// }
+
+// @media screen and (max-height: 500px) {
+//   body,
+//   html {
+//     height: 500px;
+//   }
+// }
+
+// @media screen and (max-width: 400px) {
+//   body,
+//   html {
+//     width: 400px;
+//   }
+// }

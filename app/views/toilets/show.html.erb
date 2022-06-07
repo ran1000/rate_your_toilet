@@ -1,3 +1,5 @@
+<%# DOOOOOONT DELETE the line below! %>
+<% favorite = current_user.favorites.find_by(toilet: @toilet) %>
 <h1>🚽 <%= @toilet.name %></h1>
 <p>🏡 <%= @toilet.address %>
 <div style=
@@ -21,12 +23,13 @@
 <%= render "allphotos", locals: { pictures: @pictures } %>
 
 <div class ="favoritebar">
-  <% if @favorite.nil? %>
+  <% if favorite.nil? %>
     <div class="small">
         <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
     </div>
     <div>
         <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
+
     </div>
   <% else %>
     <div class="small">
@@ -37,6 +40,7 @@
     </div>
   <% end %>
 </div>
+
 <!-- This is the index map v -->
 <h3>Reviews:</h3>
 <%= render "/reviews/index", reviews: @toilet.reviews %>

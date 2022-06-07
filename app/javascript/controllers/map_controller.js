@@ -70,8 +70,6 @@ export default class extends Controller {
         .addTo(this.map)
       this.markerlng = marker.lng
       this.markerlat = marker.lat
-
-
     })
   }
 

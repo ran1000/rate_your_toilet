@@ -1,22 +1,15 @@
 <% reviews.each do |review| %>
-   <% @user = User.find(review[:user_id]) %>
-  <div><em>"<%=review.comment %>" -</em> <%= @user[:username] == nil ? @user[:email] : @user[:username] %></div>
-  <br>
-  <%# somehow username ends up being null, maybe sth up with the set up? %>
-
-
-  <%# Commented out the photo for reviews!!! --> floreba %>
-  <%# <% raise  %>
-  <%# <% review.photos.each do |photo|
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <%# <% end %>
-
-  <% if policy(review).destroy? %>
-    <%= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black small" %>
-  <% end %>
-  <% if policy(review).edit? %>
-    <%= link_to "Edit Review", edit_toilet_review_path(review.toilet, review), class: "btn-black small" %>
-  <% end %>
+    <% @user = User.find(review[:user_id]) %>
+    <div class="comment-container container">
+        <div><em>"<%=review.comment %>"</em> <div class="small"> <%= @user[:username] == nil ? @user[:email] : @user[:username] %> </div> </div>
+      <div class="button-container">
+        <% if policy(review).destroy? %>
+          <%= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black small " %>
+        <% end %>
+        <% if policy(review).edit? %>
+          <%= link_to "Edit Review", edit_toilet_review_path(review.toilet, review), class: "btn-black small" %>
+        <% end %>
+      </div>
+    </div>
+    <br>
 <% end %>
-<br>
-<br>

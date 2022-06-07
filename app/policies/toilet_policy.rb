@@ -10,6 +10,10 @@ class ToiletPolicy < ApplicationPolicy
     true
   end
 
+  def directions?
+    true
+  end
+
   def create?
     user
   end

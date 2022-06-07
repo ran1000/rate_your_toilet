@@ -1,24 +1,40 @@
 class ToiletsController < ApplicationController
-  before_action :set_toilet, only: %i[show edit update destroy]
+  before_action :set_toilet, only: %i[show edit update destroy directions]
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
     @toilets = policy_scope(Toilet.all)
 
-    if params[:toilet_params] == "baby"
-      @toilets = @toilets.select { |t| t.baby_friendly? }
+    # if params[:toilet_params] == "baby"
+    #   @toilets = @toilets.select { |t| t.baby_friendly? }
 
-    elsif params[:toilet_params] == "period"
-      @toilets = @toilets.select { |t| t.period_friendly? }
+    # elsif params[:toilet_params] == "period"
+    #   @toilets = @toilets.select { |t| t.period_friendly? }
 
-    elsif params[:toilet_params] == "accessible"
-      @toilets = @toilets.select { |t| t.accessible? }
+    # elsif params[:toilet_params] == "accessible"
+    #   @toilets = @toilets.select { |t| t.accessible? }
 
-    elsif params[:toilet_params] == "urinal"
-      @toilets = @toilets.select { |t| t.urinal? }
+    # elsif params[:toilet_params] == "urinal"
+    #   @toilets = @toilets.select { |t| t.urinal? }
 
-    elsif params[:toilet_params] == "stall"
-      @toilets = @toilets.select { |t| t.stall? }
+    # elsif params[:toilet_params] == "stall"
+    #   @toilets = @toilets.select { |t| t.stall? }
+
+    # elsif params[:toilet_params] == "easy_read"
+    #   @toilets = @toilets.select { |t| t.easy? }
+
+    # elsif params[:toilet_params] == "changing_room"
+    #   @toilets = @toilets.select { |t| t.changing_room? }
+    # end
+
+    if params[:lat] == nil || params[:lng] == nil
+      @toilets = policy_scope(Toilet)
+      raise
+    else
+      @toilets = policy_scope(Toilet).near([params[:lat], params[:lng]], 5, units: :km)
+      @toilets.map do |toilet|
+        toilet.toilet_distance = (toilet.distance_from([params[:lat], params[:lng]]).to_f)
+      end
     end
 
     @toilets = @toilets.select { |t| t.geocoded? }
@@ -28,6 +44,7 @@ class ToiletsController < ApplicationController
         lng: toilet.longitude
       }
     end
+    @toilets = @toilets.sort_by(&:toilet_distance) unless params[:lat] == nil || params[:lng] == nil
   end
 
   def show
@@ -81,9 +98,15 @@ class ToiletsController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  # def baby_friendly
-  #   toilet.reviews.where(reviews(reviews: {baby: true}).count)
-  # end
+  def directions
+    authorize @toilet
+    @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
+      {
+        lat: toilet.latitude,
+        lng: toilet.longitude
+      }
+    end
+  end
 
   private
 
@@ -94,5 +117,4 @@ class ToiletsController < ApplicationController
   def toilet_params
     params.require(:toilet).permit(:name, :address)
   end
-
 end

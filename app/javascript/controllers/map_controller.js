@@ -13,14 +13,9 @@ export default class extends Controller {
       container: this.element, // container ID
       style: "mapbox://styles/mapbox/streets-v11", // style URL
       center: [4.4050, 52.5200], // starting position [lng, lat]
-      zoom: 14, // starting zoom
+      zoom: 15, // starting zoom
       pitch: 45
     });
-
-    // console.log(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}`)
-    // fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}&steps=true`)
-    //     .then(response => response.json())
-    //     .then((data) => {this.#addRoute(data.routes[0].legs[0].steps)})
 
     this.#locateUser()
     this.#addMarkersToMap()
@@ -33,60 +28,59 @@ export default class extends Controller {
     if (waypoints !== undefined) {
 
       // this.map.on('load', () => {
-        this.map.addSource('path', {
-          'type': 'geojson',
-          'data': {
-            'type': 'Feature',
-            'properties': {},
-            'geometry': {
-              'type': 'LineString',
-              "coordinates": waypoints.map(waypoint => waypoint.intersections[0].location),
-            }
+      this.map.addSource('path', {
+        'type': 'geojson',
+        'data': {
+          'type': 'Feature',
+          'properties': {},
+          'geometry': {
+            'type': 'LineString',
+            "coordinates": waypoints.map(waypoint => waypoint.intersections[0].location),
           }
-        });
-        this.map.addLayer({
-          'id': 'path',
-          'type': 'line',
-          'source': 'path',
-          'layout': {
-            'line-join': 'round',
-            'line-cap': 'round'
-          },
-          'paint': {
-            'line-color': '#3ba5e3',
-            'line-width': 8
-          }
-        });
+        }
+      });
+      this.map.addLayer({
+        'id': 'path',
+        'type': 'line',
+        'source': 'path',
+        'layout': {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        'paint': {
+          'line-color': '#3ba5e3',
+          'line-width': 8
+        }
+      });
       // })
     }
   }
 
-  #addMarkersToMap(){
+  #addMarkersToMap() {
 
     this.markersValue.forEach((marker) => {
 
       new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
+        .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
       this.markerlng = marker.lng
       this.markerlat = marker.lat
-
-
     })
   }
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
+    bounds.extend([this.userlng, this.userlat])
     // this.markersValue.forEach(marker => bounds.extend([ this.userlng,this.userlat ]))
 
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 150 })
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 0 })
   }
 
-// vvvv CHAOS STARTS HERE !vvvv
+  // vvvv CHAOS STARTS HERE !vvvv
 
 
-// User Location By IP adress v -S
+  // User Location By IP adress v -S
   #locateUser() {
 
     const geolocate = new mapboxgl.GeolocateControl({
@@ -108,16 +102,15 @@ export default class extends Controller {
       geolocate.on('geolocate', (e) => {
         this.userlng = e.coords.longitude;
         this.userlat = e.coords.latitude;
-        this.map.setZoom(14);
+        this.map.setZoom(15);
         this.map.easeTo(true);
-        this.#fitMapToMarkers()
+        this.#fitMapToMarkers();
 
-
-
-
-       if (!isNaN(parseInt(this.element.baseURI.split("/")[this.element.baseURI.split("/").length -1]))){ fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}&steps=true`)
+        if (!isNaN(parseInt(this.element.baseURI.split("/")[this.element.baseURI.split("/").length - 1])) || (this.element.baseURI.includes("directions"))) {
+          fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}&steps=true`)
             .then(response => response.json())
-            .then((data) => {this.#addRoute(data.routes[0].legs[0].steps)})}
+            .then((data) => { this.#addRoute(data.routes[0].legs[0].steps) })
+        }
       });
 
     });
@@ -126,33 +119,3 @@ export default class extends Controller {
 
 
 }
-
-
-// "country_crossed": false,
-//         "weight_name": "pedestrian",
-//         "weight": 1416.442,
-//         "duration": 1310.985,
-//         "distance": 1894.372,
-//         "legs": [
-//         {
-//         "via_waypoints": [],
-//         "admins": [
-//         {
-//         "iso_3166_1_alpha3": "DEU",
-//         "iso_3166_1": "DE"
-//         }
-//         ],
-//         "weight": 1416.442,
-//         "duration": 1310.985,
-//         "steps": [],
-//         "distance": 1894.372,
-//         "summary": "Wilhelmstraße, Ebertstraße"
-//         }
-//         ],
-//         "geometry": "gjn_IgivpAw@Pp@b]{g@jTxDr\\W@CZkNcAiB~BU_D"
-//         }
-//         ],
-//         "waypoints": waypoints,
-//         "code": "Ok",
-//         "uuid": "45xUidILnfrtFGmypZD_JXtSntFDQTAS_UqLRcYnS8p_YTxaxabOSw=="
-//         }

@@ -77,6 +77,28 @@ class Toilet < ApplicationRecord
             privacy
   end
 
+  def easy?
+    clean = attribute_status(self, "clean")
+    spacious = attribute_status(self, "spacious")
+    paper = attribute_status(self, "paper")
+    privacy = attribute_status(self, "privacy")
+    true if clean &&
+            spacious &&
+            paper &&
+            privacy
+  end
+
+  def changing_room?
+    clean = attribute_status(self, "clean")
+    spacious = attribute_status(self, "spacious")
+    hanger = attribute_status(self, "hanger")
+    privacy = attribute_status(self, "privacy")
+    true if clean &&
+            spacious &&
+            hanger &&
+            privacy
+  end
+
   def attribute_status(toilet, attribute)
     positives = toilet.reviews.where(reviews: { attribute => true }).count
     negatives = toilet.reviews.where(reviews: { attribute => false }).count

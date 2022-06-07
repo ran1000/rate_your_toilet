@@ -92,7 +92,7 @@ SimpleForm.setup do |config|
     b.wrapper :legend_tag, tag: 'legend', class: 'col-form-label pt-0' do |ba|
       ba.use :label_text
     end
-    b.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
+    b.use :input, class: 'form-check-input ', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :full_error, wrap_with: { class: 'invalid-feedback d-block' }
     b.use :hint, wrap_with: { class: 'form-text' }
   end
@@ -178,7 +178,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  # horizontal input for radio buttons and check boxes
+  # horizontal input for radio buttons and check boxes --> The one
   config.wrappers :horizontal_collection, item_wrapper_class: 'form-check', item_label_class: 'form-check-label', class: 'row mb-3' do |b|
     b.use :html5
     b.optional :readonly
@@ -354,7 +354,7 @@ SimpleForm.setup do |config|
 
 
   # The default wrapper to be used by the FormBuilder.
-  config.default_wrapper = :vertical_form
+  config.default_wrapper = :horizontal_form
 
   # Custom wrappers for input types. This should be a hash containing an input
   # type as key and the wrapper that will be used for all inputs with specified type.
@@ -364,7 +364,7 @@ SimpleForm.setup do |config|
     date:          :vertical_multi_select,
     datetime:      :vertical_multi_select,
     file:          :vertical_file,
-    radio_buttons: :vertical_collection,
+    radio_buttons: :horizontal_collection,
     range:         :vertical_range,
     time:          :vertical_multi_select,
     select:        :vertical_select

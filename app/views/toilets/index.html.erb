@@ -1,5 +1,6 @@
 <div class="wrapper" data-controller="toilets">
-  <div class="toilets-grid d-none" data-toilets-target="toilets">
+  <div class="toilets-grid d-none animate__animated animate__slideInUp" data-toilets-target="toilets">
+  <button class="goto-map" data-toilets-target="close" data-action="click->toilets#close">X</button>
     <div class="toilet-grid">
       <% @toilets.each do |toilet| %>
         <%= render "toiletcard", toilet: toilet %>
@@ -58,7 +59,7 @@
     </div>
   </div>
 
-<div class="map-container" data-toilets-target="map">
+<div class="map-" data-toilets-target="map">
   <div class="map-container_actual" style="width: 100vw; height: 80vh;"
     data-controller="map"
     data-map-markers-value="<%=@markers.to_json%>"

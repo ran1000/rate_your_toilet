@@ -1,15 +1,20 @@
-<% reviews.each do |review| %>
-    <% @user = User.find(review[:user_id]) %>
-    <div class="comment-container container">
-        <div><em>"<%=review.comment %>"</em> <div class="small"> <%= @user[:username] == nil ? @user[:email] : @user[:username] %> </div> </div>
-      <div class="button-container">
-        <% if policy(review).destroy? %>
-          <%= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black small " %>
-        <% end %>
-        <% if policy(review).edit? %>
-          <%= link_to "Edit Review", edit_toilet_review_path(review.toilet, review), class: "btn-black small" %>
-        <% end %>
+<div class="flex">
+  <% reviews.each do |review| %>
+      <% @user = User.find(review[:user_id]) %>
+      <div class="comment-container">
+          <div>"<%=review.comment %>"<div class="small">
+          <%= @user[:username] == nil ? @user[:email] : @user[:username] %>
+          <%= "★" * review.rating.to_i + "☆" * ((review.rating.to_i - 5).abs) %></div> </div>
+
+        <%# <div class="button-container"> %>
+          <%# if policy(review).destroy? %>
+            <%#= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black small " %>
+          <%# end %>
+          <%# if policy(review).edit? %>
+            <%#= link_to "Edit Review", edit_toilet_review_path(review.toilet, review), class: "btn-black small" %>
+          <%# end %>
+        <%# </div> %>
       </div>
-    </div>
-    <br>
-<% end %>
+      <br>
+  <% end %>
+</div>

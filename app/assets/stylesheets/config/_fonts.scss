@@ -21,3 +21,8 @@ $headers-font: "Montserrat", "Helvetica", "sans-serif";
   font-family: 'Thiket';
   src: url('Thiket-Regular.otf');
 }
+
+abbr[title],
+abbr[data-bs-original-title] {
+  text-decoration: none !important;
+}

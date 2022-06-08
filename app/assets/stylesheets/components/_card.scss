@@ -134,7 +134,7 @@
 }
 
 .card-product-infos {
-  position: absolute;
+  position: relative;
   left: 120px;
 }
 
@@ -149,13 +149,15 @@
 }
 
 .card-product h4 {
-  font-size: 14px;
+  font-family: $headers-font;
+  font-size: 16px;
   font-weight: 600;
   margin: 0;
 }
 
 .card-product p {
-  font-size: 10px;
+  font-family: $headers-font;
+  font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -172,4 +174,14 @@
 
 .show-card {
   opacity: 1;
+}
+
+.card-product-favorite {
+  // position: absolute;
+  // right: -62%;
+  // top: -15%;
+}
+
+.card-product-favorite p {
+  font-size: 14px;
 }

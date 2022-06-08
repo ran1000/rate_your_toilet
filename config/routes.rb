@@ -13,8 +13,7 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create edit update show index]
     resources :favorites, only: %i[create]
   end
-  get "dashboard", to: "pages#dashboard"
-  get "categories", to: "pages#categories"
+
   get "directions", to: "toilets#directions"
   resources :reviews, only: %i[destroy]
 

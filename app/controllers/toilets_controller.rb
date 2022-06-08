@@ -29,12 +29,14 @@ class ToiletsController < ApplicationController
 
     if params[:lat] == nil || params[:lng] == nil
       @toilets
-      # raise
+    
     else
       @toilets = @toilets.near([params[:lat], params[:lng]], 5, units: :km)
       @toilets.map do |toilet|
         toilet.toilet_distance = (toilet.distance_from([params[:lat], params[:lng]]).to_f)
       end
+
+
     end
 
     @toilets = @toilets.select { |t| t.geocoded? }

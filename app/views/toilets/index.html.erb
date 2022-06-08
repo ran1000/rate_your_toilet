@@ -1,6 +1,6 @@
   <div class="container horizontal-menu">
     <div class="category-icon">
-      
+
     </div>
     <div class="category-icon"><h2>Category</h2></div>
     <div class="category-icon"><h2>Category</h2></div>
@@ -31,3 +31,7 @@
     <% end %>
   </div>
 </div>
+
+<% @toilets.each do |toilet| %>
+  <%= render "toiletcardslim", toilet: toilet %>
+<% end %>

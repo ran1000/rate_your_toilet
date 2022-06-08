@@ -13,13 +13,13 @@
   </head>
 
   <body>
+    <%= render "shared/flashes" %>
+    <%= yield %>
+    <div class="navspace"></div>
     <% unless current_page?(root_path) %>
         <nav>
           <%= render "shared/navbar" %>
         </nav>
     <% end %>
-    <%= render "shared/flashes" %>
-    <%= yield %>
-    <div class="navspace"></div> 
   </body>
 </html>

@@ -1,5 +1,7 @@
+<div class="formcontainer px-4 text-start fw-bold">
 <%= simple_form_for(toilet) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
+  <%= f.input :name, input_html: {class: "toilet-input "} %>
+  <%= f.input :address, input_html: {class: "toilet-input"} %>
   <%= f.submit "Add Toilet", class: "blue-button" %>
 <% end %>
+</div>

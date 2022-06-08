@@ -3,35 +3,35 @@ class ToiletsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-    @toilets = policy_scope(Toilet.all)
+    @toilets = policy_scope(Toilet)
 
-    # if params[:toilet_params] == "baby"
-    #   @toilets = @toilets.select { |t| t.baby_friendly? }
+    if params[:toilet_params] == "baby"
+      @toilets = @toilets.select { |t| t.baby_friendly? }
 
-    # elsif params[:toilet_params] == "period"
-    #   @toilets = @toilets.select { |t| t.period_friendly? }
+    elsif params[:toilet_params] == "period"
+      @toilets = @toilets.select { |t| t.period_friendly? }
 
-    # elsif params[:toilet_params] == "accessible"
-    #   @toilets = @toilets.select { |t| t.accessible? }
+    elsif params[:toilet_params] == "accessible"
+      @toilets = @toilets.select { |t| t.accessible? }
 
-    # elsif params[:toilet_params] == "urinal"
-    #   @toilets = @toilets.select { |t| t.urinal? }
+    elsif params[:toilet_params] == "urinal"
+      @toilets = @toilets.select { |t| t.urinal? }
 
-    # elsif params[:toilet_params] == "stall"
-    #   @toilets = @toilets.select { |t| t.stall? }
+    elsif params[:toilet_params] == "stall"
+      @toilets = @toilets.select { |t| t.stall? }
 
-    # elsif params[:toilet_params] == "easy_read"
-    #   @toilets = @toilets.select { |t| t.easy? }
+    elsif params[:toilet_params] == "easy_read"
+      @toilets = @toilets.select { |t| t.easy? }
 
-    # elsif params[:toilet_params] == "changing_room"
-    #   @toilets = @toilets.select { |t| t.changing_room? }
-    # end
+    elsif params[:toilet_params] == "changing_room"
+      @toilets = @toilets.select { |t| t.changing_room? }
+    end
 
     if params[:lat] == nil || params[:lng] == nil
-      @toilets = policy_scope(Toilet)
-      raise
+      @toilets
+      # raise
     else
-      @toilets = policy_scope(Toilet).near([params[:lat], params[:lng]], 5, units: :km)
+      @toilets = @toilets.near([params[:lat], params[:lng]], 5, units: :km)
       @toilets.map do |toilet|
         toilet.toilet_distance = (toilet.distance_from([params[:lat], params[:lng]]).to_f)
       end

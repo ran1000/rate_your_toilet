@@ -27,7 +27,7 @@ puts 'Creating users...'
 
   puts "Created user #{User.last.id}"
 
-  3.times do
+  20.times do
     @toilet = Toilet.new(
       name: Faker::Restaurant.name,
       address: Toilet::RESTAURANTS_ADDRESSES.sample,

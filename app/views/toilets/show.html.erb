@@ -1,8 +1,4 @@
-<% if current_user != nil %>
-  <%  favorite = current_user.favorites.find_by(toilet: @toilet) %>
-<% else %>
-  <% favorite = nil %>
-<% end %>
+<% current_user != nil ? favorite = current_user.favorites.find_by(toilet: @toilet) : favorite = nil %>
 
 <h1>🚽 <%= @toilet.name %></h1>
 <p>🏡 <%= @toilet.address %>
@@ -24,6 +20,7 @@
   data-map-markers-value="<%=@markers.to_json%>"
   data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>"></div>
 
+<br>
 <%= render "allphotos", locals: { pictures: @pictures } %>
 
 <div class ="favoritebar">
@@ -48,12 +45,12 @@
 <!-- This is the index map v -->
 <h3>Reviews:</h3>
 <%= render "/reviews/index", reviews: @toilet.reviews %>
-
+<br>
 <h3>Review this toilet!</h3>
 <%= render "/reviews/styledform", toilet: @toilet, review: @review %>
 
 <%# old default version below, do not use, --> still in there to check on form syntax %>
-<%# <%= render "/reviews/form", toilet: @toilet, review: @review %>
+<%#= render "/reviews/form", toilet: @toilet, review: @review %>
 
 <% if policy(@toilet).destroy? %>
   <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>

@@ -1,6 +1,5 @@
-<% review_booleans = %i[accessible sink soap paper tampon bin hanger spacious clean gendered privacy urinal towel gratis] %>
+<form class="new_review" id="new_review" novalidate="novalidate" enctype="multipart/form-data" action="/toilets/<%=@toilet.id%>/reviews" accept-charset="UTF-8" method="post">
 
-<form action="/toilets/<%=@toilet.id%>/reviews" method="post">
   <div class="container-rating">
     <div class="row mb-3 integer required review_rating"><label class="col-sm-3 col-form-label integer required" for="review_rating">Rating <abbr title="required">*</abbr></label><div class="col-sm-9"><input class="form-control numeric integer required" type="number" step="1" name="review[rating]" id="review_rating"></div></div>
     <div class="row mb-3 text optional review_comment"><label class="col-sm-3 col-form-label text optional" for="review_comment">Comment</label><div class="col-sm-9"><textarea class="form-control text optional" name="review[comment]" id="review_comment"></textarea></div></div>

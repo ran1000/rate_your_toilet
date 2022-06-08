@@ -1,4 +1,4 @@
-<div id="<%= toilet.id %>" class="card-product hide-card">
+<div id="<%= toilet.id %>" class="toilet-cards-sel card-product hide-card">
   <div class="card-product">
     <% if toilet.reviews.last == nil %>
       <p>no image</p>
@@ -16,8 +16,7 @@
     <% if toilet.reviews.last != nil %>
       <div class="card-product-rating">
         <p><small>Rating: </small>
-        <%= toilet.reviews.last.rating %>
-        <i class="fa-solid fa-star"></i></p>
+        <%= "★" * toilet.reviews.average(:rating).to_i + "☆" * ((toilet.reviews.average(:rating).to_i - 5).abs) %>
       </div>
     <% end %>
     <div class="card-product-favorite">

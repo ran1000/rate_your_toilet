@@ -8,6 +8,7 @@ export default class extends Controller {
   }
 
   connect() {
+
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element, // container ID
@@ -74,9 +75,13 @@ export default class extends Controller {
       customMarker.dataset.toilet_id = marker.toilet_id
       customMarker.addEventListener("click", (event) => {
         // console.log(event.target.dataset)
-        const toilet_card = document.getElementById(event.target.dataset.toilet_id)
-        toilet_card.classList.add("show-card");
-        toilet_card.classList.remove("hide-card");
+        const toiletCard = document.getElementById(event.target.dataset.toilet_id)
+        const toiletCards = document.querySelectorAll(".toilet-cards-sel")
+        toiletCards.forEach((card) => {
+          card.classList.add("hide-card");
+          card.classList.remove("show-card");
+        })
+        toiletCard.classList.add("show-card");
       })
 
       new mapboxgl.Marker(customMarker)

@@ -12,9 +12,22 @@
 //   color: rgba(0, 0, 16, 0.8);
 //   text-decoration: none;
 // }
+.flex {
+  display: flex;
+  overflow-y: auto;
+  padding-bottom: 20px;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+
 .comment-container{
   margin-left: 10px;
-  border-left: 1px dotted black;
+  // border-left: 1px dotted black;
+  flex-shrink: 0;
+  border-radius: 25px;
+  background-color: $light-gray;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 

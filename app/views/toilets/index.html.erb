@@ -1,3 +1,12 @@
+<div class="wrapper" data-controller="toilets">
+  <div class="toilets-grid d-none" data-toilets-target="toilets">
+    <div class="toilet-grid">
+      <% @toilets.each do |toilet| %>
+        <%= render "toiletcard", toilet: toilet %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="container horizontal-menu" data-controller="user-coordinates">
     <div class="category-icon">
       <%= link_to toilets_path(toilet_params: "show_all"), data:{user_coordinates_target: "link"}  do %>
@@ -49,22 +58,22 @@
     </div>
   </div>
 
-  <div style="width: 100vw; height: 60vh;"
+<div class="map-container" data-toilets-target="map">
+  <div class="map-container_actual" style="width: 100vw; height: 80vh;"
     data-controller="map"
     data-map-markers-value="<%=@markers.to_json%>"
     data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+    <div class="card-scroller">
+      <div class="category-icon">
+        <%= image_tag ("flush.png") %>
+        <%= pluralize(@toilets.count, 'toilet') %> around you!
+      </div>
+      <button data-toilets-target="btn" data-action="click->toilets#open">CLICK</button>
+    </div>
   </div>
-<div class="container">
 </div>
 
 
 
-<h1>Toilets counter: <%= @toilets.count %></h1>
 
-<div class="container">
-  <div class="toilet-grid">
-    <% @toilets.each do |toilet| %>
-      <%= render "toiletcard", toilet: toilet %>
-    <% end %>
-  </div>
 </div>

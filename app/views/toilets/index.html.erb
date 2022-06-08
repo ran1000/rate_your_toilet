@@ -12,22 +12,20 @@
     <div class="category-icon"><h2>Categry</h2></div>
   </div>
 <div class="index-section">
-  <div style="width: 100vw; height: 60vh;"
+  <div style="width: 100vw; height: 71vh;"
     data-controller="map"
     data-map-markers-value="<%=@markers.to_json%>"
     data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
-  </div>
-  <div class="container">
   </div>
 
   <% @toilets.each do |toilet| %>
     <%= render "toiletcardslim", toilet: toilet %>
   <% end %>
 </div>
-
-<h1>Toilets counter: <%= @toilets.count %></h1>
-
 <div class="container">
+  <p class="btn text-right mb-0 text-muted">Toilets counter: <%= @toilets.count %></p>
+  <%# <h4 class="text-center text-muted">V</h4> %>
+  <h3 class="text-center text-muted"><i class="fa-solid fa-angle-down"></i></h3>
   <div class="toilet-grid">
     <% @toilets.each do |toilet| %>
       <%= render "toiletcard", toilet: toilet %>

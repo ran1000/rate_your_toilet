@@ -4,5 +4,6 @@ import "./controllers"
 import "bootstrap"
 
 // Rating System
-import { initStarRating } from '../plugins/init_star_rating';
-initStarRating();
+// import { initStarRating } from './plugins/init_star_rating';
+
+// initStarRating();

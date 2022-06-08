@@ -1,7 +1,28 @@
 <form class="new_review" id="new_review" novalidate="novalidate" enctype="multipart/form-data" action="/toilets/<%=@toilet.id%>/reviews" accept-charset="UTF-8" method="post">
 
   <div class="container-rating">
-    <div class="row mb-3 integer required review_rating"><label class="col-sm-3 col-form-label integer required" for="review_rating">Rating <abbr title="required">*</abbr></label><div class="col-sm-9"><input class="form-control numeric integer required" type="number" step="1" name="review[rating]" id="review_rating"></div></div>
+    <div class="row mb-3 integer required review_rating">
+    <link href="css/star-rating.css" rel="stylesheet">
+
+      <label class="col-sm-3 col-form-label integer required" for="review_rating">Rating<abbr title="required">*</abbr></label>
+      <select class="star-rating" name="review[rating]" id="review-rating">
+        <option value="">Rate your toilet...</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <%# Rating with star-rating.js %>
+      <!--<script src="js/star-rating.min.js"></script>
+          <script>
+            var stars = new StarRating('.star-rating');
+          </script>-->
+
+      <%# <div class="col-sm-9">
+        <input class="form-control numeric integer required" type="number" step="1" name="review[rating]" id="review_rating">
+      </div> %>
+    </div>
     <div class="row mb-3 text optional review_comment"><label class="col-sm-3 col-form-label text optional" for="review_comment">Comment</label><div class="col-sm-9"><textarea class="form-control text optional" name="review[comment]" id="review_comment"></textarea></div></div>
     <div class="mb-3 file optional review_photos"><label class="form-label file optional" for="review_photos">Photos</label><input name="review[photos][]" type="hidden" value="" autocomplete="off"><input class="form-control file optional" multiple="multiple" type="file" name="review[photos][]" id="review_photos"></div>
   </div>

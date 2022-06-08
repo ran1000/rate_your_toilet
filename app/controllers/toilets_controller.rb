@@ -10,10 +10,12 @@ class ToiletsController < ApplicationController
     if params[:lat] == nil || params[:lng] == nil
       @toilets = policy_scope(Toilet)
     else
-      @toilets = policy_scope(Toilet).near([params[:lat], params[:lng]], 5, units: :km)
+      @toilets = policy_scope(Toilet.near([params[:lat], params[:lng]], 4, units: :km))
       @toilets.map do |toilet|
         toilet.toilet_distance = (toilet.distance_from([params[:lat], params[:lng]]).to_f)
       end
+    
+
     end
 
     @markers = @toilets.geocoded.map do |toilet|

@@ -1,11 +1,30 @@
-<div class="index-section">
-  <div class="map-container" data-controller="map"
-  data-map-markers-value="<%=@markers.to_json%>"
-  data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+  <div class="container horizontal-menu">
+    <div class="category-icon">
+
+    </div>
+    <div class="category-icon"><h2>Category</h2></div>
+    <div class="category-icon"><h2>Category</h2></div>
+    <div class="category-icon"><h2>Category</h2></div>
+    <div class="category-icon"><h2>Category</h2></div>
+    <div class="category-icon"><h2>Category</h2></div>
+    <div class="category-icon"><h2>Category</h2></div>
+    <div class="category-icon"><h2>Category</h2></div>
+    <div class="category-icon"><h2>Categry</h2></div>
   </div>
-    <% @toilets.each do |toilet| %>
-      <%= render "toiletcardslim", toilet: toilet %>
-    <% end %>
+
+  <div style="width: 100vw; height: 60vh;"
+    data-controller="map"
+    data-map-markers-value="<%=@markers.to_json%>"
+    data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+  </div>
+<div class="container">
+</div>
+
+
+
+<h1>Toilets counter: <%= @toilets.count %></h1>
+
+<div class="container">
   <div class="toilet-grid">
     <% @toilets.each do |toilet| %>
       <%= render "toiletcard", toilet: toilet %>

@@ -14,14 +14,9 @@ export default class extends Controller {
       container: this.element, // container ID
       style: "mapbox://styles/mapbox/streets-v11", // style URL
       center: [4.4050, 52.5200], // starting position [lng, lat]
-      zoom: 14, // starting zoom
+      zoom: 15, // starting zoom
       pitch: 45
     });
-
-    // console.log(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}`)
-    // fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${this.userlng},${this.userlat};${this.markerlng},${this.markerlat}?access_token=${this.apiKeyValue}&steps=true`)
-    //     .then(response => response.json())
-    //     .then((data) => {this.#addRoute(data.routes[0].legs[0].steps)})
 
     this.#locateUser()
     this.#addMarkersToMap()
@@ -96,9 +91,10 @@ export default class extends Controller {
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
+    bounds.extend([this.userlng, this.userlat])
     // this.markersValue.forEach(marker => bounds.extend([ this.userlng,this.userlat ]))
 
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 150 })
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 0 })
   }
 
   // vvvv CHAOS STARTS HERE !vvvv
@@ -126,7 +122,7 @@ export default class extends Controller {
       geolocate.on('geolocate', (e) => {
         this.userlng = e.coords.longitude;
         this.userlat = e.coords.latitude;
-        this.map.setZoom(14);
+        this.map.setZoom(15);
         this.map.easeTo(true);
         this.#fitMapToMarkers();
 

@@ -3,11 +3,42 @@ class ToiletsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-    # @reviews = Review.where(urinal: true)
-    # @toilets = Toilet.where(id: toilet_id)
-    @toilets = policy_scope(Toilet.all)
-    # @toilets = policy_scope(Toilet.reviews.where(urinal: true))
-    @markers = @toilets.geocoded.map do |toilet|
+    @toilets = policy_scope(Toilet)
+
+    if params[:toilet_params] == "baby"
+      @toilets = @toilets.select { |t| t.baby_friendly? }
+
+    elsif params[:toilet_params] == "period"
+      @toilets = @toilets.select { |t| t.period_friendly? }
+
+    elsif params[:toilet_params] == "accessible"
+      @toilets = @toilets.select { |t| t.accessible? }
+
+    elsif params[:toilet_params] == "urinal"
+      @toilets = @toilets.select { |t| t.urinal? }
+
+    elsif params[:toilet_params] == "stall"
+      @toilets = @toilets.select { |t| t.stall? }
+
+    elsif params[:toilet_params] == "easy_read"
+      @toilets = @toilets.select { |t| t.easy? }
+
+    elsif params[:toilet_params] == "changing_room"
+      @toilets = @toilets.select { |t| t.changing_room? }
+    end
+
+    if params[:lat] == nil || params[:lng] == nil
+      @toilets
+      # raise
+    else
+      @toilets = @toilets.near([params[:lat], params[:lng]], 5, units: :km)
+      @toilets.map do |toilet|
+        toilet.toilet_distance = (toilet.distance_from([params[:lat], params[:lng]]).to_f)
+      end
+    end
+
+    @toilets = @toilets.select { |t| t.geocoded? }
+    @markers = @toilets.map do |toilet|
       {
         lat: toilet.latitude,
         lng: toilet.longitude,
@@ -16,6 +47,7 @@ class ToiletsController < ApplicationController
         image_url: helpers.asset_url("logo.png")
       }
     end
+    @toilets = @toilets.sort_by(&:toilet_distance) unless params[:lat] == nil || params[:lng] == nil
   end
 
   def show

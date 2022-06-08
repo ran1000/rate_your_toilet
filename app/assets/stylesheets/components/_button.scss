@@ -61,16 +61,16 @@
 }
 
 
-.blue-button{
+.blue-button {
   height: 44px;
   width: 100%;
-  min-width:80px;
+  min-width: 80px;
   font-family: $headers-font;
-  background-color: blue;
-  border-radius: 22px ;
+  font-weight: 500;
+  background-color: $blue;
+  border-radius: 22px;
   border-style: none;
   color: white;
-  font-weight: bold;
   padding: 0px 15px;
   // margin-left: 10px;
   // margin-right: 10px;

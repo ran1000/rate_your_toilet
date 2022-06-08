@@ -1,36 +1,29 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to categories_path, class: "navbar-brand" do %>
-      <%= image_tag "logo.png" %>
+<div class="navbarloo">
+
+  <% if params["action"] == "show" %>
+    <%= link_to directions_path(id: @toilet), class: "lonk" do %>
+      <button class=blue-button>Lets go!</button>
     <% end %>
+  <% end %>
+  <% if params["action"] == "directions" %>
+     <%= link_to review_path(id: @toilet), class: "lonk" do %>
+      <button class=blue-button>Rate it!</button>
+    <% end %>
+  <% end %>
+  <% if params["action"] == "review" %>
+    <%= link_to directions_path(id: @toilet), class: "lonk" do %>
+      <button class=blue-button>Submit</button>
+    <% end %>
+  <% end %>
+  <% if params["action"] == "index" %>
+    <%= link_to directions_path(id: @toilet), class: "lonk" do %>
+      <button class=blue-button>Create toilet</button>
+    <% end %>
+  <% end %>
+  <% if params["action"] == "s" %>
+    <%= link_to directions_path(id: @toilet), class: "lonk" do %>
+      <button class=blue-button>Submit</button>
+    <% end %>
+  <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://img1.homary.com/filters:format(webp)/mall/file/2021/08/16/bbcd3409cffa41419e14aaa5eb6e7a2c.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Saved Toilets", favorites_path, class: "dropdown-item" %>
-              <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
 </div>

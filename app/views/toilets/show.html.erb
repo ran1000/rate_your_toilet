@@ -1,6 +1,17 @@
-<h1>🚽 <%= @toilet.name %></h1>
-<h2 class="medium">🏡 <%= @toilet.address %></h1>
+<% current_user != nil ? favorite = current_user.favorites.find_by(toilet: @toilet) : favorite = nil %>
 
+<h1>🚽 <%= @toilet.name %></h1>
+<p>🏡 <%= @toilet.address %>
+<div style=
+    "justify-content: flex-end;
+    display: flex;
+    align-items: end;
+    align-content: end;
+    flex-basis: content;">
+  <p style="display: contents;">
+    <%= "★" * @toilet.reviews.average(:rating).to_i + "☆" * ((@toilet.reviews.average(:rating).to_i - 5).abs) %> ø </p>
+  <p class="small" style="display: contents;"> voted by <%= pluralize(@toilet.reviews.count, 'person') %> </p>
+</div>
 
 
 <!-- This is the index map v -->
@@ -9,34 +20,37 @@
   data-map-markers-value="<%=@markers.to_json%>"
   data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>"></div>
 
+<br>
 <%= render "allphotos", locals: { pictures: @pictures } %>
 
 <div class ="favoritebar">
-  <% if @favorite.nil? %>
-  <div class="small">
-      <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
-  </div>
-  <div >
-      <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
-  </div>
+  <% if favorite.nil? %>
+    <div class="small">
+        <%= pluralize(@toilet.favorites.count, 'person') %> saved this toilet
+    </div>
+    <div>
+        <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
+
+    </div>
   <% else %>
-  <div class="small">
-      You and <%= pluralize(@toilet.favorites.count - 1, 'person') %> saved this toilet
-  </div>
-  <div>
-      <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete }, class: "btn-black small"  %>
-  </div>
+    <div class="small">
+        You and <%= pluralize(@toilet.favorites.count - 1, 'person') %> saved this toilet
+    </div>
+    <div>
+        <%= link_to "♥", delete_favorite_path(favorite), data: { turbo_method: :delete }, class: "btn-black small"  %>
+    </div>
   <% end %>
 </div>
+
 <!-- This is the index map v -->
 <h3>Reviews:</h3>
 <%= render "/reviews/index", reviews: @toilet.reviews %>
-
+<br>
 <h3>Review this toilet!</h3>
 <%= render "/reviews/styledform", toilet: @toilet, review: @review %>
 
 <%# old default version below, do not use, --> still in there to check on form syntax %>
-<%# <%= render "/reviews/form", toilet: @toilet, review: @review %>
+<%#= render "/reviews/form", toilet: @toilet, review: @review %>
 
 <% if policy(@toilet).destroy? %>
   <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>

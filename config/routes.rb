@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "pages#home"
+  root "pages#splash"
   get "dashboard", to: "pages#dashboard"
   get "categories", to: "pages#categories"
 

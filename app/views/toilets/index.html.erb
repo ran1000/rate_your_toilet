@@ -11,16 +11,19 @@
     <div class="category-icon"><h2>Category</h2></div>
     <div class="category-icon"><h2>Categry</h2></div>
   </div>
-
+<div class="index-section">
   <div style="width: 100vw; height: 60vh;"
     data-controller="map"
     data-map-markers-value="<%=@markers.to_json%>"
     data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
   </div>
-<div class="container">
+  <div class="container">
+  </div>
+
+  <% @toilets.each do |toilet| %>
+    <%= render "toiletcardslim", toilet: toilet %>
+  <% end %>
 </div>
-
-
 
 <h1>Toilets counter: <%= @toilets.count %></h1>
 
@@ -31,7 +34,3 @@
     <% end %>
   </div>
 </div>
-
-<% @toilets.each do |toilet| %>
-  <%= render "toiletcardslim", toilet: toilet %>
-<% end %>

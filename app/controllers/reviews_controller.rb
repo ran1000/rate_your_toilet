@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
     @review.toilet = @toilet
     authorize @review
     if @review.save
-      redirect_to toilet_path(@toilet)
+      redirect_to toilets_path
     else
       render :new, status: :unprocessable_entity
     end

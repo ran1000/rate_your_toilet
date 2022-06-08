@@ -1,4 +1,15 @@
+  <% if locals[:pictures][0] == nil %>
+    <div class="d-block w-100 no-carousel">
+      <div class="no-image-tag">
+        <img src="https://images.unsplash.com/photo-1584475784921-d9dbfd9d17ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="">
+        <%# <p>No images uploaded yet, be the first! ;)</p> %>
+      </div>
+    </div>
+  <% end %>
+
+
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
   <div class="carousel-inner">
   <% locals[:pictures].each_with_index do |picture, index| %>
     <% if index == 0 %>
@@ -11,8 +22,8 @@
         </div>
     <% end %>
   <% end %>
-
   </div>
+
   <% if locals[:pictures][1] != nil %>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -24,4 +35,4 @@
       </button>
   <% end %>
 
-  </div>
+</div>

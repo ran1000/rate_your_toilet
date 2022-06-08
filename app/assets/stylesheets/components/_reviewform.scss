@@ -16,11 +16,13 @@
   display: flex;
   overflow-y: auto;
   padding-bottom: 20px;
-  -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none; /* for Firefox */
+  -ms-overflow-style: none;
+  /* for Internet Explorer, Edge */
+  scrollbar-width: none;
+  /* for Firefox */
 }
 
-.comment-container{
+.comment-container {
   margin-left: 10px;
   // border-left: 1px dotted black;
   flex-shrink: 0;
@@ -31,12 +33,12 @@
 }
 
 
-.button-container{
+.button-container {
   justify-content: end;
   text-align: end;
 }
 
-.container-rating{
+.container-rating {
   padding-left: 10px;
 }
 
@@ -46,7 +48,8 @@
   justify-content: flex-start;
   display: flex;
   gap: 10px;
-  gap: 10px 20px; /* row-gap column gap */
+  gap: 10px 20px;
+  /* row-gap column gap */
   row-gap: 10px;
   column-gap: 20px;
   padding: 5px;
@@ -57,14 +60,21 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 1px 1px;
+  justify-content: space-between;
+  align-items: center;
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.05), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.05);
   background-color: rgb(255, 255, 255);
   padding: 2px;
-  width: 25rem;
   height: 60px;
+  width: 95vw;
+  border-radius: 30px;
+  border: 1px solid $blue;
 }
+
+// .super-happy path {
+//   background-color: $blue;
+// }
 
 .rating-container {
   display: -webkit-box;
@@ -79,10 +89,16 @@
 }
 
 .rating-text p {
-  font-size: 0.9rem;
+  border-left: 1px solid $blue;
+  border-right: 1px solid $blue;
+  color: $blue;
+  padding-left: 10px !important;
+  font-family: $headers-font;
+  font-weight: 500;
+  font-size: 1rem;
   padding: 0.1rem;
   flex-wrap: wrap;
-  width: 250px;
+  width: 50vw;
   align-self: flex-start;
   margin-bottom: 0px;
 }
@@ -99,12 +115,18 @@
   justify-content: space-between;
 }
 
-svg {
+.rating-svg {
   fill: rgb(242, 242, 242);
-  height: 25px;
-  width: 45px;
+  stroke: $blue;
+  stroke-width: 1px;
+  height: 40px;
+  width: 60px;
   margin: 1px;
   align-items: flex-end;
+}
+
+.super-happy {
+  margin: 0px
 }
 
 .rating-form-2 svg {
@@ -123,26 +145,26 @@ input[type="radio"] {
   opacity: 0;
 }
 
-input[type="radio"] + svg {
+input[type="radio"]+svg {
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 
-input + svg {
+input+svg {
   cursor: pointer;
 }
 
-input[class="super-happy"]:hover + svg,
-input[class="super-happy"]:checked + svg,
-input[class="super-happy"]:focus + svg {
-  fill: green;
+input[class="super-happy"]:hover+svg,
+input[class="super-happy"]:checked+svg,
+input[class="super-happy"]:focus+svg {
+  fill: $blue;
 }
 
 
-input[class="super-sad"]:hover + svg,
-input[class="super-sad"]:checked + svg,
-input[class="super-sad"]:focus + svg {
-  fill: orange;
+input[class="super-sad"]:hover+svg,
+input[class="super-sad"]:checked+svg,
+input[class="super-sad"]:focus+svg {
+  fill: $blue;
 }
 
 

@@ -144,6 +144,17 @@
   object-fit: cover;
 }
 
+.no-img {
+  height: 100%;
+  width: 120px;
+  background-image: url("logo.png");
+  background-size: cover;
+}
+
+// .no-img p {
+//   text-align: center;
+// }
+
 .card-product-text {
   font-family: $headers-font;
 }

@@ -31,3 +31,7 @@
     <% end %>
   </div>
 </div>
+
+<% @toilets.each do |toilet| %>
+  <%= render "toiletcardslim", toilet: toilet %>
+<% end %>

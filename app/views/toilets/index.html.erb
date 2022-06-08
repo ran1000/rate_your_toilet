@@ -1,38 +1,51 @@
   <div class="container horizontal-menu" data-controller="user-coordinates">
     <div class="category-icon">
-      <%= link_to toilets_path(toilet_params: "urinal"), data:{user_coordinates_target: "link"}  do %>
-        <%= image_tag ("urinal.png"), height: 100, crop: :fill %>
+      <%= link_to toilets_path(toilet_params: "show_all"), data:{user_coordinates_target: "link"}  do %>
+        <%= image_tag ("all_toilets.png")%>
       <% end %>
+      <p>All toilets</p>
+    </div>
+    <div class="category-icon">
+      <%= link_to toilets_path(toilet_params: "urinal"), data:{user_coordinates_target: "link"}  do %>
+        <%= image_tag ("urinal.png")%>
+      <% end %>
+      <p>Urinal</p>
     </div>
     <div class="category-icon">
       <%= link_to toilets_path(toilet_params: "stall"), data:{user_coordinates_target: "link"} do %>
-        <%= image_tag ("stall.png"), height: 100, crop: :fill %>
+        <%= image_tag ("stall.png") %>
       <% end %>
+      <p>Easy stall</p>
     </div>
     <div class="category-icon">
       <%= link_to toilets_path(toilet_params: "baby"), data:{user_coordinates_target: "link"} do %>
-        <%= image_tag ("baby.png"), height: 100, crop: :fill %>
+        <%= image_tag ("baby.png") %>
       <% end %>
+            <p>Baby friendly</p>
     </div>
     <div class="category-icon">
       <%= link_to toilets_path(toilet_params: "period"), data:{user_coordinates_target: "link"} do %>
-        <%= image_tag ("period-circle.png"), height: 100, crop: :fill %>
+        <%= image_tag ("period.png")%>
       <% end %>
+            <p>On my period!</p>
     </div>
     <div class="category-icon">
       <%= link_to toilets_path(toilet_params: "accessible"), data:{user_coordinates_target: "link"} do %>
-        <%= image_tag ("accessible-icon.png"), height: 100, crop: :fill %>
+        <%= image_tag ("accessible.png")%>
       <% end %>
+            <p>Accessible</p>
     </div>
     <div class="category-icon">
       <%= link_to toilets_path(toilet_params: "easy_read"), data:{user_coordinates_target: "link"} do %>
-        <%= image_tag ("easy_read.png"), height: 100, crop: :fill %>
+        <%= image_tag ("easy_read.png") %>
       <% end %>
+            <p>Read in peace</p>
     </div>
     <div class="category-icon">
       <%= link_to toilets_path(toilet_params: "changing_room"), data:{user_coordinates_target: "link"} do %>
-        <%= image_tag ("changing_room.png"), height: 100, crop: :fill %>
+        <%= image_tag ("changing_room.png")%>
       <% end %>
+            <p>Changing room</p>
     </div>
   </div>
 

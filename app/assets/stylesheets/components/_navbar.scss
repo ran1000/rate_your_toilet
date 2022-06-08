@@ -1,6 +1,15 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.mini-banner {
+  justify-content: center;
+  background: $spotablu;
+  padding: 8px;
+  text-align: center;
+  height: 75px;
+  width: 375px;
+
+  .banner-logo {
+    width: 150px;
+    margin-top: 18px;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {

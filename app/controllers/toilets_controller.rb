@@ -24,6 +24,9 @@ class ToiletsController < ApplicationController
     elsif params[:toilet_params] == "period"
       @toilets = @toilets.select { |t| t.period_friendly? }
 
+    elsif params[:toilet_params] == "show_all"
+      @toilets
+
     elsif params[:toilet_params] == "accessible"
       @toilets = @toilets.select { |t| t.accessible? }
 

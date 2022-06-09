@@ -16,19 +16,19 @@
   flex-grow: 0;
 }
 
-.navspace{
+.navspace {
   height: 60px;
 }
 
-.navbarloo{
+.navbarloo {
   display: flex;
   padding: 0px 20px;
   height: 60px;
   width: 100%;
   position: fixed;
   bottom: 0px;
-  // z-index: 2;
-  background-color: rgba(255,255,255,0.95);
+  z-index: 5;
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 10px 10px 8px #888888;
   justify-content: space-between;
   align-items: center;

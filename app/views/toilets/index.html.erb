@@ -1,6 +1,6 @@
 <div class="wrapper" data-controller="toilets">
   <div class="toilets-grid d-none animate__animated animate__slideInUp" data-toilets-target="toilets">
-  <button class="goto-map" data-toilets-target="close" data-action="click->toilets#close">X</button>
+  <div class="goto-map justify-content-center align-items-center my-3" data-toilets-target="close" data-action="click->toilets#close"><div class="blue-button d-flex justify-content-center align-items-center w-25"><i class="fa-solid fa-xmark"></i></div></div>
     <div class="toilet-grid">
       <% @toilets.each do |toilet| %>
         <%= render "toiletcard", toilet: toilet %>
@@ -60,16 +60,15 @@
   </div>
 
 <div class="map-container" data-toilets-target="map">
-  <div class="map-container_actual" style="width: 100vw; height: 80vh;"
+  <div class="map-container_actual" style="width: 100vw; height: 50vh;"
     data-controller="map"
     data-map-markers-value="<%=@markers.to_json%>"
     data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
     <div class="card-scroller">
-      <div class="category-icon">
-        <%= image_tag ("flush.png") %>
-        <%= pluralize(@toilets.count, 'toilet') %> around you!
+
+      <div class="card-scroller d-flex justify-content-center">
+        <button class="blue-button w-25 " data-toilets-target="btn" data-action="click->toilets#open"><i class="fa-solid fa-angle-down"></i></button>
       </div>
-      <button data-toilets-target="btn" data-action="click->toilets#open">CLICK</button>
     </div>
   </div>
 
@@ -78,9 +77,13 @@
   <% end %>
 </div>
 <div class="container" data-toilets-target="popups">
-  <p class="btn text-right mb-0 text-muted">Toilets counter: <%= @toilets.count %></p>
+  <div class="category-icon py-3 d-flex justify-content-start">
+    <%= image_tag ("flush.png") %>
+    <p class="text-right ps-2 text-muted"><%= pluralize(@toilets.count, 'toilet') %> around you!</p>
+  </div>
+  <%# <p class="btn ">Toilets counter: <%= @toilets.count %>
   <%# <h4 class="text-center text-muted">V</h4> %>
-  <h3 class="text-center text-muted"><i class="fa-solid fa-angle-down"></i></h3>
+  <%# <h3 class="text-center text-muted"><i class="fa-solid fa-angle-down"></i></h3> %>
   <div class="toilet-grid">
     <% @toilets.each do |toilet| %>
       <%= render "toiletcard", toilet: toilet %>

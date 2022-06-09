@@ -73,6 +73,16 @@ class ToiletsController < ApplicationController
         lng: toilet.longitude
       }
     end
+
+    @tag_list = []
+    @toilet.baby_friendly? ? @tag_list.push("Baby friendly") : nil
+    @toilet.period_friendly? ? @tag_list.push("Period friendly") : nil
+    @toilet.accessible? ? @tag_list.push("Accessible") : nil
+    @toilet.urinal? ? @tag_list.push("Urinal") : nil
+    @toilet.stall? ? @tag_list.push("Stall") : nil
+    @toilet.easy? ? @tag_list.push("Easy ") : nil
+    @toilet.changing_room? ? @tag_list.push("Changing Room ") : nil
+
   end
 
   def new

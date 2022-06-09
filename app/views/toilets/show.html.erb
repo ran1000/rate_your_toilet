@@ -7,7 +7,6 @@
     </div> -->
     <div>
         <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
-
     </div>
   <% else %>
     <!-- <div class="small">
@@ -32,23 +31,3 @@
 
   <p> <%= @toilet.address %>  <span><%= @toilet.toilet_distance %></span></p>
 </div>
-
-<div class="container">
-  <h4><%= @toilet.reviews.count %> Reviews:</h4>
-  <%= render "/reviews/index", reviews: @toilet.reviews %>
-</div>
-
-<!--<h4>Review this toilet!</h4>
-<%= render "/reviews/styledform", toilet: @toilet, review: @review %>-->
-
-<%# old default version below, do not use, --> still in there to check on form syntax %>
-<%#= render "/reviews/form", toilet: @toilet, review: @review %>
-
-<!--
-<% if policy(@toilet).destroy? %>
-  <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
-<% end %>
-<% if policy(@toilet).update? %>
-  <%= link_to "Update Toilet", edit_toilet_path(@toilet), class: "btn btn-danger m-3" %>
-<% end %>
--->

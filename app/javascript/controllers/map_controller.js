@@ -125,7 +125,7 @@ export default class extends Controller {
     bounds.extend([this.userlng, this.userlat])
     // this.markersValue.forEach(marker => bounds.extend([ this.userlng,this.userlat ]))
 
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 0 })
+    this.map.fitBounds(bounds, { padding: 35, maxZoom: 14, duration: 0 })
   }
 
   // vvvv CHAOS STARTS HERE !vvvv

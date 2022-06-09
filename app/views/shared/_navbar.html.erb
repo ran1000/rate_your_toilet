@@ -1,5 +1,5 @@
-<div class="mini-banner">
-  <%= link_to toilets_path do %>
+<div class="mini-banner", data-controller="user-coordinates">
+  <%= link_to toilets_path, data:{user_coordinates_target: "link"} do %>
     <%= image_tag "spotaloo_logo.png", class: "banner-logo" %>
   <% end %>
 </div>

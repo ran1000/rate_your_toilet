@@ -6,21 +6,48 @@
 
 <div class="navbarloo" data-controller="user-coordinates">
   <% unless params["action"] == "dashboard" %>
-      <%= link_to dashboard_path(id: @toilet), class: "butt" do %>
-        <button class="blue-button"><i class="fa-regular fa-user"></i></button>
+      <% if current_user %>
+        <%= link_to dashboard_path(id: @toilet), class: "butt" do %>
+          <button class="navbar-blue-icon">
+            <i class="fa-regular fa-user"></i>
+              <p>Dashboard</p>
+          </button>
+        <% end %>
+      <% else %>
+        <%= link_to user_registration_path, class: "butt" do %>
+          <button class="navbar-blue-icon">
+            <i class="fa-regular fa-user"></i>
+            <p>Login</p>
+          </button>
+        <% end %>
       <% end %>
     <% else %>
       <%= link_to toilets_path, data:{user_coordinates_target: "link"}, class: "butt" do %>
-        <button class="blue-button"><i class="fa-solid fa-location-pin"></i></button>
+        <button class="navbar-blue-icon">
+          <i class="fa-solid fa-location-pin"></i>
+          <p>Map</p>
+        </button>
       <% end %>
-      <%= link_to href="#favourites", class: "butt" do %>
-        <button class="blue-button"><i class="fa-regular fa-heart"></i></button>
+      <%= link_to href="#favorites", class: "butt nav-dash-fav" do %>
+        <button class="navbar-blue-icon"  data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+          <i class="fa-regular fa-heart"></i>
+          <p>Favorites</p>
+        </button>
+        <%# <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button> %>
       <% end %>
-      <%= link_to href="#toilets", class: "butt" do %>
-        <button class="blue-button"><i class="fa-solid fa-toilet"></i></button>
+      <%= link_to href="#toilets", class: "butt nav-dash-toi" do %>
+        <button class="navbar-blue-icon" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">
+          <i class="fa-solid fa-toilet"></i>
+          <p>Toilets</p>
+        </button>
+        <%# <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button> %>
       <% end %>
-      <%= link_to href="#reviews", class: "butt" do %>
-        <button class="blue-button"><i class="fa-regular fa-star"></i></button>
+      <%= link_to href="#reviews", class: "butt nav-dash-rev" do %>
+        <button class="navbar-blue-icon" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3">
+          <i class="fa-regular fa-star"></i>
+          <p>Reviews</p>
+        </button>
+        <%# <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> %>
       <% end %>
   <% end %>
 

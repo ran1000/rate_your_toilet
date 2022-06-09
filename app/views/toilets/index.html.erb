@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <div class="container horizontal-menu" data-controller="user-coordinates">
+  <div class="container horizontal-menu" data-toilets-target="filters" data-controller="user-coordinates">
     <div class="category-icon">
       <%= link_to toilets_path(toilet_params: "show_all"), data:{user_coordinates_target: "link"}  do %>
         <%= image_tag ("all_toilets.png")%>

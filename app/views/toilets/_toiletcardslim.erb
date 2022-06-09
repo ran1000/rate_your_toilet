@@ -1,32 +1,40 @@
-<%= link_to toilet_path(toilet), class: "tcard-link" do %>
-  <div id="<%= toilet.id %>" class="toilet-cards-sel card-product hide-card">
-    <div class="card-product">
-      <% if toilet.reviews.last == nil %>
-        <div class="no-img">
-          <%# <p>no image</p> %>
-        </div>
-      <% elsif toilet.reviews.last.photos.first == nil %>
-        <div class="no-img">
-          <%# <p>no image</p> %>
-        </div>
-      <% else %>
-        <%= cl_image_tag toilet.reviews.last.photos.first.key %>
-      <% end %>
-    </div>
-    <div class="card-product-infos">
-      <div class="card-product-text">
-        <h4><%= toilet.name %></h4>
-        <p><%= toilet.address %></p>
+<div id="<%= toilet.id %>" class="toilet-cards-sel d-none">
+          <div class="closing-tag">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+  <%= link_to toilet_path(toilet), class: "tcard-link" do %>
+    <div id="" class="card-product">
+      <div class="card-product">
+        <% if toilet.reviews.last == nil %>
+          <div class="no-img">
+            <%# <p>no image</p> %>
+          </div>
+        <% elsif toilet.reviews.last.photos.first == nil %>
+          <div class="no-img">
+            <%# <p>no image</p> %>
+          </div>
+        <% else %>
+          <%= cl_image_tag toilet.reviews.last.photos.first.key %>
+        <% end %>
       </div>
-      <% if toilet.reviews.last != nil %>
-        <div class="card-product-rating">
-          <p><small>Rating: </small>
-          <%= "★" * toilet.reviews.average(:rating).to_i + "☆" * ((toilet.reviews.average(:rating).to_i - 5).abs) %>
+      <div class="card-product-infos">
+        <div class="card-product-text">
+          <div class="d-flex justify-content-between align-items-start">
+            <h4><%= toilet.name %></h4>
+          </div>
+          <p><%= toilet.address %></p>
         </div>
-      <% end %>
-      <div class="card-product-favorite">
-        <p><%= toilet.favorites.count %> <i class="fa-solid fa-heart"></i></p>
+        <% if toilet.reviews.last != nil %>
+          <div class="card-product-rating">
+            <p><small>Rating: </small>
+            <%= "★" * toilet.reviews.average(:rating).to_i + "☆" * ((toilet.reviews.average(:rating).to_i - 5).abs) %>
+          </div>
+        <% end %>
+        <div class="card-product-favorite">
+          <p><%= toilet.favorites.count %> <i class="fa-solid fa-heart"></i></p>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+
+</div>

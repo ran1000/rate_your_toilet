@@ -68,6 +68,11 @@
   opacity: 1;
 }
 
+.tcard-image {
+  height: 65%;
+  overflow: hidden;
+}
+
 .tcard-image>img {
   background-color: grey;
   width: 100%;

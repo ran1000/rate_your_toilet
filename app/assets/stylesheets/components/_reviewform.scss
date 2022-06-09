@@ -21,17 +21,48 @@
   scrollbar-width: none;
   /* for Firefox */
 }
+.container-reviews {
+  .container {
+
+    margin: 20px 0;
+  }
+}
 
 .comment-container {
+
+
+  .review-link {
+    // text-decoration: none;
+    color: black;
+    font-weight: 500px;
+    font-weight: 500;
+
+
+  }
+
+  .review-more {
+    text-align: end;
+    padding-right: 15px;
+  }
+
+  .comment-text {
+    width: 300px;
+    max-height: 150px;
+    overflow: hidden;
+  }
   // margin-left: 10px;
   // border-left: 1px dotted black;
   flex-shrink: 0;
   border-radius: 25px;
   background-color: $light-gray;
-  width: 200px;
+  width: 320px;
   min-height: 150px;
+  max-height: 200px;
+  overflow: hidden;
+  // border: 1px solid rgba(0, 10, 255, 0.5);
   // padding-left: 10px;
   // padding-right: 10px;
+
 }
 
 
@@ -76,6 +107,10 @@
 // .super-happy path {
 //   background-color: $blue;
 // }
+.container-reviews {
+  padding: 20px;
+
+}
 
 .rating-container {
   display: -webkit-box;

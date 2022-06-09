@@ -4,5 +4,41 @@
   background-color: white;
 }
 .Formcontainer{
-  
+
+}
+.mapboxgl-ctrl-geocoder{
+  border-radius: 40px;
+
+  border: 3px solid black;
+  background-color: white;
+}
+
+
+.address-input {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mapboxgl-ctrl-geocoder--input:focus {
+  outline: none;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  height: 35px;
+}
+
+
+.mapboxgl-ctrl-geocoder--icon-search {
+  position: absolute;
+  top: 7px;
+  left: 12px;
+  width: 23px;
+  height: 23px;
+}
+
+.mapboxgl-ctrl-geocoder--icon-close {
+  width: 20px;
+  height: 14px;
+  margin-top: 0px;
+  margin-right: 3px;
 }

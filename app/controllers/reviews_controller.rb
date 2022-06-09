@@ -1,11 +1,13 @@
 class ReviewsController < ApplicationController
-  before_action :set_toilet, only: %i[new edit update create index]
+  before_action :set_toilet, only: %i[new edit show update create index]
   before_action :set_review, only: %i[show edit update]
 
   skip_before_action :authenticate_user!, only: %i[new show index]
 
   def index
     @reviews = policy_scope(Review.all)
+    @reviews = @toilet.reviews
+    # authorize @toilet
   end
 
   def show

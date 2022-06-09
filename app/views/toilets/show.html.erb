@@ -6,7 +6,9 @@
         <!--<%= pluralize(@toilet.favorites.count, 'person') %> saved  this toilet
     </div> -->
     <div>
-        <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
+        <%= button_to toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-like" do %>
+          <i class="fa-regular fa-heart"></i>
+        <% end %>
     </div>
   <% else %>
     <!-- <div class="small">
@@ -14,7 +16,7 @@
     </div> -->
     <div>
         <%= link_to delete_favorite_path(favorite), data: { turbo_method: :delete } do %>
-          <button class="btn-black small">♥</button>
+          <button class="btn-like"><i class="fa-solid fa-heart"></i></button>
         <% end %>
     </div>
   <% end %>
@@ -45,19 +47,3 @@
   <h4 class="pb-3"> <%= pluralize(@toilet.reviews.count, 'Review') %> </h4>
   <%= render "/reviews/index", reviews: @toilet.reviews %>
 </div>
-
-
-<!--<h4>Review this toilet!</h4>
-<%# <%= render "/reviews/styledform", toilet: @toilet, review: @review %>-->
-
-<%# old default version below, do not use, --> still in there to check on form syntax %>
-<%#= render "/reviews/form", toilet: @toilet, review: @review %>
-
-<!--
-<% if policy(@toilet).destroy? %>
-  <%= link_to "Delete Toilet", delete_toilet_path(@toilet), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger m-3" %>
-<% end %>
-<% if policy(@toilet).update? %>
-  <%= link_to "Update Toilet", edit_toilet_path(@toilet), class: "btn btn-danger m-3" %>
-<% end %>
--->

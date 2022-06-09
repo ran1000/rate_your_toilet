@@ -9,22 +9,23 @@
   }
 }
 
-.btn-black {
+.btn-like {
   text-decoration: none;
   color: white;
-  padding: 8px 24px;
-  border-radius: 20px;
-  border: solid 2px black;
-  background: black;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 24px;
+  // border: solid 2px black;
+  background: $spotablu;
   transition: all 0.3s ease;
   opacity: 0.9;
 }
 
-.btn-black:hover {
-  background: black;
-  color: white;
-  opacity: 1;
-}
+// .btn-like:hover {
+//   background: $spotablu;
+//   color: white;
+//   opacity: 1;
+// }
 
 .btn-gray {
   color: white;
@@ -39,6 +40,17 @@
 .btn-gray:hover {
   color: white;
   opacity: 1;
+}
+
+.btn-submit {
+  text-decoration: none;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: solid 2px black;
+  background: $spotablu;
+  transition: all 0.3s ease;
+  opacity: 0.9;
 }
 
 .btn-white {
@@ -71,7 +83,7 @@
   padding: 0px 15px;
 
   .fa-solid {
-    margin-top: 4px;
+    // margin-top: 4px;
     font-size: 20px;
   }
 }

@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import DashboardController from "./dashboard_controller.js"
+application.register("dashboard", DashboardController)
+
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 

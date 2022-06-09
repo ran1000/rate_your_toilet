@@ -14,13 +14,15 @@
       <%= cl_image_tag pictures[0].key %>
     <% end %>
   </div>
-  <div class="tcard-info">
+  <div class="tcard-info d-flex">
     <div class="tcard-text">
       <h4><%= toilet.name %></h4>
       <p><%= toilet.address %></p>
     </div>
+    <div></div>
     <% if toilet.reviews.last != nil %>
       <div class="tcard-rating">
+        <p class="distance-indicator"><%= "#{toilet.toilet_distance.round(1)}km"%></p>
         <p><small>Rating: </small>
         <%= toilet.reviews.last.rating %>
         <i class="fa-solid fa-star"></i></p>

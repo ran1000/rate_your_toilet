@@ -71,13 +71,13 @@ export default class extends Controller {
       customMarker.style.height = "25px"
       customMarker.dataset.toilet_id = marker.toilet_id
       const toiletCards = document.querySelectorAll(".toilet-cards-sel")
-      console.log(toiletCards)
+      // console.log(toiletCards)
 
       customMarker.addEventListener("click", (event) => {
         // console.log(event.target.dataset)
         const toiletCard = document.getElementById(event.target.dataset.toilet_id)
-        console.log(toiletCard)
-        console.log(toiletCards)
+        // console.log(toiletCard)
+        // console.log(toiletCards)
         toiletCards.forEach((card) => {
           card.classList.add("d-none");
           // card.classList.remove("show-card");
@@ -125,7 +125,7 @@ export default class extends Controller {
     bounds.extend([this.userlng, this.userlat])
     // this.markersValue.forEach(marker => bounds.extend([ this.userlng,this.userlat ]))
 
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 0 })
+    this.map.fitBounds(bounds, { padding: 35, maxZoom: 14, duration: 0 })
   }
 
   // vvvv CHAOS STARTS HERE !vvvv

@@ -34,3 +34,21 @@
   align-items: center;
   z-index: 1;
 }
+
+.navbar-blue-icon {
+  height: 44px;
+  width: 100%;
+  min-width: 80px;
+
+  p {
+    font-size: 12px;
+    font-family: $headers-font;
+    font-weight: 500;
+  }
+
+  background-color: white;
+  border-radius: 22px;
+  border-style: none;
+  padding: 0px 15px;
+  color: $blue;
+}

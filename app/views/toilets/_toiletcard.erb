@@ -2,11 +2,11 @@
 <div class="tcard">
   <div class="tcard-image">
     <% if toilet.reviews.last == nil %>
-      <p>no image</p>
-    <% elsif toilet.reviews.last.photos.first == nil %>
-      <p>no image</p>
+      <div class="no-img"></div>
+    <% elsif toilet.reviews.first.photos.first == nil %>
+      <div class="no-img"></div>
     <% else %>
-      <%= cl_image_tag toilet.reviews.last.photos.first.key %>
+      <%= cl_image_tag toilet.reviews.first.photos.first.key %>
     <% end %>
   </div>
   <div class="tcard-info">

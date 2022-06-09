@@ -7,7 +7,6 @@
     </div> -->
     <div>
         <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
-
     </div>
   <% else %>
     <!-- <div class="small">
@@ -38,8 +37,23 @@
   <%= render "/reviews/index", reviews: @toilet.reviews %>
 </div>
 
+<div class="container">
+  <h4>Tags</h4>
+  <div class="container flex">
+    <%= @toilet.baby_friendly? ? "Baby friendly " : nil %>
+    <%= @toilet.period_friendly? ? "Period friendly " : nil %>
+    <%= @toilet.accessible? ? "Accessible ": nil %>
+    <%= @toilet.urinal? ? "Urinal " : nil %>
+    <%= @toilet.stall? ? "Stall " : nil %>
+    <%= @toilet.easy? ? "Easy " : nil %>
+    <%= @toilet.changing_room? ? "Changing Room " : nil %></div>
+  </div>
+</div>
+
+
+
 <!--<h4>Review this toilet!</h4>
-<%= render "/reviews/styledform", toilet: @toilet, review: @review %>-->
+<%# <%= render "/reviews/styledform", toilet: @toilet, review: @review %>-->
 
 <%# old default version below, do not use, --> still in there to check on form syntax %>
 <%#= render "/reviews/form", toilet: @toilet, review: @review %>

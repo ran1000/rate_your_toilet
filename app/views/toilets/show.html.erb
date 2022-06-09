@@ -7,7 +7,6 @@
     </div> -->
     <div>
         <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
-
     </div>
   <% else %>
     <!-- <div class="small">

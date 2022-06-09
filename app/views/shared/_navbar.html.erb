@@ -24,7 +24,7 @@
     <% else %>
       <%= link_to toilets_path, data:{user_coordinates_target: "link"}, class: "butt" do %>
         <button class="navbar-blue-icon">
-          <i class="fa-solid fa-location-pin"></i>
+          <i class="fa-solid fa-location-dot"></i>
           <p>Map</p>
         </button>
       <% end %>
@@ -68,7 +68,7 @@
 
   <% if params["action"] == "index" %>
     <%= link_to new_toilet_path(Toilet.new), class: "butt" do %>
-      <button class="blue-button">Add Toilet</button>
+      <button class="blue-button">+</button>
     <% end %>
   <% end %>
 </div>

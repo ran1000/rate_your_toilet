@@ -1,12 +1,17 @@
+<% pictures = []
+    toilet.reviews.each do |review|
+      review.photos.each do |photo|
+        pictures.push(photo)
+      end
+    end %>
+
 <%= link_to toilet_path(toilet), class: "tcard-link" do %>
 <div class="tcard">
   <div class="tcard-image">
-    <% if toilet.reviews.last == nil %>
-      <div class="no-img"></div>
-    <% elsif toilet.reviews.first.photos.first == nil %>
-      <div class="no-img"></div>
+    <% if pictures[0] == nil %>
+      <div class="no-img-big"></div>
     <% else %>
-      <%= cl_image_tag toilet.reviews.first.photos.first.key %>
+      <%= cl_image_tag pictures[0].key %>
     <% end %>
   </div>
   <div class="tcard-info d-flex">

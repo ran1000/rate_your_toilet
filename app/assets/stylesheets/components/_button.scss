@@ -12,8 +12,9 @@
 .btn-like {
   text-decoration: none;
   color: white;
+  border: none;
   padding: 8px 18px;
-  border-radius: 14px;
+  border-radius: 24px;
   // border: solid 2px black;
   background: $spotablu;
   transition: all 0.3s ease;
@@ -82,7 +83,7 @@
   padding: 0px 15px;
 
   .fa-solid {
-    margin-top: 4px;
+    // margin-top: 4px;
     font-size: 20px;
   }
 }

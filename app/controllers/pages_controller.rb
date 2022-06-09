@@ -17,6 +17,7 @@ class PagesController < ApplicationController
     @toilets.map do |toilet|
       toilet.toilet_distance = (toilet.distance_from([current_user.lat, current_user.lng]).to_f)
     end
+    # raise
     # @toilets = current_user.toilets
     # @favorites = current_user.favorites
   end

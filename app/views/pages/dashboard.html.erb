@@ -11,8 +11,8 @@
         <div class="container">
           <h6 class="text-left p-3">Favorites:</h6>
           <div class="toilet-grid">
-            <% current_user.favorites.each do |favorite| %>
-              <%= render "toilets/toiletcardslim", toilet: favorite.toilet %>
+            <% @favorites.each do |favorite| %>
+              <%= render "toilets/toiletcard", toilet: favorite.toilet %>
             <% end %>
           </div>
         </div>

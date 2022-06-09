@@ -10,8 +10,11 @@ application.register("hello", HelloController)
 import MapController from "./map_controller.js"
 application.register("map", MapController)
 
-import UserCoordinatesController from "./user_coordinates_controller.js"
-application.register("user-coordinates", UserCoordinatesController)
+import ReviewsController from "./reviews_controller.js"
+application.register("reviews", ReviewsController)
 
 import ToiletsController from "./toilets_controller.js"
 application.register("toilets", ToiletsController)
+
+import UserCoordinatesController from "./user_coordinates_controller.js"
+application.register("user-coordinates", UserCoordinatesController)

@@ -5,16 +5,16 @@
   <%= link_to toilet_path(toilet), class: "tcard-link" do %>
     <div id="" class="card-product">
       <div class="card-product">
-        <% if toilet.reviews.last == nil %>
+        <% if toilet.reviews.first == nil %>
           <div class="no-img">
             <%# <p>no image</p> %>
           </div>
-        <% elsif toilet.reviews.last.photos.first == nil %>
+        <% elsif toilet.reviews.first.photos.first == nil %>
           <div class="no-img">
             <%# <p>no image</p> %>
           </div>
         <% else %>
-          <%= cl_image_tag toilet.reviews.last.photos.first.key %>
+          <%= cl_image_tag toilet.reviews.first.photos.first.key %>
         <% end %>
       </div>
       <div class="card-product-infos">

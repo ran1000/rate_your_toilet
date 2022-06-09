@@ -13,7 +13,7 @@
     <h6 class="text-left p-3">Favorites :</h6>
     <div class="toilet-grid">
       <% current_user.favorites.each do |favorite| %>
-        <%= render "toilets/toiletcard", toilet: favorite.toilet %>
+        <%= render "toilets/toiletcardslim", toilet: favorite.toilet %>
       <% end %>
     </div>
   </div>

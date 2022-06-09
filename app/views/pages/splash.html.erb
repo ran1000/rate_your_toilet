@@ -1,5 +1,6 @@
 <div class="container spotaloo-text">
   <%= image_tag("spotaloo_logo.png") %>
+  <p>Find a toilet around you</p>
 </div>
 
 <div class="container w-75 p-1">
@@ -8,5 +9,7 @@
 </div>
 
 <div class="container start-btn">
-  <%= link_to "START", toilets_path %>
+  <%= link_to toilets_path do %>
+    <% image_tag("spotaloo_start.png") %>
+  <% end %>
 </div>

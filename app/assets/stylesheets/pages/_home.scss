@@ -4,6 +4,10 @@ body {
   background-color: rgba($white, 0.5);
 }
 
+.splash-bg {
+  background-color: $spotablu;
+}
+
 .cls-2 {
   // fill: $light-gray;
   fill-opacity: 0;
@@ -17,8 +21,8 @@ body {
 // }
 
 svg path {
-  stroke-dashoffset: 710;
-  stroke-dasharray: 710;
+  stroke-dashoffset: 810;
+  stroke-dasharray: 810;
   // stroke-width: 10;
   // stroke: #000000;
   // fill:  transparent;

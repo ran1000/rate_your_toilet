@@ -22,7 +22,9 @@
     <div></div>
     <% if toilet.reviews.last != nil %>
       <div class="tcard-rating">
-        <p class="distance-indicator"><%= "#{toilet.toilet_distance.round(1)}km"%></p>
+        <% if toilet.toilet_distance != nil %>
+          <p class="distance-indicator"><%= "#{toilet.toilet_distance.round(1)}km"%></p>
+        <% end %>
         <p><small>Rating: </small>
         <%= toilet.reviews.last.rating %>
         <i class="fa-solid fa-star"></i></p>

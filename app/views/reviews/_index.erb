@@ -3,12 +3,19 @@
     <div class="pe-2">
     <% @user = User.find(review[:user_id]) %>
       <div class="comment-container p-3">
-          <div>"<%=review.comment %>"
+          <div class="container comment-text">"<%=review.comment %>"
             <div class="small">
               <p><%=@user[:username] == nil ? @user[:email] : @user[:username] %></p>
              <p> <%= "★" * review.rating.to_i + "☆" * ((review.rating.to_i - 5).abs) %></p>
             </div>
           </div>
+          <%= link_to delete_favorite_path(favorite), data: { turbo_method: :delete } do %>
+            <div class="review-more"><p>more</p></div>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
         <%# <div class="button-container"> %>
           <%# if policy(review).destroy? %>
@@ -18,7 +25,3 @@
             <%#= link_to "Edit Review", edit_toilet_review_path(review.toilet, review), class: "btn-black small" %>
           <%# end %>
         <%# </div> %>
-      </div>
-    </div>
-  <% end %>
-</div>

@@ -23,15 +23,31 @@
 }
 
 .comment-container {
+
+  .review-more {
+    text-align: end;
+    padding-right: 10px;
+    font-weight: 500px;
+  }
+
+  .comment-text {
+    width: 300px;
+    max-height: 150px;
+    overflow: hidden;
+  }
   // margin-left: 10px;
   // border-left: 1px dotted black;
   flex-shrink: 0;
   border-radius: 25px;
   background-color: $light-gray;
-  width: 200px;
+  width: 320px;
   min-height: 150px;
+  max-height: 200px;
+  overflow: hidden;
+  // border: 1px solid rgba(0, 10, 255, 0.5);
   // padding-left: 10px;
   // padding-right: 10px;
+
 }
 
 

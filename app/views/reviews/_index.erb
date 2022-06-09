@@ -9,7 +9,7 @@
              <p> <%= "★" * review.rating.to_i + "☆" * ((review.rating.to_i - 5).abs) %></p>
             </div>
           </div>
-          <%= link_to delete_favorite_path(favorite), data: { turbo_method: :delete } do %>
+          <%= link_to toilet_reviews_path(@toilet), class:"review-link" do %>
             <div class="review-more"><p>more</p></div>
           <% end %>
       </div>

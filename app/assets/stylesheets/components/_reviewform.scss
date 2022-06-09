@@ -21,13 +21,28 @@
   scrollbar-width: none;
   /* for Firefox */
 }
+.container-reviews {
+  .container {
+
+    margin: 20px 0;
+  }
+}
 
 .comment-container {
 
+
+  .review-link {
+    // text-decoration: none;
+    color: black;
+    font-weight: 500px;
+    font-weight: 500;
+
+
+  }
+
   .review-more {
     text-align: end;
-    padding-right: 10px;
-    font-weight: 500px;
+    padding-right: 15px;
   }
 
   .comment-text {
@@ -92,6 +107,10 @@
 // .super-happy path {
 //   background-color: $blue;
 // }
+.container-reviews {
+  padding: 20px;
+
+}
 
 .rating-container {
   display: -webkit-box;

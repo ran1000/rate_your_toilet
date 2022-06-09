@@ -1,10 +1,14 @@
 <div class="flex">
   <% reviews.each do |review| %>
-      <% @user = User.find(review[:user_id]) %>
-      <div class="comment-container">
-          <div>"<%=review.comment %>"<div class="small">
-          <%= @user[:username] == nil ? @user[:email] : @user[:username] %>
-          <%= "★" * review.rating.to_i + "☆" * ((review.rating.to_i - 5).abs) %></div> </div>
+    <div class="pe-2">
+    <% @user = User.find(review[:user_id]) %>
+      <div class="comment-container p-3">
+          <div>"<%=review.comment %>"
+            <div class="small">
+              <p><%=@user[:username] == nil ? @user[:email] : @user[:username] %></p>
+             <p> <%= "★" * review.rating.to_i + "☆" * ((review.rating.to_i - 5).abs) %></p>
+            </div>
+          </div>
 
         <%# <div class="button-container"> %>
           <%# if policy(review).destroy? %>
@@ -15,6 +19,6 @@
           <%# end %>
         <%# </div> %>
       </div>
-      <br>
+    </div>
   <% end %>
 </div>

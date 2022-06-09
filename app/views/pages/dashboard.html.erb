@@ -1,43 +1,52 @@
-<br>
-<h5 class="text-center">Dashboard</h5>
-<hr>
-<%# <div class="d-flex justify-content-around">
-  <a href="#favorites" class="btn-black">Favorites</a>
-  <a href="#toilets" class="btn-black">Toilets</a>
-  <a href="#reviews" class="btn-black">Reviews</a>
-</div> %>
-<%# <hr> %>
+<div class="container">
+  <h5 class="text-center my-4 title-dash">Dashboard</h5>
+</div>
+<div data-controller="dashboard" class="dashboard-body">
+</div>
 
-<div class="container">
-  <div id="favorites">
-    <h6 class="text-left p-3">Favorites :</h6>
-    <div class="toilet-grid">
-      <% current_user.favorites.each do |favorite| %>
-        <%= render "toilets/toiletcardslim", toilet: favorite.toilet %>
-      <% end %>
-    </div>
-  </div>
-</div>
-<hr>
-<div class="container">
-  <div id="toilets">
-    <h6 class="text-left p-3">Your Uploads :</h6>
-    <div class="toilet-grid">
-      <% @toilets.each do |toilet| %>
-        <%= render "toilets/toiletcard", toilet: toilet %>
-      <% end %>
-    </div>
-  </div>
-</div>
-<hr>
-<div class="container">
-  <div id="reviews">
-    <h6 class="text-left p-3">Your Reviews :</h6>
-    <% @reviews.each do |review| %>
-      <div class="bg-secondary rounded p-2 m-3 text-light">
-        <em><%= review.comment %></em>
-        <p><%= review.user.username %></p>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div id="favorites" class="dash-sections" data-dashboard-target="fav">
+        <div class="container">
+          <h6 class="text-left p-3">Favorites:</h6>
+          <div class="toilet-grid">
+            <% current_user.favorites.each do |favorite| %>
+              <%= render "toilets/toiletcardslim", toilet: favorite.toilet %>
+            <% end %>
+          </div>
+        </div>
       </div>
-    <% end %>
+    </div>
+    <div class="carousel-item">
+      <div id="toilets" class="dash-sections" data-dashboard-target="toi">
+        <div class="container">
+          <h6 class="text-left p-3">Your Uploads:</h6>
+          <div class="toilet-grid">
+            <% @toilets.each do |toilet| %>
+              <%= render "toilets/toiletcard", toilet: toilet %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div id="reviews" class="dash-sections" data-dashboard-target="rev">
+        <div class="container">
+          <h6 class="text-left p-3">Your Reviews:</h6>
+          <% @reviews.each do |review| %>
+            <% @user = User.find(review[:user_id]) %>
+            <div class="comment-container">
+              <div>"<%=review.comment %>"
+                <div class="small">
+                  <%= @user[:username] == nil ? @user[:email] : @user[:username] %>
+                  <%= "★" * review.rating.to_i + "☆" * ((review.rating.to_i - 5).abs) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

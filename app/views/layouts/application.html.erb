@@ -16,14 +16,27 @@
     />
   </head>
 
-  <body>
-    <% unless current_page?(root_path) %>
-        <nav>
-          <%= render "shared/navbar" %>
-        </nav>
-    <% end %>
-    <%= render "shared/flashes" %>
-    <%= yield %>
-    <div class="navspace"></div>
-  </body>
+  <% if current_page?(root_path) %>
+    <body class="splash-bg">
+      <% unless current_page?(root_path) %>
+          <nav>
+            <%= render "shared/navbar" %>
+          </nav>
+      <% end %>
+      <%= render "shared/flashes" %>
+      <%= yield %>
+      <div class="navspace"></div>
+    </body>
+  <% else %>
+    <body>
+      <% unless current_page?(root_path) %>
+          <nav>
+            <%= render "shared/navbar" %>
+          </nav>
+      <% end %>
+      <%= render "shared/flashes" %>
+      <%= yield %>
+      <div class="navspace"></div>
+    </body>
+  <% end %>
 </html>

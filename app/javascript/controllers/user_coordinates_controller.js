@@ -8,7 +8,7 @@ export default class extends Controller {
     navigator.geolocation.getCurrentPosition((position) => {
 
       this.linkTargets.forEach((l) => {
-        l.href = `${l.href}&lat=${position.coords.latitude}&lng=${position.coords.longitude}`
+        l.href = `${l.href}?lat=${position.coords.latitude}&lng=${position.coords.longitude}`
       })
     });
 

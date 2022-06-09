@@ -11,12 +11,10 @@ class ToiletsController < ApplicationController
     if params[:lat] == nil && current_user.lat.nil?
       @toilets = policy_scope(Toilet)
     else
-      @toilets = policy_scope(Toilet.near([current_user.lat, current_user.lng], 1.8, units: :km))
+      @toilets = policy_scope(Toilet.near([current_user.lat, current_user.lng], 1, units: :km))
       @toilets.map do |toilet|
         toilet.toilet_distance = (toilet.distance_from([current_user.lat, current_user.lng]))
       end
-      raise
-      # raise
     end
 
     if params[:toilet_params] == "baby"

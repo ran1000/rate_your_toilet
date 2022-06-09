@@ -43,7 +43,7 @@ class Toilet < ApplicationRecord
     "Leipziger Pl. 12, 10117 Berlin",
     "Georgenstraße 14/17, 10117 Berlin",
     "Am Zwirngraben, 10178 Berlin",
-    "Grunerstraße 20, 10179 Berlin",
+    "Grunerstraße 20, 10179 Berlin"
   ].freeze
 
   TOILETPHOTOS = [

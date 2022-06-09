@@ -7,20 +7,20 @@
 <div class="navbarloo" data-controller="user-coordinates">
   <% unless params["action"] == "dashboard" %>
       <%= link_to dashboard_path(id: @toilet), class: "butt" do %>
-        <button class="blue-button"><i class="fa-regular fa-user"></i></button>
+        <button class="blue-button"><i class="fa-solid fa-user"></i></button>
       <% end %>
     <% else %>
       <%= link_to toilets_path, data:{user_coordinates_target: "link"}, class: "butt" do %>
-        <button class="blue-button"><i class="fa-solid fa-location-pin"></i></button>
+        <button class="blue-button"><i class="fa-solid fa-location-dot"></i></button>
       <% end %>
       <%= link_to href="#favourites", class: "butt" do %>
-        <button class="blue-button"><i class="fa-regular fa-heart"></i></button>
+        <button class="blue-button"><i class="fa-solid fa-heart"></i></button>
       <% end %>
       <%= link_to href="#toilets", class: "butt" do %>
         <button class="blue-button"><i class="fa-solid fa-toilet"></i></button>
       <% end %>
       <%= link_to href="#reviews", class: "butt" do %>
-        <button class="blue-button"><i class="fa-regular fa-star"></i></button>
+        <button class="blue-button"><i class="fa-solid fa-star"></i></i></button>
       <% end %>
   <% end %>
 

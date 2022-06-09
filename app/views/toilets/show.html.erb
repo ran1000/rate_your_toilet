@@ -6,7 +6,9 @@
         <!--<%= pluralize(@toilet.favorites.count, 'person') %> saved  this toilet
     </div> -->
     <div>
-        <%= button_to "♡", toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-black small" %>
+        <%= button_to toilet_favorites_path(@toilet), params: { favorite: { toilet_id: @toilet.id }}, method: :post, class: "btn-like" do %>
+          <i class="fa-regular fa-heart"></i>
+        <% end %>
     </div>
   <% else %>
     <!-- <div class="small">
@@ -14,7 +16,7 @@
     </div> -->
     <div>
         <%= link_to delete_favorite_path(favorite), data: { turbo_method: :delete } do %>
-          <button class="btn-black small">♥</button>
+          <button class="btn-like"><i class="fa-solid fa-heart"></i></button>
         <% end %>
     </div>
   <% end %>

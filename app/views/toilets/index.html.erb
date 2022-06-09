@@ -1,28 +1,83 @@
-  <div class="container horizontal-menu">
-    <div class="category-icon">
-
+<div class="wrapper" data-controller="toilets">
+  <div class="toilets-grid d-none animate__animated animate__slideInUp" data-toilets-target="toilets">
+  <button class="goto-map" data-toilets-target="close" data-action="click->toilets#close">X</button>
+    <div class="toilet-grid">
+      <% @toilets.each do |toilet| %>
+        <%= render "toiletcard", toilet: toilet %>
+      <% end %>
     </div>
-    <div class="category-icon"><h2>Category</h2></div>
-    <div class="category-icon"><h2>Category</h2></div>
-    <div class="category-icon"><h2>Category</h2></div>
-    <div class="category-icon"><h2>Category</h2></div>
-    <div class="category-icon"><h2>Category</h2></div>
-    <div class="category-icon"><h2>Category</h2></div>
-    <div class="category-icon"><h2>Category</h2></div>
-    <div class="category-icon"><h2>Categry</h2></div>
   </div>
-<div class="index-section">
-  <div style="width: 100vw; height: 71vh;"
+
+  <div class="container horizontal-menu" data-toilets-target="filters" data-controller="user-coordinates">
+    <div class="category-icon">
+      <%= link_to toilets_path(toilet_params: "show_all"), data:{user_coordinates_target: "link"}  do %>
+        <%= image_tag ("all_toilets.png")%>
+      <% end %>
+      <p>All toilets</p>
+    </div>
+    <div class="category-icon">
+      <%= link_to toilets_path(toilet_params: "urinal"), data:{user_coordinates_target: "link"}  do %>
+        <%= image_tag ("urinal.png")%>
+      <% end %>
+      <p>Urinal</p>
+    </div>
+    <div class="category-icon">
+      <%= link_to toilets_path(toilet_params: "stall"), data:{user_coordinates_target: "link"} do %>
+        <%= image_tag ("stall.png") %>
+      <% end %>
+      <p>Easy stall</p>
+    </div>
+    <div class="category-icon">
+      <%= link_to toilets_path(toilet_params: "baby"), data:{user_coordinates_target: "link"} do %>
+        <%= image_tag ("baby.png") %>
+      <% end %>
+            <p>Baby friendly</p>
+    </div>
+    <div class="category-icon">
+      <%= link_to toilets_path(toilet_params: "period"), data:{user_coordinates_target: "link"} do %>
+        <%= image_tag ("period.png")%>
+      <% end %>
+            <p>On my period!</p>
+    </div>
+    <div class="category-icon">
+      <%= link_to toilets_path(toilet_params: "accessible"), data:{user_coordinates_target: "link"} do %>
+        <%= image_tag ("accessible.png")%>
+      <% end %>
+            <p>Accessible</p>
+    </div>
+    <div class="category-icon">
+      <%= link_to toilets_path(toilet_params: "easy_read"), data:{user_coordinates_target: "link"} do %>
+        <%= image_tag ("easy_read.png") %>
+      <% end %>
+            <p>Read in peace</p>
+    </div>
+    <div class="category-icon">
+      <%= link_to toilets_path(toilet_params: "changing_room"), data:{user_coordinates_target: "link"} do %>
+        <%= image_tag ("changing_room.png")%>
+      <% end %>
+            <p>Changing room</p>
+    </div>
+  </div>
+
+<div class="map-container" data-toilets-target="map">
+  <div class="map-container_actual" style="width: 100vw; height: 80vh;"
     data-controller="map"
     data-map-markers-value="<%=@markers.to_json%>"
     data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+    <div class="card-scroller">
+      <div class="category-icon">
+        <%= image_tag ("flush.png") %>
+        <%= pluralize(@toilets.count, 'toilet') %> around you!
+      </div>
+      <button data-toilets-target="btn" data-action="click->toilets#open">CLICK</button>
+    </div>
   </div>
 
   <% @toilets.each do |toilet| %>
     <%= render "toiletcardslim", toilet: toilet %>
   <% end %>
 </div>
-<div class="container">
+<div class="container" data-toilets-target="popups">
   <p class="btn text-right mb-0 text-muted">Toilets counter: <%= @toilets.count %></p>
   <%# <h4 class="text-center text-muted">V</h4> %>
   <h3 class="text-center text-muted"><i class="fa-solid fa-angle-down"></i></h3>

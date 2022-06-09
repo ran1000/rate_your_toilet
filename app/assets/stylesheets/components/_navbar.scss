@@ -1,3 +1,21 @@
+.mini-banner {
+  justify-content: center;
+  background: $spotablu;
+  padding: 16px;
+  text-align: center;
+  height: 90px;
+  width: 100vw;
+
+  .banner-logo {
+    width: 150px;
+    margin-top: 20px;
+  }
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
 .navspace{
   height: 60px;
 }

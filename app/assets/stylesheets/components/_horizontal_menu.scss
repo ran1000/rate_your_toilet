@@ -2,7 +2,9 @@
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+
     box-shadow:  1px 1px 2px rgba(0,0,0,0.2);
+    padding: 8px;
     // z-index: 2;
     &::-webkit-scrollbar {
       display: none;
@@ -14,21 +16,27 @@
       // background-color: white;
       // width: 36px;
       height: 62px;
-      margin: 8px 8px;
+      margin: 8px 14px;
       // border-radius: 3px;
       text-align: center;
       // display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 1px 1px 2px white;
-      background-color: $light-gray;
       // background-color: #C51380
 
     }
 }
 
-// .categories {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
-//   justify-items: center;
-// }
+.horizontal-menu {
+  img {
+    height: 30px;
+  }
+}
+
+.horizontal-menu {
+  p {
+    margin: 12px auto;
+    color: $spotablu;
+    font-size: 12px;
+  }
+}

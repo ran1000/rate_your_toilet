@@ -12,3 +12,6 @@ application.register("map", MapController)
 
 import UserCoordinatesController from "./user_coordinates_controller.js"
 application.register("user-coordinates", UserCoordinatesController)
+
+import ToiletsController from "./toilets_controller.js"
+application.register("toilets", ToiletsController)

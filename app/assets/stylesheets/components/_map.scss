@@ -1,4 +1,15 @@
 .map-container {
+  margin-bottom: 8px;
+}
+
+.map-container_actual {
+  position: relative !important;
+  flex-direction: column;
+}
+
+.mapboxgl-popup {
+  max-width: 400px;
+  border-radius: 50%;
   // flex-grow: 1;
   // margin-bottom: 8px;
   width: 100vw;

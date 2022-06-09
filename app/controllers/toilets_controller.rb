@@ -3,13 +3,29 @@ class ToiletsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-    @toilets = policy_scope(Toilet)
+    unless params[:lat] == nil || params[:lng] == nil
+      current_user.lat = params[:lat]
+      current_user.lng = params[:lng]
+      current_user.update(lat: params[:lat], lng: params[:lng])
+    end
+    if params[:lat] == nil && current_user.lat.nil?
+      @toilets = policy_scope(Toilet)
+    else
+      @toilets = policy_scope(Toilet.near([current_user.lat, current_user.lng], 20, units: :km))
+      @toilets.map do |toilet|
+        toilet.toilet_distance = (toilet.distance_from([current_user.lat, current_user.lng]).to_f)
+      end
+      # raise
+    end
 
     if params[:toilet_params] == "baby"
       @toilets = @toilets.select { |t| t.baby_friendly? }
 
     elsif params[:toilet_params] == "period"
       @toilets = @toilets.select { |t| t.period_friendly? }
+
+    elsif params[:toilet_params] == "show_all"
+      @toilets
 
     elsif params[:toilet_params] == "accessible"
       @toilets = @toilets.select { |t| t.accessible? }
@@ -25,18 +41,6 @@ class ToiletsController < ApplicationController
 
     elsif params[:toilet_params] == "changing_room"
       @toilets = @toilets.select { |t| t.changing_room? }
-    end
-
-    if params[:lat] == nil || params[:lng] == nil
-      @toilets
-    
-    else
-      @toilets = @toilets.near([params[:lat], params[:lng]], 5, units: :km)
-      @toilets.map do |toilet|
-        toilet.toilet_distance = (toilet.distance_from([params[:lat], params[:lng]]).to_f)
-      end
-
-
     end
 
     @toilets = @toilets.select { |t| t.geocoded? }

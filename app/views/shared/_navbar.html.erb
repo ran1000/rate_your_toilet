@@ -9,14 +9,14 @@
       <% if current_user %>
         <%= link_to dashboard_path(id: @toilet), class: "butt" do %>
           <button class="navbar-blue-icon">
-            <i class="fa-regular fa-user"></i>
+            <i class="fa-solid fa-user"></i>
               <p>Dashboard</p>
           </button>
         <% end %>
       <% else %>
         <%= link_to user_registration_path, class: "butt" do %>
           <button class="navbar-blue-icon">
-            <i class="fa-regular fa-user"></i>
+            <i class="fa-solid fa-user"></i>
             <p>Login</p>
           </button>
         <% end %>
@@ -53,22 +53,22 @@
 
   <% if params["action"] == "show" %>
     <%= link_to directions_path(id: @toilet), class: "butt" do %>
-      <button class="blue-button">Lets go!</button>
+      <button class="blue-out-button">Lets go!</button>
     <%= link_to new_toilet_review_path(@toilet, Review.new), class: "butt" do %>
-      <button class="blue-button">Rate it!</button>
+      <button class="blue-out-button">Rate it!</button>
     <% end %>
     <% end %>
   <% end %>
 
   <% if params["action"] == "directions" %>
     <%= link_to new_toilet_review_path(@toilet, Review.new), class: "butt" do %>
-      <button class="blue-button">Rate it!</button>
+      <button class="blue-out-button">Rate it!</button>
     <% end %>
   <% end %>
 
   <% if params["action"] == "index" %>
     <%= link_to new_toilet_path(Toilet.new), class: "butt" do %>
-      <button class="blue-button">+</button>
+      <button class="blue-out-button"><i class="fa-solid fa-plus"></i></button>
     <% end %>
   <% end %>
 </div>

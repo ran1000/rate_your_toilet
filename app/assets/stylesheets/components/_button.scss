@@ -71,9 +71,10 @@
 
 
 .blue-button {
-  height: 44px;
+  height: 40px;
   width: 100%;
   min-width: 80px;
+  font-size: 15px;
   font-family: $headers-font;
   font-weight: 500;
   background-color: $blue;
@@ -86,4 +87,32 @@
     // margin-top: 4px;
     font-size: 20px;
   }
+}
+
+.blue-out-button {
+  height: 40px;
+  width: 100%;
+  min-width: 80px;
+  font-size: 15px;
+  font-family: $headers-font;
+  font-weight: 500;
+  background-color: white;
+  border: 1.5px solid $blue;
+  border-radius: 22px;
+  color: $blue;
+  padding: 0px 15px;
+
+  .fa-solid {
+    // margin-top: 4px;
+    font-size: 16px;
+  }
+}
+
+.closing-tag i {
+  // color: $blue;
+  font-size: 12px;
+  background-color: white;
+  padding: 5px 5px 5px 5px;
+  border-radius: 15px;
+  flex-shrink: 0;
 }

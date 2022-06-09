@@ -15,12 +15,21 @@ class Toilet < ApplicationRecord
   end
 
   RESTAURANTS_ADDRESSES = [
-    "Lindenstraße 9-14, 10969 Berlin",
+    "Besselstraße, 10969 Berlin",
+    "Scheidemannstraße 1, 10557 Berlin",
+    "Georgenstraße 14, 10117 Berlin",
+  "Leipziger Str. 111, 10117 Berlin",
+    "Alte Jakobstraße 111, 10969 Berlin",
+    "Linkstraße 10, 10785 Berlin",
+    "Am Lustgarten 1, 10178 Berlin",
+    "Rungestraße 31, 10179 Berlin",
+    "Lindenstraße 14, 10969 Berlin",
     "Pariser Platz, 10117 Berlin",
     "Askanischer Pl. 2, 10963 Berlin",
-    "Charlottenstraße 16, 10117 Berlin",
-    "Axel-Springer-Straße 65, 10969 Berlin",
-    "Kochstraße 16, 10969 Berlin", "Markgrafenstraße 56, 10117 Berlin"
+    "Charlottenstraße 49, 10117 Berlin",
+    "Hausvogteipl. 11, 10117 Berlin",
+
+
   ].freeze
 
   TOILETPHOTOS = [

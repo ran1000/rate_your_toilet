@@ -23,13 +23,11 @@
 }
 
 .comment-container {
-  margin-left: 10px;
   // border-left: 1px dotted black;
   flex-shrink: 0;
   border-radius: 25px;
   background-color: $light-gray;
-  padding-left: 10px;
-  padding-right: 10px;
+
 }
 
 
@@ -39,7 +37,7 @@
 }
 
 .container-rating {
-  padding-left: 10px;
+  // padding-left: 10px;
 }
 
 .boolean-container {
@@ -52,8 +50,7 @@
   /* row-gap column gap */
   row-gap: 10px;
   column-gap: 20px;
-  padding: 5px;
-  margin: 5px;
+
 }
 
 .rating-card {
@@ -121,7 +118,7 @@
   stroke-width: 1px;
   height: 40px;
   width: 60px;
-  margin: 1px;
+  // margin: 1px;
   align-items: flex-end;
 }
 
@@ -132,7 +129,7 @@
 .rating-form-2 svg {
   height: 25px;
   width: 45px;
-  margin: 1px;
+  // margin: 1px;
   align-items: flex-end;
 }
 
@@ -166,104 +163,3 @@ input[class="super-sad"]:checked+svg,
 input[class="super-sad"]:focus+svg {
   fill: $blue;
 }
-
-
-// @media screen and (max-width: 650px) and (max-height: 700px) {
-//   body,
-//   html {
-//     font-size: 0.7rem;
-//   }
-//   header h1 {
-//     font-size: 4em;
-//   }
-//   footer p {
-//     font-size: 2em;
-//   }
-// }
-
-// @media screen and (max-height: 700px) {
-//   body,
-//   html {
-//     font-size: 0.7rem;
-//   }
-//   header h1 {
-//     font-size: 4em;
-//   }
-//   footer p {
-//     font-size: 2em;
-//   }
-// }
-
-// @media screen and (max-width: 650px) {
-//   body,
-//   html {
-//     font-size: 0.7rem;
-//   }
-//   header h1 {
-//     font-size: 4em;
-//   }
-//   footer p {
-//     font-size: 2em;
-//   }
-// }
-
-// @media screen and (max-width: 450px) and (max-height: 550px) {
-//   body,
-//   html {
-//     font-size: 0.6rem;
-//   }
-//   header h1 {
-//     font-size: 4.6em;
-//   }
-//   footer p {
-//     font-size: 3em;
-//   }
-// }
-
-// @media screen and (max-height: 550px) {
-//   body,
-//   html {
-//     font-size: 0.6rem;
-//   }
-//   header h1 {
-//     font-size: 4.6em;
-//   }
-//   footer p {
-//     font-size: 3em;
-//   }
-// }
-
-// @media screen and (max-width: 450px) {
-//   body,
-//   html {
-//     font-size: 0.6rem;
-//   }
-//   header h1 {
-//     font-size: 4.6em;
-//   }
-//   footer p {
-//     font-size: 3em;
-//   }
-// }
-
-// @media screen and (max-width: 400px) and (max-height: 500px) {
-//   body,
-//   html {
-//     height: 500px;
-//     width: 400px;
-//   }
-// }
-
-// @media screen and (max-height: 500px) {
-//   body,
-//   html {
-//     height: 500px;
-//   }
-// }
-
-// @media screen and (max-width: 400px) {
-//   body,
-//   html {
-//     width: 400px;
-//   }
-// }

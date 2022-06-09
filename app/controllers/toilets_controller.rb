@@ -50,7 +50,7 @@ class ToiletsController < ApplicationController
         lng: toilet.longitude,
         toilet_id: toilet.id,
         # info_window: render_to_string(partial: "info_window", locals: {toilet: toilet}),
-        image_url: helpers.asset_url("logo.png")
+        image_url: helpers.asset_url("logo.svg")
       }
     end
     @toilets = @toilets.sort_by(&:toilet_distance) unless params[:lat] == nil || params[:lng] == nil
@@ -112,7 +112,8 @@ class ToiletsController < ApplicationController
     @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
       {
         lat: toilet.latitude,
-        lng: toilet.longitude
+        lng: toilet.longitude,
+        image_url: helpers.asset_url("logo.svg")
       }
     end
   end

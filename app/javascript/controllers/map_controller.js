@@ -40,6 +40,7 @@ export default class extends Controller {
           }
         }
       });
+
       this.map.addLayer({
         'id': 'path',
         'type': 'line',
@@ -59,34 +60,64 @@ export default class extends Controller {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      // const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+  //     // const popup = new mapboxgl.Popup().setHTML(marker.info_window)
 
       const customMarker = document.createElement("div")
       customMarker.className = "marker"
       customMarker.style.backgroundImage = `url('${marker.image_url}')`
+  //     console.log(marker.image_url)
       customMarker.style.backgroundSize = "contain"
-      customMarker.style.width = "25px"
+      customMarker.style.width = "19px"
       customMarker.style.height = "25px"
       customMarker.dataset.toilet_id = marker.toilet_id
+      const toiletCards = document.querySelectorAll(".toilet-cards-sel")
+      console.log(toiletCards)
+
       customMarker.addEventListener("click", (event) => {
         // console.log(event.target.dataset)
         const toiletCard = document.getElementById(event.target.dataset.toilet_id)
-        const toiletCards = document.querySelectorAll(".toilet-cards-sel")
+        console.log(toiletCard)
+        console.log(toiletCards)
         toiletCards.forEach((card) => {
-          card.classList.add("hide-card");
-          card.classList.remove("show-card");
+          card.classList.add("d-none");
+          // card.classList.remove("show-card");
         })
-        toiletCard.classList.add("show-card");
+        toiletCard.classList.toggle("d-none");
+
+      })
+      const closingTag = document.querySelectorAll(".closing-tag")
+      closingTag.forEach((x) => {
+        x.addEventListener("click", (event) => {
+          const toiletCard = document.getElementById(event.target.dataset.toilet_id)
+          toiletCards.forEach((card) => {
+            card.classList.add("d-none");
+          })
+          toiletCard.classList.add("d-none")
+        })
       })
 
       new mapboxgl.Marker(customMarker)
         .setLngLat([marker.lng, marker.lat])
-        // .setPopup(popup)
+
         .addTo(this.map);
       this.markerlng = marker.lng
       this.markerlat = marker.lat
     })
   }
+
+  // #addMarkersToMap() {
+
+  //   this.markersValue.forEach((marker) => {
+
+  //     new mapboxgl.Marker()
+  //       .setLngLat([ marker.lng, marker.lat ])
+  //       .addTo(this.map)
+  //     this.markerlng = marker.lng
+  //     this.markerlat = marker.lat
+
+
+  //   })
+  // };
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()

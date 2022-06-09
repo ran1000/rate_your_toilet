@@ -7,38 +7,38 @@
 <div class="navbarloo" data-controller="user-coordinates">
   <% unless params["action"] == "dashboard" %>
       <%= link_to dashboard_path(id: @toilet), class: "butt" do %>
-        <button class=blue-button>👤 </button>
+        <button class="blue-button"><i class="fa-regular fa-user"></i></button>
       <% end %>
     <% else %>
       <%= link_to toilets_path, data:{user_coordinates_target: "link"}, class: "butt" do %>
-        <button class=blue-button>📍</button>
+        <button class="blue-button"><i class="fa-solid fa-location-pin"></i></button>
       <% end %>
       <%= link_to href="#favourites", class: "butt" do %>
-        <button class=blue-button>🤍 </button>
+        <button class="blue-button"><i class="fa-regular fa-heart"></i></button>
       <% end %>
       <%= link_to href="#toilets", class: "butt" do %>
-        <button class=blue-button>🚽 </button>
+        <button class="blue-button"><i class="fa-solid fa-toilet"></i></button>
       <% end %>
       <%= link_to href="#reviews", class: "butt" do %>
-        <button class=blue-button>⭐️ </button>
+        <button class="blue-button"><i class="fa-regular fa-star"></i></button>
       <% end %>
   <% end %>
 
   <% if params["action"] == "show" %>
     <%= link_to directions_path(id: @toilet), class: "butt" do %>
-      <button class=blue-button>Lets go!</button>
+      <button class="blue-button">Lets go!</button>
     <% end %>
   <% end %>
 
   <% if params["action"] == "directions" %>
      <%= link_to new_toilet_review_path(@toilet, Review.new), class: "butt" do %>
-      <button class=blue-button>Rate it!</button>
+      <button class="blue-button">Rate it!</button>
     <% end %>
   <% end %>
 
   <% if params["action"] == "index" %>
     <%= link_to new_toilet_path(Toilet.new), class: "butt" do %>
-      <button class=blue-button>Add Toilet</button>
+      <button class="blue-button">Add Toilet</button>
     <% end %>
   <% end %>
 </div>

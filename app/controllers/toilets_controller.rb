@@ -11,7 +11,7 @@ class ToiletsController < ApplicationController
     if params[:lat] == nil && current_user.lat.nil?
       @toilets = policy_scope(Toilet)
     else
-      @toilets = policy_scope(Toilet.near([current_user.lat, current_user.lng], 20, units: :km))
+      @toilets = policy_scope(Toilet.near([current_user.lat, current_user.lng], 2, units: :km))
       @toilets.map do |toilet|
         toilet.toilet_distance = (toilet.distance_from([current_user.lat, current_user.lng]).to_f)
       end
@@ -50,7 +50,7 @@ class ToiletsController < ApplicationController
         lng: toilet.longitude,
         toilet_id: toilet.id,
         # info_window: render_to_string(partial: "info_window", locals: {toilet: toilet}),
-        image_url: helpers.asset_url("logo.png")
+        image_url: helpers.asset_url("logo.svg")
       }
     end
     @toilets = @toilets.sort_by(&:toilet_distance) unless params[:lat] == nil || params[:lng] == nil
@@ -112,7 +112,8 @@ class ToiletsController < ApplicationController
     @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
       {
         lat: toilet.latitude,
-        lng: toilet.longitude
+        lng: toilet.longitude,
+        image_url: helpers.asset_url("logo.svg")
       }
     end
   end

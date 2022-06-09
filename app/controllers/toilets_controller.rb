@@ -112,13 +112,8 @@ class ToiletsController < ApplicationController
     @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
       {
         lat: toilet.latitude,
-        lng: toilet.longitude
-      }
-    end
-    @markers = Toilet.where(id: @toilet.id).geocoded.map do |toilet|
-      {
-        lat: toilet.latitude,
-        lng: toilet.longitude
+        lng: toilet.longitude,
+        image_url: helpers.asset_url("logo.svg")
       }
     end
   end

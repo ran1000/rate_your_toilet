@@ -1,5 +1,11 @@
-<div class="container py-5 text-center">
-<h1>Add a place to 💩</h1>
-<%= image_tag "toilet.svg", class: "my-4" %>
-<%= render "form", toilet: @toilet %>
+<div class="container py-5 text-center flex-column justify-content-center">
+<div class="container">
+  <h1>Add a place to 💩</h1>
+</div>
+<div class="container">
+  <%= image_tag "toilet.svg", class: "my-4" %>
+</div>
+<div class="container">
+  <%= render "form", toilet: @toilet %>
+</div>
 </div>

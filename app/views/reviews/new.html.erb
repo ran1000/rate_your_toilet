@@ -3,3 +3,11 @@
   <h1>Rate the toilet</h1>
   <%= render "styledform", toilet: @toilet, review: @review %>
 </div>
+
+<div class="">
+  <%= link_to toilets_path do %>
+    <button class="button-back-map">
+      <i class="fa-solid fa-location-dot"></i>
+    </button>
+  <% end %>
+</div>

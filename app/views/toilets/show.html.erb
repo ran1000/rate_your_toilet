@@ -1,5 +1,11 @@
 <% current_user != nil ? favorite = current_user.favorites.find_by(toilet: @toilet) : favorite = nil %>
 
+<div class="button-back">
+  <%= link_to toilets_path do %>
+          <button class="btn-like"><i class="fa-solid fa-arrow-left"></i></button>
+  <% end %>
+</div>
+
 <div class ="favoritebar">
   <% if favorite.nil? %>
     <!--<div class="small"> -->

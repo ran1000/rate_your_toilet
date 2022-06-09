@@ -1,3 +1,9 @@
+<div class="button-back">
+  <%= link_to toilet_path(@toilet) do %>
+          <button class="btn-like"><i class="fa-solid fa-arrow-left"></i></button>
+  <% end %>
+</div>
+
 <div style="width: 100vw; height: 100vh;"
   data-controller="map"
   data-map-markers-value="<%=@markers.to_json%>"

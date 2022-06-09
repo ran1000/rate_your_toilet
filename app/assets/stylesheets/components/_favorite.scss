@@ -1,17 +1,16 @@
 .favoritebar {
-    margin-top: 2px;
-    border-radius: 2px;
-    display: flex !important;
-    align-items: start !important;
-    justify-content: end !important;
-    /* padding-right: 2px; */
-    gap: 5px;
-    position: absolute;
-    top: 15%;
-    right: 5%;
-    z-index: 3;
+  border-radius: 2px;
+  display: flex !important;
+  align-items: start !important;
+  justify-content: end !important;
+  /* padding-right: 2px; */
+  gap: 5px;
+  position: absolute;
+  top: 13%;
+  right: 4%;
+  z-index: 3;
 }
 
-.small{
+.small {
   font-size: xx-small;
 }

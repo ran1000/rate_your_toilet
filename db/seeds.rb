@@ -27,12 +27,13 @@ puts 'Creating users...'
 
   puts "Created user #{User.last.id}"
 
-  20.times do
+  Toilet::RESTAURANTS_ADDRESSES.each do |address|
     @toilet = Toilet.new(
       name: Faker::Restaurant.name,
-      address: Toilet::RESTAURANTS_ADDRESSES.sample,
+      address: address,
       user_id: @user[:id]
     )
+
     @toilet.save!
 
     puts "Created toilet #{Toilet.last.id}"

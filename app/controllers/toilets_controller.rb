@@ -11,11 +11,10 @@ class ToiletsController < ApplicationController
     if params[:lat] == nil && current_user.lat.nil?
       @toilets = policy_scope(Toilet)
     else
-      @toilets = policy_scope(Toilet.near([current_user.lat, current_user.lng], 2, units: :km))
+      @toilets = policy_scope(Toilet.near([current_user.lat, current_user.lng], 1, units: :km))
       @toilets.map do |toilet|
-        toilet.toilet_distance = (toilet.distance_from([current_user.lat, current_user.lng]).to_f)
+        toilet.toilet_distance = (toilet.distance_from([current_user.lat, current_user.lng]))
       end
-      # raise
     end
 
     if params[:toilet_params] == "baby"
@@ -23,6 +22,7 @@ class ToiletsController < ApplicationController
 
     elsif params[:toilet_params] == "period"
       @toilets = @toilets.select { |t| t.period_friendly? }
+
 
     elsif params[:toilet_params] == "show_all"
       @toilets
@@ -50,7 +50,7 @@ class ToiletsController < ApplicationController
         lng: toilet.longitude,
         toilet_id: toilet.id,
         # info_window: render_to_string(partial: "info_window", locals: {toilet: toilet}),
-        image_url: helpers.asset_url("logo.svg")
+        image_url: helpers.asset_url("marker_pic.svg")
       }
     end
     @toilets = @toilets.sort_by(&:toilet_distance) unless params[:lat] == nil || params[:lng] == nil
@@ -73,6 +73,16 @@ class ToiletsController < ApplicationController
         lng: toilet.longitude
       }
     end
+
+    @tag_list = []
+    @toilet.baby_friendly? ? @tag_list.push("Baby friendly") : nil
+    @toilet.period_friendly? ? @tag_list.push("Period friendly") : nil
+    @toilet.accessible? ? @tag_list.push("Accessible") : nil
+    @toilet.urinal? ? @tag_list.push("Urinal") : nil
+    @toilet.stall? ? @tag_list.push("Stall") : nil
+    @toilet.easy? ? @tag_list.push("Easy ") : nil
+    @toilet.changing_room? ? @tag_list.push("Changing Room ") : nil
+
   end
 
   def new
@@ -113,7 +123,7 @@ class ToiletsController < ApplicationController
       {
         lat: toilet.latitude,
         lng: toilet.longitude,
-        image_url: helpers.asset_url("logo.svg")
+        image_url: helpers.asset_url("marker_pic.svg")
       }
     end
   end

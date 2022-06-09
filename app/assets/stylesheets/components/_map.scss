@@ -5,6 +5,10 @@
 .map-container_actual {
   position: relative !important;
   flex-direction: column;
+  .mapboxgl-marker {
+    width: 25px !important;
+    height: 25px !important;
+  }
 }
 
 .mapboxgl-popup {

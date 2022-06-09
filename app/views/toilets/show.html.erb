@@ -31,23 +31,19 @@
 
   <p> <%= @toilet.address %>  <span><%= @toilet.toilet_distance %></span></p>
 </div>
-
-<div class="container">
-  <h4><%= @toilet.reviews.count %> Reviews:</h4>
-  <%= render "/reviews/index", reviews: @toilet.reviews %>
+<div class="container py-3">
+  <div class="d-flex justify-content-start">
+    <% @tag_list.each do |t| %>
+      <div class="pe-2">
+        <div class="tags"> <%= t %> </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<div class="container">
-  <h4>Tags</h4>
-  <div class="container flex">
-    <%= @toilet.baby_friendly? ? "Baby friendly " : nil %>
-    <%= @toilet.period_friendly? ? "Period friendly " : nil %>
-    <%= @toilet.accessible? ? "Accessible ": nil %>
-    <%= @toilet.urinal? ? "Urinal " : nil %>
-    <%= @toilet.stall? ? "Stall " : nil %>
-    <%= @toilet.easy? ? "Easy " : nil %>
-    <%= @toilet.changing_room? ? "Changing Room " : nil %></div>
-  </div>
+<div class="container py-3">
+  <h4 class="pb-3"> <%= pluralize(@toilet.reviews.count, 'Review') %> </h4>
+  <%= render "/reviews/index", reviews: @toilet.reviews %>
 </div>
 
 

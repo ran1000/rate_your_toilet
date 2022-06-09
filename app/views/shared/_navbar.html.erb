@@ -1,5 +1,5 @@
-<div class="mini-banner">
-  <%= link_to toilets_path do %>
+<div class="mini-banner", data-controller="user-coordinates">
+  <%= link_to toilets_path, data:{user_coordinates_target: "link"} do %>
     <%= image_tag "spotaloo_logo.png", class: "banner-logo" %>
   <% end %>
 </div>
@@ -54,11 +54,14 @@
   <% if params["action"] == "show" %>
     <%= link_to directions_path(id: @toilet), class: "butt" do %>
       <button class="blue-button">Lets go!</button>
+    <%= link_to new_toilet_review_path(@toilet, Review.new), class: "butt" do %>
+      <button class="blue-button">Rate it!</button>
+    <% end %>
     <% end %>
   <% end %>
 
   <% if params["action"] == "directions" %>
-     <%= link_to new_toilet_review_path(@toilet, Review.new), class: "butt" do %>
+    <%= link_to new_toilet_review_path(@toilet, Review.new), class: "butt" do %>
       <button class="blue-button">Rate it!</button>
     <% end %>
   <% end %>

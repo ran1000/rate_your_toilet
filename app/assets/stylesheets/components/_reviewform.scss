@@ -23,11 +23,15 @@
 }
 
 .comment-container {
+  // margin-left: 10px;
   // border-left: 1px dotted black;
   flex-shrink: 0;
   border-radius: 25px;
   background-color: $light-gray;
-
+  width: 200px;
+  min-height: 150px;
+  // padding-left: 10px;
+  // padding-right: 10px;
 }
 
 

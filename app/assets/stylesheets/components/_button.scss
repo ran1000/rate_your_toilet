@@ -1,14 +1,11 @@
 .start-btn {
-  a {
-    text-decoration: none;
-    justify-items: center;
-    display: grid;
-    // padding: 24px;
-    font-size: 32px;
-    font-family: "Thiket regular";
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 40vw;
+    margin: 0 auto;
     margin-top: 50px;
-    color: $purple;
-    text-shadow: 1px 1px 2px white;
   }
 }
 
@@ -72,9 +69,9 @@
   border-style: none;
   color: white;
   padding: 0px 15px;
-  // margin-left: 10px;
-  // margin-right: 10px;
-  // justify-content: center;
-  // align-items: center;
-  // display: flex;
+
+  .fa-solid {
+    margin-top: 4px;
+    font-size: 20px;
+  }
 }

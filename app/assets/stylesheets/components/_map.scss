@@ -3,7 +3,8 @@
 }
 
 .map-container_actual {
-  position: relative;
+  position: relative !important;
+  flex-direction: column;
 }
 
 .mapboxgl-popup {

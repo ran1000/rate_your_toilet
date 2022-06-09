@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["btn", "map", "toilets", "close", "filters"]
+  static targets = ["btn", "map", "toilets", "close", "filters", "popups"]
 
   connect() {
     // console.log(this.btnTarget)
@@ -9,11 +9,13 @@ export default class extends Controller {
   open() {
     this.toiletsTarget.classList.remove("d-none")
     this.mapTarget.classList.add("d-none")
+    this.popupsTarget.classList.add("d-none")
     this.filtersTarget.classList.add("d-none")
   }
   close() {
     this.toiletsTarget.classList.add("d-none")
     this.filtersTarget.classList.remove("d-none")
     this.mapTarget.classList.remove("d-none")
+    this.popupsTarget.classList.remove("d-none")
   }
 }

@@ -3,3 +3,19 @@
   object-fit: cover;
   height: 50vh;
 }
+
+.no-carousel {
+  height: 50vh;
+  background-color: $light-gray;
+}
+
+.no-image-tag {
+  color: white;
+  font-family: $headers-font;
+}
+
+.no-image-tag img {
+  width: 100% !important;
+  object-fit: cover;
+  height: 50vh;
+}

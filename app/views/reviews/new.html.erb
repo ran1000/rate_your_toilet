@@ -4,7 +4,7 @@
   <%= render "styledform", toilet: @toilet, review: @review %>
 </div>
 
-<div class="">
+<div class="" onload="initStarRating()">
   <%= link_to toilets_path do %>
     <button class="button-back-map">
       <i class="fa-solid fa-location-dot"></i>

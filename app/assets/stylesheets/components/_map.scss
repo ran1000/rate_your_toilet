@@ -11,6 +11,13 @@
   }
 }
 
+.mapboxgl-canvas-container{
+  .mapboxgl-marker {
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
+
 .mapboxgl-popup {
   max-width: 400px;
   border-radius: 50%;
@@ -21,7 +28,6 @@
   margin-bottom: 30px;
 }
 
-.mapboxgl-map {}
 
 // .mapboxgl-popup-anchor-bottom[style] {
 //   max-width: 100vw !important;

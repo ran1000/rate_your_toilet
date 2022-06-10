@@ -11,7 +11,7 @@ class ToiletsController < ApplicationController
     if params[:lat] == nil && current_user.lat.nil?
       @toilets = policy_scope(Toilet)
     else
-      @toilets = policy_scope(Toilet.near([current_user.lat, current_user.lng], 1, units: :km))
+      @toilets = policy_scope(Toilet.near([current_user.lat, current_user.lng], 1.4, units: :km))
       @toilets.map do |toilet|
         toilet.toilet_distance = (toilet.distance_from([current_user.lat, current_user.lng]))
       end
@@ -82,7 +82,6 @@ class ToiletsController < ApplicationController
     @toilet.stall? ? @tag_list.push("Stall") : nil
     @toilet.easy? ? @tag_list.push("Easy ") : nil
     @toilet.changing_room? ? @tag_list.push("Changing Room ") : nil
-
   end
 
   def new
@@ -114,7 +113,7 @@ class ToiletsController < ApplicationController
   def destroy
     authorize @toilet
     @toilet.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to dashboard_path, status: :see_other
   end
 
   def directions

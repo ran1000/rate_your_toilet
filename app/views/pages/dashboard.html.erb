@@ -9,7 +9,7 @@
     <div class="carousel-item active">
       <div id="favorites" class="dash-sections" data-dashboard-target="fav">
         <div class="container">
-          <h6 class="text-left p-3">Favorites:</h6>
+          <h6 class="text-left p-3">Your favorites toilets:</h6>
           <div class="toilet-grid">
             <% @favorites.each do |favorite| %>
               <%= render "toilets/toiletcard", toilet: favorite.toilet %>
@@ -33,7 +33,7 @@
     <div class="carousel-item">
       <div id="reviews" class="dash-sections" data-dashboard-target="rev">
         <div class="container">
-          <h6 class="text-left pt-3">Your Reviews:</h6>
+          <h6 class="text-left pt-3">Your reviews:</h6>
           <% @reviews.each do |review| %>
             <% @user = User.find(review[:user_id]) %>
             <div class="container dashboard-reviews">
@@ -49,7 +49,7 @@
                     <%= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "blue-out-button-small" %>
                   <% end %>
                   <% if policy(review).edit? %>
-                    <%= link_to "Edit Review", edit_toilet_review_path(review.toilet, review), class: "blue-out-button-small" %>
+                    <%= link_to "Edit review", edit_toilet_review_path(review.toilet, review), class: "blue-out-button-small" %>
                   <% end %>
                 </div>
               </div>

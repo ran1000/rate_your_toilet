@@ -17,7 +17,7 @@ puts 'DB emptied'
 
 puts 'Creating users...'
 
-2.times do
+1.times do
   @user = User.new(
     username: Faker::Name.first_name,
     email: Faker::Internet.email,

@@ -97,7 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_105905) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username"
+    t.string "  "
     t.float "lat"
     t.float "lng"
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
     @review.toilet = @toilet
     authorize @review
     if @review.save
-      redirect_to toilets_path
+      redirect_to toilet_path(@toilet)
     else
       render :new, status: :unprocessable_entity
     end
@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
     @toilet = Toilet.find(@review[:toilet_id])
     authorize @review
     @review.destroy
-    redirect_to toilet_path(@toilet), status: :see_other
+    redirect_to dashboard_path, status: :see_other
   end
 
   private

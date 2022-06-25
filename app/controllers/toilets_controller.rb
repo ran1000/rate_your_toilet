@@ -1,6 +1,6 @@
 class ToiletsController < ApplicationController
   before_action :set_toilet, only: %i[show edit update destroy directions]
-  skip_before_action :authenticate_user!, only: %i[show index]
+  skip_before_action :authenticate_user!, only: %i[show index directions]
 
   def index
     unless params[:lat] == nil || params[:lng] == nil || current_user == nil
@@ -8,7 +8,7 @@ class ToiletsController < ApplicationController
       current_user.lng = params[:lng]
       current_user.update(lat: params[:lat], lng: params[:lng])
     end
-    if (params[:lat] == nil && current_user.lat.nil?) || current_user == nil
+    if current_user == nil || (params[:lat] == nil && current_user.lat.nil?)
       @toilets = policy_scope(Toilet)
     else
       @toilets = policy_scope(Toilet.near([current_user.lat, current_user.lng], 1.4, units: :km))

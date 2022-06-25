@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[splash home routeto]
+  skip_before_action :authenticate_user!, only: %i[splash]
 
   def splash
   end

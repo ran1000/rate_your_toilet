@@ -1,12 +1,8 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home routeto]
+  skip_before_action :authenticate_user!, only: %i[splash home routeto]
 
   def splash
   end
-
-  # def home
-
-  # end
 
   def dashboard
     @toilets = policy_scope(current_user.toilets)
@@ -17,9 +13,6 @@ class PagesController < ApplicationController
     @toilets.map do |toilet|
       toilet.toilet_distance = (toilet.distance_from([current_user.lat, current_user.lng]).to_f)
     end
-    # raise
-    # @toilets = current_user.toilets
-    # @favorites = current_user.favorites
   end
 
   def categories

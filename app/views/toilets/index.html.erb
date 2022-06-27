@@ -61,15 +61,14 @@
     </div>
   </div>
 
-<div class="map-container" data-toilets-target="map">
-  <div class="map-container_actual" style="width: 100vw; height: 72.5vh;"
+<div class="map-container map-dimension" data-toilets-target="map">
+  <div class="map-container_actual map-dimension"
     data-controller="map"
     data-map-markers-value="<%=@markers.to_json%>"
     data-map-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
     <div class="card-scroller">
-
       <div class="card-scroller d-flex justify-content-center">
-        <button class="blue-out-button w-25" data-toilets-target="btn" data-action="click->toilets#open"><i class="fa-solid fa-angle-up"></i></button>
+        <button class="blue-out-button w-25" data-toilets-target="btn" data-action="click->toilets#open"><i class="fa-solid fa-angle-down"></i></button>
       </div>
     </div>
   </div>

@@ -125,7 +125,7 @@
 .card-product {
   position: fixed;
   left: 2.5%;
-  bottom: 165px;
+  bottom: 20%;
   width: 95vw;
   overflow: hidden;
   height: 120px;
@@ -215,11 +215,13 @@
   position: absolute;
   z-index: 10;
   right: 12px;
-  top: -195px;
+  top: -20%;
 }
 
 .toilet-cards-sel {
   position: relative;
+  height: 120px;
+  bottom: 20vh;
 }
 
 .distance-indicator {

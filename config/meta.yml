@@ -1,0 +1,5 @@
+meta_product_name: "Spotaloo"
+meta_title: "Spotaloo - Find the best toilet nearby"
+meta_description: "Spotaloo is an educational project for mapping toilets in the city and find the ones nearby, which suits specific user's needs"
+meta_image: "spotaloo_logo_medium.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards

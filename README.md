@@ -9,8 +9,9 @@ We first develop a concept of our app defining the core user journey and we then
 ![Design of the Design System](/app/assets/images/presentation/UI_components.png?raw=true "Design of the Design System")
 ![Draft in Figma](/app/assets/images/presentation/figma_draft.png?raw=true "Draft in Figma")
 
-The MVP of the project was developed by a team of 4 people in less than 10 days. It allows to look for a toilet, get the directions and rate the toilet. A logged-in user can additionally add a new restroom.
-
+And here below the live version.
 ![Screenshots of the live version](/app/assets/images/presentation/app_screens.jpg?raw=true "Screenshots of the live version")
+
+The MVP of the project was developed by a team of 4 people in less than 10 days. It allows to look for a toilet, get the directions and rate the toilet. A logged-in user can additionally add a new restroom.
 
 It was live at spotaloo.lol, but this project is currently discontinued.
